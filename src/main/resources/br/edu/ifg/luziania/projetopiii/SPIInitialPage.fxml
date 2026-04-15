@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity"
+<AnchorPane id="principalBox"
+            maxHeight="-Infinity"
             maxWidth="-Infinity"
             minHeight="-Infinity"
             minWidth="-Infinity"
@@ -15,7 +16,8 @@
             fx:controller="br.edu.ifg.luziania.projetopiii.mvc.SPIInitialContoller"
             xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="188.0"
+      <Label id="principalLabel"
+             layoutX="188.0"
              layoutY="24.0"
              text="Choose one"
              textFill="#043c18"
@@ -24,7 +26,8 @@
              AnchorPane.topAnchor="24.0">
          <font><Font name="Roboto Thin" size="40.0" /></font>
       </Label>
-      <AnchorPane layoutX="200.0"
+      <AnchorPane id="doctorBox"
+                  layoutX="200.0"
                   layoutY="100.0"
                   prefHeight="275.0"
                   prefWidth="270.0"
@@ -38,7 +41,8 @@
                   AnchorPane.leftAnchor="25.0"
                   AnchorPane.topAnchor="100.0">
          <children>
-            <Button alignment="CENTER"
+            <Button id="doctorButton"
+                    alignment="CENTER"
                     contentDisplay="CENTER"
                     layoutX="72.0"
                     layoutY="125.0"
@@ -58,7 +62,8 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="331.0"
+      <AnchorPane id="patientBox"
+                  layoutX="331.0"
                   layoutY="128.0"
                   prefHeight="275.0"
                   prefWidth="270.0"
@@ -72,7 +77,8 @@
                   AnchorPane.rightAnchor="25.0"
                   AnchorPane.topAnchor="100.0">
          <children>
-            <Button alignment="CENTER"
+            <Button id="patientButton"
+                    alignment="CENTER"
                     contentDisplay="CENTER"
                     layoutX="14.0"
                     layoutY="14.0"
