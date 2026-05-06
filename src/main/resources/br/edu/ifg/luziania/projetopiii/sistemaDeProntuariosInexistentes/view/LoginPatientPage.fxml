@@ -4,21 +4,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="backgroundPatientBox"
+<AnchorPane id="plBackgroundBox"
             prefHeight="400.0"
             prefWidth="600.0"
             style="-fx-background-color: #90ee90;"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="CONTROLLER_NAME">
-    <AnchorPane id="loginBox"
+    <AnchorPane id="pLoginBox"
                 layoutX="112.0"
                 layoutY="85.0"
                 prefHeight="231.0"
                 prefWidth="376.0"
                 style="-fx-background-color: #7200A3;
                        -fx-border-color: #18392B;">
-        <Label id="welcomePatientLabel"
+        <Label id="plWelcomePatientLabel"
                alignment="CENTER"
                contentDisplay="CENTER"
                layoutX="30.0"
@@ -32,7 +32,7 @@
                 <Font name="Fira Code Light" size="35.0"/>
             </font>
         </Label>
-        <TextField id="emailCPFTextField"
+        <TextField id="plEmailCPFTextField"
                    layoutX="52.0"
                    layoutY="43.0"
                    prefHeight="26.0"
@@ -45,7 +45,7 @@
                 <Font name="Noto Mono" size="13.0"/>
             </font>
         </TextField>
-        <PasswordField id="patientPasswordField"
+        <PasswordField id="plPasswordField"
                        layoutX="52.0"
                        layoutY="90.0"
                        prefHeight="26.0"
@@ -58,7 +58,7 @@
                 <Font name="Noto Mono" size="13.0"/>
             </font>
         </PasswordField>
-        <Hyperlink id="createAccountHyperLink"
+        <Hyperlink id="plcreateAccountHyperLink"
                    layoutX="45.0"
                    layoutY="148.0"
                    prefHeight="33.0"
@@ -70,7 +70,7 @@
                 <Font name="Noto Mono" size="13.0"/>
             </font>
         </Hyperlink>
-        <Button id="enterButton"
+        <Button id="plEnterButton"
                 alignment="CENTER"
                 contentDisplay="CENTER"
                 layoutX="270.0"
