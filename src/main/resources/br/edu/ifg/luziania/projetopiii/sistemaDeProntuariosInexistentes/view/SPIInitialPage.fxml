@@ -48,7 +48,8 @@
                        -fx-border-style: solid;
                        -fx-border-color: #DCD0FF;
                        -fx-background-color: #18392B;
-                       -fx-background-radius: 10;"
+                       -fx-background-radius: 10;
+                       -fx-background-insets: 1"
                 text="Doctor"
                 textAlignment="CENTER"
                 textFill="LIGHTGREEN"
@@ -63,7 +64,6 @@
                 <Insets bottom="15.0" />
             </padding>
         </Button>
-
         <Button id="patientButton"
                 alignment="CENTER"
                 contentDisplay="CENTER"
@@ -77,7 +77,8 @@
                        -fx-border-style: solid;
                        -fx-border-color: #7200A3;
                        -fx-background-color: #90ee90;
-                       -fx-background-radius: 10;"
+                       -fx-background-radius: 10;
+                       -fx-background-insets: 1"
                 text="Patient"
                 textAlignment="CENTER"
                 textFill="#18392b"
