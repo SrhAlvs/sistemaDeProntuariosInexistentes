@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="principalBox"
+<AnchorPane fx:id="principalBox"
             maxHeight="-Infinity"
             maxWidth="-Infinity"
             minHeight="-Infinity"
@@ -16,7 +16,7 @@
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.controller.SPIInitialController">
-    <Label id="chooseOneLabel"
+    <Label fx:id="chooseOneLabel"
            layoutX="181.0"
            layoutY="30.0"
            prefHeight="54.0"
@@ -29,13 +29,14 @@
             <Font name="Fira Code Light" size="40.0" />
         </font>
     </Label>
-   <AnchorPane id="buttonsBox"
+   <AnchorPane fx:id="buttonsBox"
                layoutX="26.0"
                layoutY="100.0"
                prefHeight="275.0"
                prefWidth="545.0" />
 
-        <Button id="doctorButton"
+        <Button fx:id="doctorButton"
+                onAction="#handleDoctorNavigation"
                 alignment="CENTER"
                 contentDisplay="CENTER"
                 layoutX="200.0"
@@ -64,7 +65,8 @@
                 <Insets bottom="15.0" />
             </padding>
         </Button>
-        <Button id="patientButton"
+        <Button fx:id="patientButton"
+                onAction="#handlePatientNavigation"
                 alignment="CENTER"
                 contentDisplay="CENTER"
                 layoutX="331.0"

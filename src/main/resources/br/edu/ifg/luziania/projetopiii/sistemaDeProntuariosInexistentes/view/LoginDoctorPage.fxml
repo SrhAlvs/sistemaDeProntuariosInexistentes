@@ -12,15 +12,15 @@
             style="-fx-background-color: #18392B;"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="CONTROLLER_NAME">
-   <AnchorPane id="dLoginBox"
+            fx:controller="br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.controller.LoginDoctorController">
+   <AnchorPane fx:id="dLoginBox"
                layoutX="112.0"
                layoutY="85.0"
                prefHeight="231.0"
                prefWidth="376.0"
                style="-fx-background-color: #DCD0FF;
                       -fx-border-color: lightgreen;">
-      <Label id="dlWelcomeDoctorLabel"
+      <Label fx:id="dlWelcomeDoctorLabel"
              alignment="CENTER"
              contentDisplay="CENTER"
              layoutX="30.0"
@@ -34,7 +34,7 @@
             <Font name="Fira Code Light" size="35.0"/>
          </font>
       </Label>
-      <TextField id="dlEmailCRMTextField"
+      <TextField fx:id="dlEmailCRMTextField"
                  layoutX="52.0"
                  layoutY="43.0"
                  prefHeight="26.0"
@@ -47,7 +47,7 @@
             <Font name="Noto Mono" size="13.0"/>
          </font>
       </TextField>
-      <PasswordField id="dlPasswordField"
+      <PasswordField fx:id="dlPasswordField"
                      layoutX="52.0"
                      layoutY="90.0"
                      prefHeight="26.0"
@@ -60,7 +60,8 @@
             <Font name="Noto Mono" size="13.0"/>
          </font>
       </PasswordField>
-      <Hyperlink id="dlCreateAccountHyperLink"
+      <Hyperlink fx:id="dlCreateAccountHyperLink"
+                 onAction="#handleCreateAccount"
                  layoutX="45.0"
                  layoutY="148.0"
                  prefHeight="33.0"
@@ -72,7 +73,8 @@
             <Font name="Noto Mono" size="13.0"/>
          </font>
       </Hyperlink>
-      <Button id="dlEnterButton"
+      <Button fx:id="dlEnterButton"
+              onAction="#handleLogin"
               alignment="CENTER"
               contentDisplay="CENTER"
               layoutX="270.0"

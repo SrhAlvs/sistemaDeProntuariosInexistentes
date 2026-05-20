@@ -4,16 +4,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<!--'dca' nos id's é Doctor Create Account-->
+<!--'pca' nos id's é Patient Create Account-->
 
-<AnchorPane id="dcaBackgroundBox"
+<AnchorPane fx:id="pcaBackgroundBox"
             prefHeight="400.0"
             prefWidth="600.0"
             style="-fx-background-color: lightgreen;"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="CONTROLLER_NAME">
-    <Label id="dcaCreateYourAccountLabel"
+            fx:controller="br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.controller.CreateAccountPatientController">
+    <Label fx:id="pcaCreateYourAccountLabel"
            alignment="CENTER"
            contentDisplay="CENTER"
            layoutX="125.0"
@@ -27,14 +27,14 @@
             <Font name="Fira Code Light" size="30.0" />
         </font>
     </Label>
-    <AnchorPane id="dCreateAccountBox"
+    <AnchorPane fx:id="pCreateAccountBox"
                 layoutX="112.0"
                 layoutY="85.0"
                 prefHeight="231.0"
                 prefWidth="376.0"
                 style="-fx-background-color: #7200A3;
                        -fx-border-color: #18392B;">
-        <TextField id="dcaFullNameTextField"
+        <TextField fx:id="pcaFullNameTextField"
                    layoutX="46.0"
                    layoutY="27.0"
                    prefHeight="26.0"
@@ -47,12 +47,12 @@
                 <Font name="Noto Mono" size="13.0" />
             </font>
         </TextField>
-        <TextField id="dcaCRMTextField"
+        <TextField fx:id="pcaCPFTextField"
                    layoutX="45.0"
                    layoutY="69.0"
                    prefHeight="26.0"
                    prefWidth="286.0"
-                   promptText="CRM"
+                   promptText="CPF"
                    AnchorPane.leftAnchor="46.0"
                    AnchorPane.rightAnchor="46.0"
                    AnchorPane.topAnchor="60.0">
@@ -60,7 +60,7 @@
                 <Font name="Noto Mono" size="13.0" />
             </font>
         </TextField>
-        <TextField id="dcaCRMTextField"
+        <TextField fx:id="pcaEmailTextField"
                    layoutX="57.0"
                    layoutY="71.0"
                    prefHeight="26.0"
@@ -73,7 +73,7 @@
                 <Font name="Noto Mono" size="13.0" />
             </font>
         </TextField>
-        <PasswordField id="dcaPasswordField"
+        <PasswordField fx:id="pcaPasswordField"
                        layoutX="52.0"
                        layoutY="90.0"
                        prefHeight="26.0"
@@ -86,7 +86,8 @@
                 <Font name="Noto Mono" size="13.0" />
             </font>
         </PasswordField>
-        <Hyperlink id="dcaLoginHyperLink"
+        <Hyperlink fx:id="pcaLoginHyperLink"
+                   onAction="#handleBackToLogin"
                    layoutX="43.0"
                    layoutY="148.0"
                    prefHeight="33.0"
@@ -98,7 +99,8 @@
                 <Font name="Noto Mono" size="13.0" />
             </font>
         </Hyperlink>
-        <Button id="dcaCreateButton"
+        <Button fx:id="pcaCreateButton"
+                onAction="#handleCreateAccount"
                 alignment="CENTER"
                 contentDisplay="CENTER"
                 layoutX="270.0"
