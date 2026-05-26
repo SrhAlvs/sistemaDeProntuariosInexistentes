@@ -1,4 +1,4 @@
-package br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.model;
+package br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.model.entities;
 
 import static br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.util.UserValidator.validateCpf;
 
