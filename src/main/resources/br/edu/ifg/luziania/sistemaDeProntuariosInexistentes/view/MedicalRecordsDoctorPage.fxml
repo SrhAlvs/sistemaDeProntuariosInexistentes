@@ -63,6 +63,27 @@
                                text="Resumo" />
                </columns>
             </TableView>
+            <Button fx:id="dmrBackButton"
+                    layoutX="436.0"
+                    layoutY="373.0"
+                    mnemonicParsing="false"
+                    style="-fx-border-width:2;
+                       -fx-border-radius: 10;
+                       -fx-border-style: solid;
+                       -fx-border-color: #7200A3;
+                       -fx-background-color: #90ee90;
+                       -fx-background-radius: 10;
+                       -fx-background-insets: 1"
+                    text="Voltar"
+                    textAlignment="CENTER"
+                    textFill="#18392b"
+                    textOverrun="CENTER_ELLIPSIS"
+                    AnchorPane.rightAnchor="10.0"
+                    AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font name="Noto Mono" size="6.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
       <VBox fx:id="dmrMenuBox"
             prefHeight="400.0"
