@@ -51,4 +51,13 @@ public class LoginPatientController {
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/CreateAccountPatientPage.fxml");
     }
 
+    // trata o clique no botão de voltar, redirecionando para a tela de escolha 'MÉDICO/PACIENTE'
+    @FXML
+    private void handleBackButton(ActionEvent event) {
+        // registra a ação no console (aqui futuramente chamará o LoggerService de Auditoria)
+        System.out.println("[AUDITORIA] Usuário navegando para a tela de Escolha da Forma de Login.");
+
+        // realiza a troca da cena
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/SPIInitialPage.fxml");
+    }
 }

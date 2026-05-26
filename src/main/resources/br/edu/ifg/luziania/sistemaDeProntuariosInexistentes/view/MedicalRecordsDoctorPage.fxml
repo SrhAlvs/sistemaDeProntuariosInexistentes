@@ -64,6 +64,7 @@
                </columns>
             </TableView>
             <Button fx:id="dmrBackButton"
+                    onAction="#handleBackButton"
                     layoutX="436.0"
                     layoutY="373.0"
                     mnemonicParsing="false"
