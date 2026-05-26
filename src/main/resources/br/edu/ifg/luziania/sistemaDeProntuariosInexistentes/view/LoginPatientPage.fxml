@@ -99,4 +99,25 @@
             </font>
         </Button>
     </AnchorPane>
+    <Button fx:id="plBackButton"
+            layoutX="436.0"
+            layoutY="373.0"
+            mnemonicParsing="false"
+            style="-fx-border-width: 2;
+                       -fx-border-radius: 10;
+                       -fx-border-style: solid;
+                       -fx-border-color: #DCD0FF;
+                       -fx-background-color: #18392B;
+                       -fx-background-radius: 10;
+                       -fx-background-insets: 1"
+            text="Voltar"
+            textAlignment="CENTER"
+            textFill="LIGHTGREEN"
+            textOverrun="CENTER_ELLIPSIS"
+            AnchorPane.rightAnchor="10.0"
+            AnchorPane.topAnchor="10.0">
+        <font>
+            <Font name="Noto Mono" size="6.0" />
+        </font>
+    </Button>
 </AnchorPane>
