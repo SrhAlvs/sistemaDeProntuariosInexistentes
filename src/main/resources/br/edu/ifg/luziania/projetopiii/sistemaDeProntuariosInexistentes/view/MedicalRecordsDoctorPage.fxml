@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<!--'dhp' nos id's é Doctor Home Page-->
+<!--'dmr' nos id's é Doctor Medical Records-->
 
 <AnchorPane prefHeight="400.0"
             prefWidth="600.0"
@@ -13,7 +13,7 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.controller.HomeDoctorController">
    <children>
-      <AnchorPane fx:id="dhpPrincipalBox"
+      <AnchorPane fx:id="dmrPrincipalBox"
                   layoutX="120.0"
                   prefHeight="400.0"
                   prefWidth="480.0"
@@ -22,12 +22,12 @@
                   AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="dhpAgendaLabel"
+            <Label fx:id="dmrMedicalRecordsLabel"
                    layoutX="35.0"
                    layoutY="11.0"
                    prefHeight="39.0"
-                   prefWidth="112.0"
-                   text="Agenda"
+                   prefWidth="202.0"
+                   text="Prontuários"
                    textFill="#dcd0ff"
                    AnchorPane.leftAnchor="15.0"
                    AnchorPane.topAnchor="12.0">
@@ -35,7 +35,7 @@
                   <Font name="Noto Mono" size="30.0" />
                </font>
             </Label>
-            <TableView fx:id="dhpAgendaTable"
+            <TableView fx:id="dmrMedicalRecordsTable"
                        layoutX="35.0"
                        layoutY="62.0"
                        prefHeight="316.0"
@@ -45,31 +45,26 @@
                        AnchorPane.leftAnchor="15.0"
                        AnchorPane.rightAnchor="15.0"
                        AnchorPane.topAnchor="60.0">
-              <columns>
-                <TableColumn fx:id="dhpDateTableColumn"
-                             prefWidth="75.0"
-                             style="-fx-background-color: #BCA5FF;
-                                    -fx-border-color: #EAE2FF;"
-                             text="Data" />
-                <TableColumn fx:id="dhpTimeTableColumn"
-                             prefWidth="75.0"
-                             style="-fx-background-color: #EAE2FF;
-                                    -fx-border-color: #BCA5FF;"
-                             text="Horário" />
-                <TableColumn fx:id="dhpPatientNameTableColumn"
-                             prefWidth="240.0"
-                             style="-fx-background-color: #BCA5FF;
-                                    -fx-border-color: #EAE2FF;"
-                             text="Paciente" />
-                <TableColumn fx:id="dhpResumeTableColumn"
-                             prefWidth="59.0"
-                             style="-fx-background-color: #EAE2FF;
-                                    -fx-border-color: #BCA5FF;"
-                             text="Resumo" />
-              </columns>
+               <columns>
+                  <TableColumn fx:id="dmrCPFTableColumn"
+                               prefWidth="115.0"
+                               style="-fx-background-color: #EAE2FF;
+                                      -fx-border-color: #BCA5FF;"
+                               text="CPF" />
+                  <TableColumn fx:id="dmrPatientNameTableColumn"
+                               prefWidth="275.0"
+                               style="-fx-background-color: #BCA5FF;
+                                      -fx-border-color: #EAE2FF;"
+                               text="Paciente" />
+                  <TableColumn fx:id="dmrResumeTableColumn"
+                               prefWidth="59.0"
+                               style="-fx-background-color: #EAE2FF;
+                                      -fx-border-color: #BCA5FF;"
+                               text="Resumo" />
+               </columns>
             </TableView>
          </children></AnchorPane>
-      <VBox fx:id="dhpMenuBox"
+      <VBox fx:id="dmrMenuBox"
             prefHeight="400.0"
             prefWidth="122.0"
             style="-fx-background-color: #DCD0FF;"
@@ -77,17 +72,18 @@
             AnchorPane.leftAnchor="0.0"
             AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="dhpWelcomeLabel"
+            <Label fx:id="dmrWelcomeLabel"
                    text="Bem vind@,"
                    textFill="#043c18">
                <font>
                   <Font name="Noto Mono" size="15.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" top="5.0" />
+                  <Insets left="5.0"
+                          top="5.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="dhpDoctorNameLabel"
+            <Label fx:id="dmrDoctorNameLabel"
                    layoutX="15.0"
                    layoutY="15.0"
                    text="Fulano de Tal"
@@ -96,10 +92,11 @@
                   <Font name="Noto Mono" size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" top="2.0" />
+                  <Insets left="5.0"
+                          top="2.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="dhpMedicalRecordsButton"
+            <Button fx:id="dmrAgendaButton"
                     mnemonicParsing="false"
                     prefHeight="26.0"
                     prefWidth="124.0"
@@ -107,7 +104,7 @@
                            -fx-border-color: #BCA5FF;
                            -fx-border-style: solid;
                            -fx-border-width: 0.5;"
-                    text="Prontuários"
+                    text="Agenda"
                     textFill="#043c18">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -116,7 +113,7 @@
                   <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
-            <Button fx:id="dhpMyDetailsButton"
+            <Button fx:id="dmrMyDetailsButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
