@@ -32,8 +32,10 @@ public class CreateAccountDoctorController {
             // se chegou aqui, passou em todos os 'testes'
             AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta médica criada com sucesso!");
 
+            /*FALTA SALVAR NO BANCO DE DADOS*/
+
             // após o cadastro, joga o médico de volta para a tela de login
-            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/view/LoginDoctorPage.fxml");
+            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
 
         } catch (ValidationException e) {
             // // captura o erro lógico e avisa o usuário
@@ -50,6 +52,6 @@ public class CreateAccountDoctorController {
         System.out.println("[AUDITORIA] Usuário cancelou o cadastro e está voltando para o login.");
 
         // realiza a troca da cena
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/view/LoginDoctorPage.fxml");
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
     }
 }

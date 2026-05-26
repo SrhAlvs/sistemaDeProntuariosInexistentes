@@ -48,7 +48,7 @@ public class LoginPatientController {
         System.out.println("[AUDITORIA] Usuário navegando para a tela de Cadastro de Paciente.");
 
         // realiza a troca da cena
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/view/CreateAccountPatientPage.fxml");
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/sistemaDeProntuariosInexistentes/view/CreateAccountPatientPage.fxml");
     }
 
 }

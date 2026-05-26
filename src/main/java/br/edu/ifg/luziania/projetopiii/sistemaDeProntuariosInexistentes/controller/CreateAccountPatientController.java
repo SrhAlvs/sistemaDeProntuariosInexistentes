@@ -34,7 +34,7 @@ public class CreateAccountPatientController {
             AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta de paciente criada com sucesso!");
 
             // após o cadastro, joga o paciente de volta para a tela de login
-            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/view/LoginPatientPage.fxml");
+            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
 
         } catch (ValidationException e) {
             // // captura o erro lógico e avisa o usuário
@@ -51,6 +51,6 @@ public class CreateAccountPatientController {
         System.out.println("[AUDITORIA] Usuário cancelou o cadastro e está voltando para o login.");
 
         // realiza a troca da cena
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/view/LoginPatientPage.fxml");
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
     }
 }

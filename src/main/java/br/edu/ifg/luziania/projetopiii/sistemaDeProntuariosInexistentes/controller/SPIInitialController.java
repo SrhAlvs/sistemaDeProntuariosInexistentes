@@ -12,7 +12,7 @@ public class SPIInitialController {
         System.out.println("[AUDITORIA] Usuário anônimo escolheu a opção: MÉDICO.");
 
         // realiza a troca da cena
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/view/LoginDoctorPage.fxml");
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
     }
 
     @FXML
@@ -21,7 +21,7 @@ public class SPIInitialController {
         System.out.println("[AUDITORIA] Usuário anônimo escolheu a opção: PACIENTE.");
 
         // realiza a troca da cena
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/view/LoginPatientPage.fxml");
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/projetopiii/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
     }
 
 }

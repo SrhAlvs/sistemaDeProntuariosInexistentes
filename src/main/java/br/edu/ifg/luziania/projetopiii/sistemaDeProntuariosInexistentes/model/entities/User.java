@@ -3,7 +3,7 @@ package br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.model;
 import static br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.util.UserValidator.*;
 
 public class User {
-    private Integer id;
+    private final Integer id;
     private String name, email, password, type;
 
     public User(Integer id,
@@ -11,7 +11,7 @@ public class User {
                 String email,
                 String password,
                 String type) {
-        setId(id);
+        this.id = id;
         setName(name);
         setEmail(email);
         setPassword(password);
@@ -19,7 +19,6 @@ public class User {
     }
 
     public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
 
     public String getName() { return name; }
     public void setName(String name) {

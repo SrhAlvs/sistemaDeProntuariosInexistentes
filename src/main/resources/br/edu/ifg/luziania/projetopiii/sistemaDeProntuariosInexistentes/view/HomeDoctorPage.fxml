@@ -5,43 +5,125 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.controller.HomeDoctorController">
+<AnchorPane prefHeight="400.0"
+            prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.edu.ifg.luziania.projetopiii.sistemaDeProntuariosInexistentes.controller.HomeDoctorController">
    <children>
-      <AnchorPane id="principalBox" layoutX="120.0" prefHeight="400.0" prefWidth="480.0" style="-fx-background-color: #18392B;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <VBox id="menuBox" prefHeight="400.0" prefWidth="122.0" style="-fx-background-color: #DCD0FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="principalBox"
+                  layoutX="120.0"
+                  prefHeight="400.0"
+                  prefWidth="480.0"
+                  style="-fx-background-color: #18392B;"
+                  AnchorPane.bottomAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0"
+                  AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Bem vind@," textFill="#043c18">
+            <Label fx:id="agendaLabel"
+                   layoutX="35.0"
+                   layoutY="11.0"
+                   prefHeight="39.0"
+                   prefWidth="112.0"
+                   text="Agenda"
+                   textFill="#dcd0ff"
+                   AnchorPane.leftAnchor="15.0"
+                   AnchorPane.topAnchor="12.0">
                <font>
-                  <Font name="Droid Sans Mono Slashed" size="15.0" />
+                  <Font name="Noto Mono" size="30.0" />
+               </font>
+            </Label>
+            <TableView fx:id="agendaTable"
+                       layoutX="35.0"
+                       layoutY="62.0"
+                       prefHeight="316.0"
+                       prefWidth="421.0"
+                       style="-fx-background-color: #DCD0FF;"
+                       AnchorPane.bottomAnchor="15.0"
+                       AnchorPane.leftAnchor="15.0"
+                       AnchorPane.rightAnchor="15.0"
+                       AnchorPane.topAnchor="60.0">
+              <columns>
+                <TableColumn fx:id="dateTableColumn"
+                             prefWidth="75.0"
+                             style="-fx-background-color: #BCA5FF;
+                                    -fx-border-color: #EAE2FF;"
+                             text="Data" />
+                <TableColumn fx:id="timeTableColumn"
+                             prefWidth="75.0"
+                             style="-fx-background-color: #EAE2FF;
+                                    -fx-border-color: #BCA5FF;"
+                             text="Horário" />
+                <TableColumn fx:id="patientNameTableColumn"
+                             prefWidth="240.0"
+                             style="-fx-background-color: #BCA5FF;
+                                    -fx-border-color: #EAE2FF;"
+                             text="Paciente" />
+                <TableColumn fx:id=""
+                             prefWidth="59.0"
+                             style="-fx-background-color: #EAE2FF;
+                                    -fx-border-color: #BCA5FF;"
+                             text="Resumo" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+      <VBox fx:id="menuBox"
+            prefHeight="400.0"
+            prefWidth="122.0"
+            style="-fx-background-color: #DCD0FF;"
+            AnchorPane.bottomAnchor="0.0"
+            AnchorPane.leftAnchor="0.0"
+            AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Bem vind@,"
+                   textFill="#043c18">
+               <font>
+                  <Font name="Noto Mono" size="15.0" />
                </font>
                <VBox.margin>
                   <Insets left="5.0" top="5.0" />
                </VBox.margin>
             </Label>
-            <Label layoutX="15.0" layoutY="15.0" text="Fulano de Tal" textFill="#043c18">
+            <Label layoutX="15.0"
+                   layoutY="15.0"
+                   text="Fulano de Tal"
+                   textFill="#0b8335">
                <font>
-                  <Font name="Fira Code Medium" size="13.0" />
+                  <Font name="Noto Mono" size="13.0" />
                </font>
                <VBox.margin>
                   <Insets left="5.0" top="2.0" />
                </VBox.margin>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: 0; -fx-border-color: #BCA5FF; -fx-border-style: solid; -fx-border-width: 0.5;" text="Dados pessoais" textFill="#043c18">
+            <Button mnemonicParsing="false"
+                    prefHeight="26.0"
+                    prefWidth="124.0"
+                    style="-fx-background-color: 0;
+                           -fx-border-color: #BCA5FF;
+                           -fx-border-style: solid;
+                           -fx-border-width: 0.5;"
+                    text="Prontuários"
+                    textFill="#043c18">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
                <font>
-                  <Font name="Droid Sans Mono Slashed" size="11.0" />
+                  <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
-            <Button layoutX="10.0" layoutY="115.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: 0; -fx-border-color: #BCA5FF; -fx-border-style: solid; -fx-border-width: 0.5;" text="Agenda" textFill="#043c18">
+            <Button layoutX="10.0"
+                    layoutY="62.0"
+                    mnemonicParsing="false"
+                    prefHeight="26.0"
+                    prefWidth="124.0"
+                    style="-fx-background-color: 0;
+                           -fx-border-color: #BCA5FF;
+                           -fx-border-style: solid;
+                           -fx-border-width: 0.5;"
+                    text="Meus dados"
+                    textFill="#043c18">
                <font>
-                  <Font name="Droid Sans Mono Slashed" size="11.0" />
-               </font>
-            </Button>
-            <Button layoutX="10.0" layoutY="89.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" style="-fx-background-color: 0; -fx-border-color: #BCA5FF; -fx-border-style: solid; -fx-border-width: 0.5;" text="Prontuários" textFill="#043c18">
-               <font>
-                  <Font name="Droid Sans Mono Slashed" size="11.0" />
+                  <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
          </children></VBox>
