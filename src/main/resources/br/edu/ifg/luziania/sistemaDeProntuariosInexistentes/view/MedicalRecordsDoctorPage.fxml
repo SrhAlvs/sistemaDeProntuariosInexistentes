@@ -118,7 +118,8 @@
                           top="2.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="dmrAgendaButton"
+            <Button fx:id="dmrHomeButton"
+                    onAction="#handleHomeButton"
                     mnemonicParsing="false"
                     prefHeight="26.0"
                     prefWidth="124.0"
@@ -126,7 +127,7 @@
                            -fx-border-color: #BCA5FF;
                            -fx-border-style: solid;
                            -fx-border-width: 0.5;"
-                    text="Agenda"
+                    text="Início"
                     textFill="#043c18">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -136,6 +137,7 @@
                </font>
             </Button>
             <Button fx:id="dmrMyDetailsButton"
+                    onAction="#handleMyDetailsButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"

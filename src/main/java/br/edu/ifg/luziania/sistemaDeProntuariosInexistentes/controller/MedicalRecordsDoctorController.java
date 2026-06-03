@@ -1,0 +1,38 @@
+package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
+
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
+public class MedicalRecordsDoctorController {
+    // trata o clique no botão de voltar, redirecionando para a tela de Login do Doutor
+    @FXML
+    private void handleBackButton(ActionEvent event) {
+        // registra a ação no Log
+        LogWriter.write("[SUCESSO | NAVEGAÇÃO] Usuário médico navegando para a tela de Login.");
+
+        // realiza a troca da cena
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
+    }
+
+    // trata o clique no botão de voltar, redirecionando para a tela inicial (home)
+    @FXML
+    private void handleHomeButton(ActionEvent event) {
+        // registra a ação no Log
+        LogWriter.write("[SUCESSO | NAVEGAÇÃO] Usuário médico navegando para a tela inicial (home).");
+
+        // realiza a troca da cena
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomeDoctorPage.fxml");
+    }
+
+    // trata o clique no botão de 'Meus dados', redirecionando para a tela de 'Meus dados'
+    @FXML
+    private void handleMyDetailsButton(ActionEvent event) {
+        // registra a ação no Log
+        LogWriter.write("[SUCESSO | NAVEGAÇÃO] Usuário médico navegando para a tela de Meus dados.");
+
+        // realiza a troca da cena
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/MyDetailsDoctorPage.fxml");
+    }
+}

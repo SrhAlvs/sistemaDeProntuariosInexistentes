@@ -97,9 +97,7 @@
                   <Font name="Noto Mono" size="15.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0"
-                          top="5.0"
-                  />
+                  <Insets left="5.0" top="5.0" />
                </VBox.margin>
             </Label>
             <Label fx:id="dmdDoctorNameLabel"
@@ -111,33 +109,38 @@
                   <Font name="Noto Mono" size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0"
-                          top="2.0"
-                  />
+                  <Insets left="5.0" top="2.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="dmdAgendaButton"
+            <Button fx:id="dmdHomeButton"
+                    onAction="#handleHomeButton"
                     mnemonicParsing="false"
                     prefHeight="26.0"
                     prefWidth="124.0"
-                    style="-fx-background-color: 0;                            -fx-border-color: #BCA5FF;                            -fx-border-style: solid;                            -fx-border-width: 0.5;"
-                    text="Agenda"
+                    style="-fx-background-color: 0;
+                           -fx-border-color: #BCA5FF;
+                           -fx-border-style: solid;
+                           -fx-border-width: 0.5;"
+                    text="Início"
                     textFill="#043c18">
                <VBox.margin>
-                  <Insets top="10.0"
-                  />
+                  <Insets top="10.0" />
                </VBox.margin>
                <font>
                   <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
             <Button fx:id="dmdMedicalRecordsButton"
+                    onAction="#handleMedicalRecordsButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
                     prefHeight="26.0"
                     prefWidth="124.0"
-                    style="-fx-background-color: 0;                            -fx-border-color: #BCA5FF;                            -fx-border-style: solid;                            -fx-border-width: 0.5;"
+                    style="-fx-background-color: 0;
+                           -fx-border-color: #BCA5FF;
+                           -fx-border-style: solid;
+                           -fx-border-width: 0.5;"
                     text="Prontuários"
                     textFill="#043c18">
                <font>
