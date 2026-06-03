@@ -15,30 +15,31 @@ public class LoginDoctorController {
     //configura o botão 'Enter' (passa pelo Validator e tenta autenticar o médico)
     @FXML
     private void handleLogin(ActionEvent event) {
-        String inputLogin = dlEmailCRMTextField.getText().trim();
-        String password = dlPasswordField.getText();
-
-        try {
-            // validação lógica de formatos
-            UserValidator.validatePassword(password);
-
-            // verifica se o usuário tentou logar por e-mail ou por CRM
-            if (inputLogin.contains("@")) {
-                UserValidator.validateEmail(inputLogin);
-                System.out.println("[AUDITORIA] Tentativa de login via E-mail: " + inputLogin);
-            } else {
-                UserValidator.validateCrm(inputLogin);
-                System.out.println("[AUDITORIA] Tentativa de login via CRM: " + inputLogin);
-            }
-
-        } catch (ValidationException e) {
-            // captura o erro lógico e avisa o usuário
-            AlertMessenger.show(Alert.AlertType.ERROR, "Erro de Autenticação", e.getMessage());
-            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
-            System.err.println("[LOG EXCEÇÃO] Falha no login do médico: " + e.getMessage());
-
-        }
-
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomeDoctorPage.fxml");
+//        String inputLogin = dlEmailCRMTextField.getText().trim();
+//        String password = dlPasswordField.getText();
+//
+//        try {
+//            // validação lógica de formatos
+//            UserValidator.validatePassword(password);
+//
+//            // verifica se o usuário tentou logar por e-mail ou por CRM
+//            if (inputLogin.contains("@")) {
+//                UserValidator.validateEmail(inputLogin);
+//                System.out.println("[AUDITORIA] Tentativa de login via E-mail: " + inputLogin);
+//            } else {
+//                UserValidator.validateCrm(inputLogin);
+//                System.out.println("[AUDITORIA] Tentativa de login via CRM: " + inputLogin);
+//            }
+//
+//            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomeDoctorPage.fxml");
+//        } catch (ValidationException e) {
+//            // captura o erro lógico e avisa o usuário
+//            AlertMessenger.show(Alert.AlertType.ERROR, "Erro de Autenticação", e.getMessage());
+//            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
+//            System.err.println("[LOG EXCEÇÃO] Falha no login do médico: " + e.getMessage());
+//
+//        }
     }
 
     // trata o clique no link de criação de conta, redirecionando para o cadastro

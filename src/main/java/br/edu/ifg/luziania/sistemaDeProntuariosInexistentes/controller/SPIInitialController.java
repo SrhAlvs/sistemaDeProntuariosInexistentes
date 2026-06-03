@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class SPIInitialController {
-   // configura botão de troca de cena
+    // configura botão de troca de cena
     @FXML
     private void handleDoctorNavigation(ActionEvent event) {
         // registra a ação no console (aqui futuramente chamará o LoggerService de Auditoria)

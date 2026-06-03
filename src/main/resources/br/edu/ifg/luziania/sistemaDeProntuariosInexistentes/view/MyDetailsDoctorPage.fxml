@@ -11,7 +11,7 @@
             prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.HomeDoctorController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.MyDetailsDoctorController">
    <children>
       <AnchorPane fx:id="dmdPrincipalBox"
                   layoutX="120.0"

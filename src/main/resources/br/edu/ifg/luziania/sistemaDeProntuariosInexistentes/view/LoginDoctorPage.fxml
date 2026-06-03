@@ -6,7 +6,7 @@
 
 <!--'dl' nos id's é Doctor Login-->
 
-<AnchorPane id="dlBackgroundBox"
+<AnchorPane fx:id="dlBackgroundBox"
             prefHeight="400.0"
             prefWidth="600.0"
             style="-fx-background-color: #18392B;"

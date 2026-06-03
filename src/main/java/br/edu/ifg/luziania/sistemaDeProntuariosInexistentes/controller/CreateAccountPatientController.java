@@ -18,30 +18,31 @@ public class CreateAccountPatientController {
     // configura botão 'Enter' (recolhe dados, passa pelo Validator e salva)
     @FXML
     private void handleCreateAccount(ActionEvent event) {
-        String fullName = pcaFullNameTextField.getText().trim();
-        String cpf = pcaCPFTextField.getText().trim();
-        String email = pcaEmailTextField.getText().trim();
-        String password = pcaPasswordField.getText();
-
-        try {
-            // disparando a bateria de validações
-            UserValidator.validateName(fullName);
-            UserValidator.validateCpf(cpf);
-            UserValidator.validateEmail(email);
-            UserValidator.validatePassword(password);
-
-            // se chegou aqui, passou em todos os 'testes'
-            AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta de paciente criada com sucesso!");
-
-            // após o cadastro, joga o paciente de volta para a tela de login
-            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
-
-        } catch (ValidationException e) {
-            // // captura o erro lógico e avisa o usuário
-            AlertMessenger.show(Alert.AlertType.ERROR, "Erro no Cadastro", e.getMessage());
-            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
-            System.err.println("[LOG EXCEÇÃO] Falha ao tentar cadastrar paciente: " + e.getMessage());
-        }
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
+//        String fullName = pcaFullNameTextField.getText().trim();
+//        String cpf = pcaCPFTextField.getText().trim();
+//        String email = pcaEmailTextField.getText().trim();
+//        String password = pcaPasswordField.getText();
+//
+//        try {
+//            // disparando a bateria de validações
+//            UserValidator.validateName(fullName);
+//            UserValidator.validateCpf(cpf);
+//            UserValidator.validateEmail(email);
+//            UserValidator.validatePassword(password);
+//
+//            // se chegou aqui, passou em todos os 'testes'
+//            AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta de paciente criada com sucesso!");
+//
+//            // após o cadastro, joga o paciente de volta para a tela de login
+//            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
+//
+//        } catch (ValidationException e) {
+//            // // captura o erro lógico e avisa o usuário
+//            AlertMessenger.show(Alert.AlertType.ERROR, "Erro no Cadastro", e.getMessage());
+//            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
+//            System.err.println("[LOG EXCEÇÃO] Falha ao tentar cadastrar paciente: " + e.getMessage());
+//        }
     }
 
     // trata o clique no Hyperlink "Login", redirecionando para o login
