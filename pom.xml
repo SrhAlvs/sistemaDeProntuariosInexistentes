@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.edu.ifg.luziania</groupId>
-    <artifactId>projetoPIII</artifactId>
+    <artifactId>sistemaDeProntuariosInexistentes</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>projetoPIII</name>
+    <name>sistemaDeProntuariosInexistentes</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -120,8 +120,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <source>25</source>
-                    <target>25</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -134,7 +134,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                br.edu.ifg.luziania.projetopiii/br.edu.ifg.luziania.projetopiii.HelloApplication
+                                br.edu.ifg.luziania.sistemadeprontuariosinexistentes/br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
