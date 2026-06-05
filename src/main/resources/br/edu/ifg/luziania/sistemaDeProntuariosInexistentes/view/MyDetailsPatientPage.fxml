@@ -5,48 +5,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<!--'dmd' nos id's é Doctor My Details-->
+<!--'pmd' nos id's é Patient My Details-->
 
 <AnchorPane prefHeight="400.0"
             prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.MyDetailsDoctorController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.MyDetailsPatientController">
    <children>
-      <AnchorPane fx:id="dmdPrincipalBox"
+      <AnchorPane fx:id="pmdPrincipalBox"
                   layoutX="120.0"
                   prefHeight="400.0"
                   prefWidth="480.0"
-                  style="-fx-background-color: #18392B;"
+                  style="-fx-background-color: #90EE90;"
                   AnchorPane.bottomAnchor="0.0"
                   AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="dmdMyDetailsLabel"
+            <Label fx:id="pmdMyDetailsLabel"
                    layoutX="35.0"
                    layoutY="11.0"
                    prefHeight="39.0"
                    prefWidth="182.0"
                    text="Meus dados"
-                   textFill="#dcd0ff"
+                   textFill="#7200A3"
                    AnchorPane.leftAnchor="15.0"
                    AnchorPane.topAnchor="12.0">
                <font>
                   <Font name="Noto Mono" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="dmdFullNameLabel"
+            <Label fx:id="pmdFullNameLabel"
                    layoutX="54.0"
                    layoutY="100.0"
                    text="Nome completo:"
-                   textFill="#dcd0ff"
+                   textFill="#7200A3"
                    AnchorPane.rightAnchor="320.0"
                    AnchorPane.topAnchor="100.0" >
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="dmdFullNameTextField"
+            <TextField fx:id="pmdFullNameTextField"
                        editable="false"
                        layoutX="159.0"
                        layoutY="95.0"
@@ -54,25 +54,25 @@
                        prefWidth="300.0"
                        text="fullname"
                        style="-fx-background-color: 0;
-                              -fx-text-fill:#DCD0FF;"
+                              -fx-text-fill:#7200A3;"
                        AnchorPane.rightAnchor="25.0"
                        AnchorPane.topAnchor="95.0" >
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
-            <Label fx:id="dmdEmailLabel"
+            <Label fx:id="pmdEmailLabel"
                    layoutX="54.0"
                    layoutY="153.0"
                    text="Email:"
-                   textFill="#dcd0ff"
+                   textFill="#7200A3"
                    AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="170.0" >
+                   AnchorPane.topAnchor="200.0" >
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="dmdEmailTextField"
+            <TextField fx:id="pmdEmailTextField"
                        editable="false"
                        layoutX="159.0"
                        layoutY="95.0"
@@ -80,65 +80,40 @@
                        prefWidth="300.0"
                        text="email123@dominio.com"
                        style="-fx-background-color: 0;
-                              -fx-text-fill:#DCD0FF;"
+                              -fx-text-fill:#7200A3;"
                        AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="165.0" >
+                       AnchorPane.topAnchor="195.0" >
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
-            <Label fx:id="dmdCrmLabel"
+            <Label fx:id="pmdCpfLabel"
                    layoutX="54.0"
                    layoutY="215.0"
-                   text="CRM:"
-                   textFill="#dcd0ff"
+                   text="CPF:"
+                   textFill="#7200A3"
                    AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="240.0" >
+                   AnchorPane.topAnchor="300.0" >
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="dmdCrmTextField"
+            <TextField fx:id="pmdCpfTextField"
                        editable="false"
                        layoutX="159.0"
                        layoutY="95.0"
                        prefHeight="26.0"
                        prefWidth="300.0"
-                       text="123456-UF"
+                       text="123.456.789-01"
                        style="-fx-background-color: 0;
-                              -fx-text-fill:#DCD0FF;"
+                              -fx-text-fill:#7200A3;"
                        AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="235.0" >
+                       AnchorPane.topAnchor="295.0" >
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
-            <Label fx:id="dmdSpecialtyLabel" layoutX="54.0"
-                   layoutY="290.0"
-                   text="Especialidade:"
-                   textFill="#dcd0ff"
-                   AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="310.0" >
-               <font>
-                  <Font name="Noto Mono" size="13.0" />
-               </font>
-            </Label>
-            <TextField fx:id="dmdSpecialtyTextField"
-                       editable="false"
-                       layoutX="159.0"
-                       layoutY="95.0"
-                       prefHeight="26.0"
-                       prefWidth="300.0"
-                       text="speciality"
-                       style="-fx-background-color: 0;
-                              -fx-text-fill:#DCD0FF;"
-                       AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="305.0" >
-               <font>
-                  <Font name="Noto Mono" size="13.0" />
-               </font>
-            </TextField>
-            <Button fx:id="dmdBackButton"
+            <Button fx:id="pmdBackButton"
                     onAction="#handleBackButton"
                     layoutX="436.0"
                     layoutY="373.0"
@@ -146,13 +121,13 @@
                     style="-fx-border-width:2;
                        -fx-border-radius: 10;
                        -fx-border-style: solid;
-                       -fx-border-color: #7200A3;
-                       -fx-background-color: #90ee90;
+                       -fx-border-color: #dcd0ff;
+                       -fx-background-color: #18392B;
                        -fx-background-radius: 10;
                        -fx-background-insets: 1"
                     text="Voltar"
                     textAlignment="CENTER"
-                    textFill="#18392b"
+                    textFill="#90EE90"
                     textOverrun="CENTER_ELLIPSIS"
                     AnchorPane.rightAnchor="10.0"
                     AnchorPane.topAnchor="10.0">
@@ -161,47 +136,49 @@
                </font>
             </Button>
          </children></AnchorPane>
-      <VBox fx:id="dmdMenuBox"
+      <VBox fx:id="psapMenuBox"
             prefHeight="400.0"
             prefWidth="122.0"
-            style="-fx-background-color: #DCD0FF;"
+            style="-fx-background-color: #7200A3;"
             AnchorPane.bottomAnchor="0.0"
             AnchorPane.leftAnchor="0.0"
             AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="dmdWelcomeLabel"
+            <Label fx:id="psapWelcomeLabel"
                    text="Bem vind@,"
-                   textFill="#043c18">
+                   textFill="#90EE90">
                <font>
                   <Font name="Noto Mono" size="15.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" top="5.0" />
+                  <Insets left="5.0"
+                          top="5.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="dmdDoctorNameLabel"
+            <Label fx:id="psapPatientNameLabel"
                    layoutX="15.0"
                    layoutY="15.0"
                    text="Fulano de Tal"
-                   textFill="#0b8335">
+                   textFill="#BDEABD">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0" top="2.0" />
+                  <Insets left="5.0"
+                          top="2.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="dmdHomeButton"
-                    onAction="#handleHomeButton"
+            <Button fx:id="psapHomeButton"
                     mnemonicParsing="false"
+                    onAction="#handleHomeButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
-                           -fx-border-color: #BCA5FF;
+                           -fx-border-color: #4E006F;
                            -fx-border-style: solid;
                            -fx-border-width: 0.5;"
                     text="Início"
-                    textFill="#043c18">
+                    textFill="#90EE90">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
@@ -209,19 +186,36 @@
                   <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
-            <Button fx:id="dmdMedicalRecordsButton"
-                    onAction="#handleMedicalRecordsButton"
+            <Button fx:id="psapScheduleAppointmentButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
+                    onAction="#handleScheduleAppointmentButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
-                           -fx-border-color: #BCA5FF;
+                           -fx-border-color: #4E006F;
                            -fx-border-style: solid;
                            -fx-border-width: 0.5;"
-                    text="Prontuários"
-                    textFill="#043c18">
+                    text="Marcar consulta"
+                    textFill="#90EE90">
+               <font>
+                  <Font name="Noto Mono" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="psapResultsButton"
+                    layoutX="10.0"
+                    layoutY="62.0"
+                    mnemonicParsing="false"
+                    onAction="#handleResultsButton"
+                    prefHeight="26.0"
+                    prefWidth="124.0"
+                    style="-fx-background-color: 0;
+                           -fx-border-color: #4E006F;
+                           -fx-border-style: solid;
+                           -fx-border-width: 0.5;"
+                    text="Resultados"
+                    textFill="#90EE90">
                <font>
                   <Font name="Noto Mono" size="11.0" />
                </font>
