@@ -32,8 +32,11 @@
                 layoutY="85.0"
                 prefHeight="231.0"
                 prefWidth="376.0"
-                style="-fx-background-color: #DCD0FF;
-                       -fx-border-color: lightgreen;">
+                style="-fx-border-width:2;
+                       -fx-border-style: solid;
+                       -fx-background-color: #DCD0FF;
+                       -fx-border-color: lightgreen;
+                       -fx-background-insets: 1">
         <TextField fx:id="dcaFullNameTextField"
                    layoutX="46.0"
                    layoutY="27.0"
@@ -42,7 +45,7 @@
                    promptText="Full name"
                    AnchorPane.leftAnchor="46.0"
                    AnchorPane.rightAnchor="46.0"
-                   AnchorPane.topAnchor="30.0">
+                   AnchorPane.topAnchor="15.0">
             <font>
                 <Font name="Noto Mono" size="13.0" />
             </font>
@@ -55,7 +58,7 @@
                    promptText="CRM"
                    AnchorPane.leftAnchor="46.0"
                    AnchorPane.rightAnchor="46.0"
-                   AnchorPane.topAnchor="60.0">
+                   AnchorPane.topAnchor="45.0">
             <font>
                 <Font name="Noto Mono" size="13.0" />
             </font>
@@ -68,7 +71,7 @@
                    promptText="Email"
                    AnchorPane.leftAnchor="46.0"
                    AnchorPane.rightAnchor="46.0"
-                   AnchorPane.topAnchor="90.0">
+                   AnchorPane.topAnchor="75.0">
             <font>
                 <Font name="Noto Mono" size="13.0" />
             </font>
@@ -81,11 +84,32 @@
                        promptText="Password"
                        AnchorPane.leftAnchor="46.0"
                        AnchorPane.rightAnchor="46.0"
-                       AnchorPane.topAnchor="120.0">
+                       AnchorPane.topAnchor="105.0">
             <font>
                 <Font name="Noto Mono" size="13.0" />
             </font>
         </PasswordField>
+        <MenuButton layoutX="47.0"
+                    layoutY="140.0"
+                    mnemonicParsing="false"
+                    style="-fx-border-width: 1;
+                           -fx-border-radius: 2.5;
+                           -fx-border-style: solid;
+                           -fx-border-color: #BABABA;
+                           -fx-background-color: white;
+                           -fx-background-insets: 1"
+                    text="Speciality"
+                    AnchorPane.leftAnchor="45.0"
+                    AnchorPane.rightAnchor="45.0"
+                    AnchorPane.topAnchor="135.0">
+            <font>
+                <Font name="Noto Mono" size="13.0" />
+            </font>
+            <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+            </items>
+        </MenuButton>
         <Hyperlink fx:id="dcaLoginHyperLink"
                    onAction="#handleBackToLogin"
                    layoutX="43.0"
