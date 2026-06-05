@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<!--'php' nos id's é Patient Home Page-->
+
+<AnchorPane prefHeight="400.0"
+            prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.HomePatientController">
+   <children>
+      <AnchorPane fx:id="phpPrincipalBox"
+                  layoutX="120.0"
+                  prefHeight="400.0"
+                  prefWidth="480.0"
+                  style="-fx-background-color: #90EE90;"
+                  AnchorPane.bottomAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0"
+                  AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="phpAgendaLabel"
+                   layoutX="35.0"
+                   layoutY="11.0"
+                   prefHeight="39.0"
+                   prefWidth="112.0"
+                   text="Agenda"
+                   textFill="#7200A3"
+                   AnchorPane.leftAnchor="15.0"
+                   AnchorPane.topAnchor="12.0">
+               <font>
+                  <Font name="Noto Mono" size="30.0" />
+               </font>
+            </Label>
+            <TableView fx:id="phpAgendaTable"
+                       layoutX="35.0"
+                       layoutY="62.0"
+                       prefHeight="316.0"
+                       prefWidth="421.0"
+                       style="-fx-background-color: #7200A3;"
+                       AnchorPane.bottomAnchor="15.0"
+                       AnchorPane.leftAnchor="15.0"
+                       AnchorPane.rightAnchor="15.0"
+                       AnchorPane.topAnchor="60.0">
+              <columns>
+                <TableColumn fx:id="phpDateTableColumn"
+                             prefWidth="75.0"
+                             style="-fx-background-color: #BCA5FF;
+                                    -fx-border-color: #EAE2FF;"
+                             text="Data"
+                />
+                <TableColumn fx:id="phpTimeTableColumn"
+                             prefWidth="75.0"
+                             style="-fx-background-color: #EAE2FF;
+                                    -fx-border-color: #BCA5FF;"
+                             text="Horário"
+                />
+                <TableColumn fx:id="phpDoctorNameTableColumn"
+                             prefWidth="159.0"
+                             style="-fx-background-color: #BCA5FF;
+                                    -fx-border-color: #EAE2FF;"
+                             text="Médico"
+                />
+                <TableColumn fx:id="phpResumeTableColumn"
+                             prefWidth="140.0"
+                             style="-fx-background-color: #EAE2FF;
+                                    -fx-border-color: #BCA5FF;"
+                             text="Resumo"
+                />
+              </columns>
+            </TableView>
+            <Button fx:id="phpBackButton"
+                    layoutX="436.0"
+                    layoutY="373.0"
+                    mnemonicParsing="false"
+                    onAction="#handleBackButton"
+                    style="-fx-border-width:2;
+                           -fx-border-radius: 10;
+                           -fx-border-style: solid;
+                           -fx-border-color: #DCD0FF;
+                           -fx-background-color: #18392B;
+                           -fx-background-radius: 10;
+                           -fx-background-insets: 1"
+                    text="Voltar"
+                    textAlignment="CENTER"
+                    textFill="#90EE90"
+                    textOverrun="CENTER_ELLIPSIS"
+                    AnchorPane.rightAnchor="10.0"
+                    AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font name="Noto Mono" size="6.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+      <VBox fx:id="phpMenuBox"
+            prefHeight="400.0"
+            prefWidth="122.0"
+            style="-fx-background-color: #7200A3;"
+            AnchorPane.bottomAnchor="0.0"
+            AnchorPane.leftAnchor="0.0"
+            AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="phpWelcomeLabel"
+                   text="Bem vind@,"
+                   textFill="#90EE90">
+               <font>
+                  <Font name="Noto Mono" size="15.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="phpPatientNameLabel"
+                   layoutX="15.0"
+                   layoutY="15.0"
+                   text="Fulano de Tal"
+                   textFill="#BDEABD">
+               <font>
+                  <Font name="Noto Mono" size="13.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="5.0"
+                          top="2.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="phpScheduleAppointmentButton"
+                    mnemonicParsing="false"
+                    onAction="#handleScheduleAppointmentButton"
+                    prefHeight="26.0"
+                    prefWidth="124.0"
+                    style="-fx-background-color: 0;
+                           -fx-border-color: #4E006F;
+                           -fx-border-style: solid;
+                           -fx-border-width: 0.5;"
+                    text="Marcar consulta"
+                    textFill="#90EE90">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Noto Mono" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="phpResultsButton"
+                    layoutX="10.0"
+                    layoutY="62.0"
+                    mnemonicParsing="false"
+                    onAction="#handleResultsButton"
+                    prefHeight="26.0"
+                    prefWidth="124.0"
+                    style="-fx-background-color: 0;
+                           -fx-border-color: #4E006F;
+                           -fx-border-style: solid;
+                           -fx-border-width: 0.5;"
+                    text="Resultados"
+                    textFill="#90EE90">
+               <font>
+                  <Font name="Noto Mono" size="11.0" />
+               </font>
+            </Button>
+            <Button fx:id="phpMyDetailsButton"
+                    layoutX="10.0"
+                    layoutY="62.0"
+                    mnemonicParsing="false"
+                    onAction="#handleMyDetailsButton"
+                    prefHeight="26.0"
+                    prefWidth="124.0"
+                    style="-fx-background-color: 0;
+                           -fx-border-color: #4E006F;
+                           -fx-border-style: solid;
+                           -fx-border-width: 0.5;"
+                    text="Meus dados"
+                    textFill="#90EE90">
+               <font>
+                  <Font name="Noto Mono" size="11.0" />
+               </font>
+            </Button>
+         </children></VBox>
+   </children>
+</AnchorPane>
