@@ -12,7 +12,7 @@
             style="-fx-background-color: #18392B;"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.LoginDoctorController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.DoctorPagesController">
    <AnchorPane fx:id="dLoginBox"
                layoutX="112.0"
                layoutY="85.0"
@@ -61,7 +61,7 @@
          </font>
       </PasswordField>
       <Hyperlink fx:id="dlCreateAccountHyperLink"
-                 onAction="#handleCreateAccount"
+                 onAction="#handleCreateAccountHyperLink"
                  layoutX="45.0"
                  layoutY="148.0"
                  prefHeight="33.0"
@@ -100,7 +100,7 @@
       </Button>
    </AnchorPane>
    <Button fx:id="dlBackButton"
-           onAction="#handleBackButton"
+           onAction="#handleBackToChoiceButton"
            layoutX="436.0"
            layoutY="373.0"
            mnemonicParsing="false"

@@ -12,7 +12,7 @@
             style="-fx-background-color: #18392B;"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.CreateAccountDoctorController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.DoctorPagesController">
      <Label fx:id="dcaCreateYourAccountLabel"
             alignment="CENTER"
             contentDisplay="CENTER"
@@ -111,7 +111,7 @@
             </items>
         </MenuButton>
         <Hyperlink fx:id="dcaLoginHyperLink"
-                   onAction="#handleBackToLogin"
+                   onAction="#handleBackToLoginHyperLink"
                    layoutX="43.0"
                    layoutY="148.0"
                    prefHeight="33.0"

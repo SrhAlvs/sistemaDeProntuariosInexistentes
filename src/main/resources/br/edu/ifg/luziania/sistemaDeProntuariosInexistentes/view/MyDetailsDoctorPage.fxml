@@ -11,7 +11,7 @@
             prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.MyDetailsDoctorController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.DoctorPagesController">
    <children>
       <AnchorPane fx:id="dmdPrincipalBox"
                   layoutX="120.0"
@@ -192,7 +192,7 @@
                </VBox.margin>
             </Label>
             <Button fx:id="dmdHomeButton"
-                    onAction="#handleHomeButton"
+                    onAction="#handleBackHomeButton"
                     mnemonicParsing="false"
                     prefHeight="26.0"
                     prefWidth="124.0"

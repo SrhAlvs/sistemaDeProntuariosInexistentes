@@ -11,7 +11,7 @@
             prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.HomeDoctorController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.DoctorPagesController">
    <children>
       <AnchorPane fx:id="dhpPrincipalBox"
                   layoutX="120.0"
@@ -68,7 +68,7 @@
                              text="Resumo" />
               </columns>
             </TableView>
-            <Button fx:id="dhpBackButton"
+            <Button fx:id="dhpBackHomeButton"
                     onAction="#handleBackButton"
                     layoutX="436.0"
                     layoutY="373.0"
