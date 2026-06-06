@@ -68,8 +68,8 @@
                              text="Resumo" />
               </columns>
             </TableView>
-            <Button fx:id="dhpBackHomeButton"
-                    onAction="#handleBackButton"
+            <Button fx:id="dhpBackLoginButton"
+                    onAction="#handleBackLoginButton"
                     layoutX="436.0"
                     layoutY="373.0"
                     mnemonicParsing="false"

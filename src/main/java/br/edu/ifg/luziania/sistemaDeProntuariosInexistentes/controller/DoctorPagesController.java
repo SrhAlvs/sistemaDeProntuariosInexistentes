@@ -91,14 +91,6 @@ public class DoctorPagesController {
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/SPIInitialPage.fxml");
     }
 
-    // trata o clique no botão 'Voltar', redirecionando para a tela 'LoginDoctorPage'
-    @FXML
-    private void handleBackButton(ActionEvent event) {
-        LogWriter.write("[NAVEGAÇÃO] Usuário (médico) navegando para a tela de Login Médico.");
-
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
-    }
-
     // trata o clique no link 'Create account', redirecionando para a tela 'CreateAccountDoctorPage'
     @FXML
     private void handleCreateAccountHyperLink(ActionEvent event) {
@@ -110,7 +102,15 @@ public class DoctorPagesController {
     // trata o clique no link "Login", redirecionando para a tela 'LoginDoctorPage'
     @FXML
     private void handleBackToLoginHyperLink(ActionEvent event) {
-        LogWriter.write("[NAVEGAÇÃO] Usuário cancelou o cadastro e está voltando para a tela de Login Médico.");
+        LogWriter.write("[NAVEGAÇÃO] Usuário cancelou o cadastro e está voltando para a tela de Login de Médico.");
+
+        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
+    }
+
+    // trata o clique no botão 'Voltar', redirecionando para a tela 'LoginDoctorPage'
+    @FXML
+    private void handleBackLoginButton(ActionEvent event) {
+        LogWriter.write("[NAVEGAÇÃO] Usuário (médico) navegando para a tela de Login de Médico.");
 
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
     }
