@@ -11,7 +11,7 @@
             prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.MyDetailsPatientController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.PatientPagesController">
    <children>
       <AnchorPane fx:id="pmdPrincipalBox"
                   layoutX="120.0"
@@ -114,7 +114,7 @@
                </font>
             </TextField>
             <Button fx:id="pmdBackButton"
-                    onAction="#handleBackButton"
+                    onAction="#handleBackHomeButton"
                     layoutX="436.0"
                     layoutY="373.0"
                     mnemonicParsing="false"
@@ -169,8 +169,8 @@
                </VBox.margin>
             </Label>
             <Button fx:id="psapHomeButton"
+                    onAction="#handleBackHomeButton"
                     mnemonicParsing="false"
-                    onAction="#handleHomeButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
@@ -187,10 +187,10 @@
                </font>
             </Button>
             <Button fx:id="psapScheduleAppointmentButton"
+                    onAction="#handleScheduleAppointmentButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
-                    onAction="#handleScheduleAppointmentButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
@@ -204,10 +204,10 @@
                </font>
             </Button>
             <Button fx:id="psapResultsButton"
+                    onAction="#handleResultsButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
-                    onAction="#handleResultsButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;

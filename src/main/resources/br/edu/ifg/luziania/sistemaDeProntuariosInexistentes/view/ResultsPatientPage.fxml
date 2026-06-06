@@ -11,7 +11,7 @@
             prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.ResultsPatientController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.PatientPagesController">
    <children>
       <AnchorPane fx:id="prPrincipalBox"
                   layoutX="120.0"
@@ -66,11 +66,11 @@
                   />
                </columns>
             </TableView>
-            <Button fx:id="prBackButton"
+            <Button fx:id="prBackHomeButton"
+                    onAction="#handleBackHomeButton"
                     layoutX="436.0"
                     layoutY="373.0"
                     mnemonicParsing="false"
-                    onAction="#handleBackButton"
                     style="-fx-border-width:2;
                            -fx-border-radius: 10;
                            -fx-border-style: solid;
@@ -121,7 +121,7 @@
             </Label>
             <Button fx:id="prHomeButton"
                     mnemonicParsing="false"
-                    onAction="#handleHomeButton"
+                    onAction="#handleBackHomeButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
@@ -138,10 +138,10 @@
                </font>
             </Button>
             <Button fx:id="prScheduleAppointmentButton"
+                    onAction="#handleScheduleAppointmentButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
-                    onAction="#handleScheduleAppointmentButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
@@ -155,10 +155,10 @@
                </font>
             </Button>
             <Button fx:id="prMyDetailsButton"
+                    onAction="#handleMyDetailsButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
-                    onAction="#handleMyDetailsButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;

@@ -12,7 +12,7 @@
             style="-fx-background-color: lightgreen;"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.CreateAccountPatientController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.PatientPagesController">
     <Label fx:id="pcaCreateYourAccountLabel"
            alignment="CENTER"
            contentDisplay="CENTER"
@@ -87,7 +87,7 @@
             </font>
         </PasswordField>
         <Hyperlink fx:id="pcaLoginHyperLink"
-                   onAction="#handleBackToLogin"
+                   onAction="#handleBackToLoginHyperLink"
                    layoutX="43.0"
                    layoutY="148.0"
                    prefHeight="33.0"

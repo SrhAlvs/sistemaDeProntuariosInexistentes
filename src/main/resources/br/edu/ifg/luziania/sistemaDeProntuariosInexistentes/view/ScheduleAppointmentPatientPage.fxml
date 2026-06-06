@@ -11,7 +11,7 @@
             prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.12"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.ScheduleAppointmentPatientController">
+            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.PatientPagesController">
    <children>
       <AnchorPane fx:id="psaPrincipalBox"
                   layoutX="120.0"
@@ -35,30 +35,7 @@
                   <Font name="Noto Mono" size="30.0" />
                </font>
             </Label>
-
-            <Button fx:id="psaBackButton"
-                    layoutX="436.0"
-                    layoutY="373.0"
-                    mnemonicParsing="false"
-                    onAction="#handleBackButton"
-                    style="-fx-border-width:2;
-                           -fx-border-radius: 10;
-                           -fx-border-style: solid;
-                           -fx-border-color: #DCD0FF;
-                           -fx-background-color: #18392B;
-                           -fx-background-radius: 10;
-                           -fx-background-insets: 1"
-                    text="Voltar"
-                    textAlignment="CENTER"
-                    textFill="#90EE90"
-                    textOverrun="CENTER_ELLIPSIS"
-                    AnchorPane.rightAnchor="10.0"
-                    AnchorPane.topAnchor="10.0">
-               <font>
-                  <Font name="Noto Mono" size="6.0" />
-               </font>
-            </Button>
-            <MenuButton fx:id="psaMenuButton"
+            <MenuButton fx:id="psaSpecialtyMenuButton"
                         layoutX="27.0"
                         layoutY="82.0"
                         mnemonicParsing="false"
@@ -80,7 +57,7 @@
                             text="Action 2" />
                </items>
             </MenuButton>
-            <DatePicker layoutX="17.0"
+            <DatePicker fx:id="psaScheduleDatePicker" layoutX="17.0"
                         layoutY="136.0"
                         promptText="Data da sua consulta"
                         style="-fx-background-color: #7200a3;
@@ -90,7 +67,7 @@
                         AnchorPane.leftAnchor="25.0"
                         AnchorPane.topAnchor="130.0"
             />
-            <Button layoutX="366.0"
+            <Button fx:id="psaLoadSchedulesButton" layoutX="366.0"
                     layoutY="174.0"
                     mnemonicParsing="false"
                     style="-fx-background-color: #7200a3;
@@ -105,7 +82,8 @@
                   <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
-            <AnchorPane layoutX="21.0"
+            <AnchorPane fx:id="psaSchedulesAnchorPane"
+                        layoutX="21.0"
                         layoutY="217.0"
                         prefHeight="158.0"
                         prefWidth="442.0"
@@ -114,6 +92,28 @@
                         AnchorPane.leftAnchor="25.0"
                         AnchorPane.rightAnchor="25.0"
             />
+            <Button fx:id="psaBackButton"
+                    onAction="#handleBackHomeButton"
+                    layoutX="436.0"
+                    layoutY="373.0"
+                    mnemonicParsing="false"
+                    style="-fx-border-width:2;
+                           -fx-border-radius: 10;
+                           -fx-border-style: solid;
+                           -fx-border-color: #DCD0FF;
+                           -fx-background-color: #18392B;
+                           -fx-background-radius: 10;
+                           -fx-background-insets: 1"
+                    text="Voltar"
+                    textAlignment="CENTER"
+                    textFill="#90EE90"
+                    textOverrun="CENTER_ELLIPSIS"
+                    AnchorPane.rightAnchor="10.0"
+                    AnchorPane.topAnchor="10.0">
+               <font>
+                  <Font name="Noto Mono" size="6.0" />
+               </font>
+            </Button>
          </children></AnchorPane>
       <VBox fx:id="psaMenuBox"
             prefHeight="400.0"
@@ -147,9 +147,9 @@
                           top="2.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="psaHomeButton"
+            <Button fx:id="psaBackHomeButton"
+                    onAction="#handleBackHomeButton"
                     mnemonicParsing="false"
-                    onAction="#handleHomeButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
@@ -166,10 +166,10 @@
                </font>
             </Button>
             <Button fx:id="psaResultsButton"
+                    onAction="#handleResultsButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
-                    onAction="#handleResultsButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
@@ -183,10 +183,10 @@
                </font>
             </Button>
             <Button fx:id="psaMyDetailsButton"
+                    onAction="#handleMyDetailsButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
-                    onAction="#handleMyDetailsButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;

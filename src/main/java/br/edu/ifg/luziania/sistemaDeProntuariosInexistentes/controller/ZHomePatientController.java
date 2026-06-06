@@ -5,7 +5,7 @@ import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class HomePatientController {
+public class ZHomePatientController {
 
     // trata o clique no botão de voltar, redirecionando para a tela de Login do Paciente
     @FXML

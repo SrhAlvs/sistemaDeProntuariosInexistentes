@@ -1,14 +1,11 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.AlertMessenger;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.UserValidator;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.ValidationException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class LoginPatientController {
+public class ZLoginPatientController {
     @FXML private TextField plEmailCPFTextField;
     @FXML private PasswordField plPasswordField;
 
