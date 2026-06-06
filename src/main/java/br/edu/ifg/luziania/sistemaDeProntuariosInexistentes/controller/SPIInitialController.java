@@ -1,26 +1,22 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class SPIInitialController {
-    // configura botão de troca de cena
+    // trata o clique no botão "DOCTOR", redirecionando para a tela 'LoginDoctorPage'
     @FXML
     private void handleDoctorNavigation(ActionEvent event) {
-        // registra a ação no console (aqui futuramente chamará o LoggerService de Auditoria)
-        System.out.println("[AUDITORIA] Usuário anônimo escolheu a opção: MÉDICO.");
-
-        // realiza a troca da cena
+        LogWriter.write("[NAVEGAÇÃO] Usuário anônimo escolheu a opção: MÉDICO.");
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
     }
 
+    // trata o clique no botão "PATIENT", redirecionando para a tela 'LoginPatientPage'
     @FXML
     private void handlePatientNavigation(ActionEvent event) {
-        // registra a ação no console (aqui futuramente chamará o LoggerService de Auditoria)
-        System.out.println("[AUDITORIA] Usuário anônimo escolheu a opção: PACIENTE.");
-
-        // realiza a troca da cena
+        LogWriter.write("[NAVEGAÇÃO] Usuário anônimo escolheu a opção: PACIENTE.");
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
     }
 

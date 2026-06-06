@@ -49,7 +49,7 @@ public class PatientPagesController {
     @FXML private TextField plEmailCPFTextField;
     @FXML private PasswordField plPasswordField;
 
-    //configura o botão 'Enter' (realiza a validação e tenta autenticar o paciente)
+    // configura o botão 'Enter' (realiza a validação e tenta autenticar o paciente)
     @FXML
     private void handleLogin(ActionEvent event) {
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomePatientPage.fxml");
@@ -126,7 +126,7 @@ public class PatientPagesController {
     @FXML
     private void handleScheduleAppointmentButton(ActionEvent event) {
         // registra a ação no Log
-        LogWriter.write("[SUCESSO | NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Marcar Consulta.");
+        LogWriter.write("[NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Marcar Consulta.");
 
         // realiza a troca da cena
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/ScheduleAppointmentPatientPage.fxml");
