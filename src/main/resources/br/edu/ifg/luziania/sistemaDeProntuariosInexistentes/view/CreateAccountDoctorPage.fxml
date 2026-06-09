@@ -4,149 +4,152 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<!--'dca' nos id's é Doctor Create Account-->
+<StackPane fx:id="dcaBackgroundBox"
+           prefHeight="400.0"
+           prefWidth="600.0"
+           style="-fx-background-color: #18392B;"
+           xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.DoctorPagesController">
+    <children>
+        <VBox alignment="CENTER"
+              spacing="20.0"
+              fillWidth="false">
+            <children>
+                <Label fx:id="dcaCreateYourAccountLabel"
+                       alignment="CENTER"
+                       text="Create your account"
+                       textFill="#dcd0ff">
+                    <font>
+                        <Font name="Noto mono" size="30.0" />
+                    </font>
+                </Label>
 
-<AnchorPane fx:id="dcaBackgroundBox"
-            prefHeight="400.0"
-            prefWidth="600.0"
-            style="-fx-background-color: #18392B;"
-            xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.DoctorPagesController">
-     <Label fx:id="dcaCreateYourAccountLabel"
-            alignment="CENTER"
-            contentDisplay="CENTER"
-            layoutX="125.0"
-            layoutY="29.0"
-            text="Create your account"
-            textAlignment="CENTER"
-            textFill="#dcd0ff"
-            AnchorPane.leftAnchor="125.0"
-            AnchorPane.topAnchor="30.0">
-         <font>
-             <Font name="Fira Code Light" size="30.0" />
-         </font>
-     </Label>
-    <AnchorPane fx:id="dCreateAccountBox"
-                layoutX="112.0"
-                layoutY="85.0"
-                prefHeight="231.0"
-                prefWidth="376.0"
-                style="-fx-border-width:2;
-                       -fx-border-style: solid;
-                       -fx-background-color: #DCD0FF;
-                       -fx-border-color: lightgreen;
-                       -fx-background-insets: 1">
-        <TextField fx:id="dcaFullNameTextField"
-                   layoutX="46.0"
-                   layoutY="27.0"
-                   prefHeight="26.0"
-                   prefWidth="286.0"
-                   promptText="Full name"
-                   AnchorPane.leftAnchor="46.0"
-                   AnchorPane.rightAnchor="46.0"
-                   AnchorPane.topAnchor="15.0">
-            <font>
-                <Font name="Noto Mono" size="13.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="dcaCRMTextField"
-                   layoutX="45.0"
-                   layoutY="69.0"
-                   prefHeight="26.0"
-                   prefWidth="286.0"
-                   promptText="CRM"
-                   AnchorPane.leftAnchor="46.0"
-                   AnchorPane.rightAnchor="46.0"
-                   AnchorPane.topAnchor="45.0">
-            <font>
-                <Font name="Noto Mono" size="13.0" />
-            </font>
-        </TextField>
-        <TextField fx:id="dcaEmailTextField"
-                   layoutX="57.0"
-                   layoutY="71.0"
-                   prefHeight="26.0"
-                   prefWidth="286.0"
-                   promptText="Email"
-                   AnchorPane.leftAnchor="46.0"
-                   AnchorPane.rightAnchor="46.0"
-                   AnchorPane.topAnchor="75.0">
-            <font>
-                <Font name="Noto Mono" size="13.0" />
-            </font>
-        </TextField>
-        <PasswordField fx:id="dcaPasswordField"
-                       layoutX="52.0"
-                       layoutY="90.0"
-                       prefHeight="26.0"
-                       prefWidth="286.0"
-                       promptText="Password"
-                       AnchorPane.leftAnchor="46.0"
-                       AnchorPane.rightAnchor="46.0"
-                       AnchorPane.topAnchor="105.0">
-            <font>
-                <Font name="Noto Mono" size="13.0" />
-            </font>
-        </PasswordField>
-        <MenuButton layoutX="47.0"
-                    layoutY="140.0"
-                    mnemonicParsing="false"
-                    style="-fx-border-width: 1;
-                           -fx-border-radius: 2.5;
-                           -fx-border-style: solid;
-                           -fx-border-color: #BABABA;
-                           -fx-background-color: white;
-                           -fx-background-insets: 1"
-                    text="Speciality"
-                    AnchorPane.leftAnchor="45.0"
-                    AnchorPane.rightAnchor="45.0"
-                    AnchorPane.topAnchor="135.0">
-            <font>
-                <Font name="Noto Mono" size="13.0" />
-            </font>
-            <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-            </items>
-        </MenuButton>
-        <Hyperlink fx:id="dcaLoginHyperLink"
-                   onAction="#handleBackToLoginHyperLink"
-                   layoutX="43.0"
-                   layoutY="148.0"
-                   prefHeight="33.0"
-                   prefWidth="48.0"
-                   text="Login"
-                   AnchorPane.bottomAnchor="31.0"
-                   AnchorPane.leftAnchor="43.0">
-            <font>
-                <Font name="Noto Mono" size="13.0" />
-            </font>
-        </Hyperlink>
-        <Button fx:id="dcaCreateButton"
-                onAction="#handleCreateAccount"
-                alignment="CENTER"
-                contentDisplay="CENTER"
-                layoutX="270.0"
-                layoutY="176.0"
-                mnemonicParsing="false"
-                prefHeight="30.0"
-                prefWidth="83.0"
-                style="-fx-border-width: 2;
-                       -fx-border-radius: 10;
-                       -fx-border-style: solid;
-                       -fx-border-color: lightgreen;
-                       -fx-background-color: #18392B;
-                       -fx-background-radius: 10;
-                       -fx-background-insets: 1"
-                text="Create"
-                textAlignment="CENTER"
-                textFill="LIGHTGREEN"
-                AnchorPane.bottomAnchor="30.0"
-                AnchorPane.rightAnchor="47.0">
-            <font>
-                <Font name="Noto Mono" size="13.0" />
-            </font>
-        </Button>
-    </AnchorPane>
-</AnchorPane>
+                <AnchorPane fx:id="dCreateAccountBox"
+                            prefHeight="231.0"
+                            prefWidth="376.0"
+                            style="-fx-border-width:2;
+                                   -fx-border-style: solid;
+                                   -fx-background-color: #DCD0FF;
+                                   -fx-border-color: lightgreen;
+                                   -fx-background-insets: 1">
+                    <children>
+                        <TextField fx:id="dcaFullNameTextField"
+                                   layoutX="46.0"
+                                   layoutY="15.0"
+                                   prefHeight="26.0"
+                                   prefWidth="286.0"
+                                   promptText="Full name"
+                                   AnchorPane.leftAnchor="46.0"
+                                   AnchorPane.rightAnchor="46.0"
+                                   AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font name="Noto Mono" size="13.0" />
+                            </font>
+                        </TextField>
+                        <TextField fx:id="dcaCRMTextField"
+                                   layoutX="45.0"
+                                   layoutY="45.0"
+                                   prefHeight="26.0"
+                                   prefWidth="286.0"
+                                   promptText="CRM"
+                                   AnchorPane.leftAnchor="46.0"
+                                   AnchorPane.rightAnchor="46.0"
+                                   AnchorPane.topAnchor="45.0">
+                            <font>
+                                <Font name="Noto Mono" size="13.0" />
+                            </font>
+                        </TextField>
+                        <TextField fx:id="dcaEmailTextField"
+                                   layoutX="57.0"
+                                   layoutY="75.0"
+                                   prefHeight="26.0"
+                                   prefWidth="286.0"
+                                   promptText="Email"
+                                   AnchorPane.leftAnchor="46.0"
+                                   AnchorPane.rightAnchor="46.0"
+                                   AnchorPane.topAnchor="75.0">
+                            <font>
+                                <Font name="Noto Mono" size="13.0" />
+                            </font>
+                        </TextField>
+                        <PasswordField fx:id="dcaPasswordField"
+                                       layoutX="52.0"
+                                       layoutY="105.0"
+                                       prefHeight="26.0"
+                                       prefWidth="286.0"
+                                       promptText="Password"
+                                       AnchorPane.leftAnchor="46.0"
+                                       AnchorPane.rightAnchor="46.0"
+                                       AnchorPane.topAnchor="105.0">
+                            <font>
+                                <Font name="Noto Mono" size="13.0" />
+                            </font>
+                        </PasswordField>
+                        <MenuButton layoutX="47.0"
+                                    layoutY="135.0"
+                                    mnemonicParsing="false"
+                                    style="-fx-border-width: 1;
+                                         -fx-border-radius: 2.5;
+                                         -fx-border-style: solid;
+                                         -fx-border-color: #BABABA;
+                                         -fx-background-color: white;
+                                         -fx-background-insets: 1"
+                                    text="Speciality"
+                                    AnchorPane.leftAnchor="45.0"
+                                    AnchorPane.rightAnchor="45.0"
+                                    AnchorPane.topAnchor="135.0">
+                            <font>
+                                <Font name="Noto Mono" size="13.0" />
+                            </font>
+                            <!--tenho que ver como adiciona esses itens de baixo de acordo com o banco de dados-->
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Cardiologia" />
+                                <MenuItem mnemonicParsing="false" text="Pediatria" />
+                                <MenuItem mnemonicParsing="false" text="Clínica Geral" />
+                            </items>
+                        </MenuButton>
+                        <Hyperlink fx:id="dcaLoginHyperLink"
+                                   onAction="#handleBackToLoginHyperLink"
+                                   layoutX="43.0"
+                                   layoutY="167.0"
+                                   prefHeight="33.0"
+                                   prefWidth="48.0"
+                                   text="Login"
+                                   AnchorPane.bottomAnchor="31.0"
+                                   AnchorPane.leftAnchor="43.0">
+                            <font>
+                                <Font name="Noto Mono" size="13.0" />
+                            </font>
+                        </Hyperlink>
+                        <Button fx:id="dcaCreateButton"
+                                onAction="#handleCreateAccount"
+                                alignment="CENTER"
+                                contentDisplay="CENTER"
+                                layoutX="270.0"
+                                layoutY="171.0"
+                                mnemonicParsing="false"
+                                prefHeight="30.0"
+                                prefWidth="83.0"
+                                style="-fx-border-width: 2;
+                                     -fx-border-radius: 10;
+                                     -fx-border-style: solid;
+                                     -fx-border-color: lightgreen;
+                                     -fx-background-color: #18392B;
+                                     -fx-background-radius: 10;
+                                     -fx-background-insets: 1"
+                                text="Create"
+                                textAlignment="CENTER"
+                                textFill="LIGHTGREEN"
+                                AnchorPane.bottomAnchor="30.0"
+                                AnchorPane.rightAnchor="47.0">
+                            <font>
+                                <Font name="Noto Mono" size="13.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </children>
+</StackPane>
