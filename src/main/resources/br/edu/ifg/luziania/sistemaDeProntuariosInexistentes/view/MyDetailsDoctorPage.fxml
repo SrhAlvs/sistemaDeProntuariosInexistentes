@@ -14,11 +14,12 @@
             fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.DoctorPagesController">
    <children>
       <AnchorPane fx:id="dmdPrincipalBox"
-                  layoutX="120.0"
+                  layoutX="122.0"
                   prefHeight="400.0"
-                  prefWidth="480.0"
+                  prefWidth="478.0"
                   style="-fx-background-color: #18392B;"
                   AnchorPane.bottomAnchor="0.0"
+                  AnchorPane.leftAnchor="122.0"
                   AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0">
          <children>
@@ -35,109 +36,111 @@
                   <Font name="Noto Mono" size="30.0" />
                </font>
             </Label>
+
             <Label fx:id="dmdFullNameLabel"
-                   layoutX="54.0"
+                   layoutX="25.0"
                    layoutY="100.0"
                    text="Nome completo:"
                    textFill="#dcd0ff"
-                   AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="100.0" >
+                   AnchorPane.leftAnchor="25.0"
+                   AnchorPane.topAnchor="100.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="dmdFullNameTextField"
                        editable="false"
-                       layoutX="159.0"
+                       layoutX="160.0"
                        layoutY="95.0"
                        prefHeight="26.0"
-                       prefWidth="300.0"
                        text="fullname"
-                       style="-fx-background-color: 0;
-                              -fx-text-fill:#DCD0FF;"
+                       style="-fx-background-color: 0; -fx-text-fill:#DCD0FF;"
+                       AnchorPane.leftAnchor="160.0"
                        AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="95.0" >
+                       AnchorPane.topAnchor="95.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
+
             <Label fx:id="dmdEmailLabel"
-                   layoutX="54.0"
-                   layoutY="153.0"
+                   layoutX="25.0"
+                   layoutY="170.0"
                    text="Email:"
                    textFill="#dcd0ff"
-                   AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="170.0" >
+                   AnchorPane.leftAnchor="25.0"
+                   AnchorPane.topAnchor="170.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="dmdEmailTextField"
                        editable="false"
-                       layoutX="159.0"
-                       layoutY="95.0"
+                       layoutX="160.0"
+                       layoutY="165.0"
                        prefHeight="26.0"
-                       prefWidth="300.0"
                        text="email123@dominio.com"
-                       style="-fx-background-color: 0;
-                              -fx-text-fill:#DCD0FF;"
+                       style="-fx-background-color: 0; -fx-text-fill:#DCD0FF;"
+                       AnchorPane.leftAnchor="160.0"
                        AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="165.0" >
+                       AnchorPane.topAnchor="165.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
+
             <Label fx:id="dmdCrmLabel"
-                   layoutX="54.0"
-                   layoutY="215.0"
+                   layoutX="25.0"
+                   layoutY="240.0"
                    text="CRM:"
                    textFill="#dcd0ff"
-                   AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="240.0" >
+                   AnchorPane.leftAnchor="25.0"
+                   AnchorPane.topAnchor="240.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="dmdCrmTextField"
                        editable="false"
-                       layoutX="159.0"
-                       layoutY="95.0"
+                       layoutX="160.0"
+                       layoutY="235.0"
                        prefHeight="26.0"
-                       prefWidth="300.0"
                        text="123456-UF"
-                       style="-fx-background-color: 0;
-                              -fx-text-fill:#DCD0FF;"
+                       style="-fx-background-color: 0; -fx-text-fill:#DCD0FF;"
+                       AnchorPane.leftAnchor="160.0"
                        AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="235.0" >
+                       AnchorPane.topAnchor="235.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
-            <Label fx:id="dmdSpecialtyLabel" layoutX="54.0"
-                   layoutY="290.0"
+
+            <Label fx:id="dmdSpecialtyLabel"
+                   layoutX="25.0"
+                   layoutY="310.0"
                    text="Especialidade:"
                    textFill="#dcd0ff"
-                   AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="310.0" >
+                   AnchorPane.leftAnchor="25.0"
+                   AnchorPane.topAnchor="310.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="dmdSpecialtyTextField"
                        editable="false"
-                       layoutX="159.0"
-                       layoutY="95.0"
+                       layoutX="160.0"
+                       layoutY="305.0"
                        prefHeight="26.0"
-                       prefWidth="300.0"
                        text="specialty"
-                       style="-fx-background-color: 0;
-                              -fx-text-fill:#DCD0FF;"
+                       style="-fx-background-color: 0; -fx-text-fill:#DCD0FF;"
+                       AnchorPane.leftAnchor="160.0"
                        AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="305.0" >
+                       AnchorPane.topAnchor="305.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
+
             <Button fx:id="dmdBackButton"
                     onAction="#handleBackHomeButton"
                     layoutX="436.0"
@@ -154,13 +157,14 @@
                     textAlignment="CENTER"
                     textFill="#18392b"
                     textOverrun="CENTER_ELLIPSIS"
-                    AnchorPane.rightAnchor="10.0"
-                    AnchorPane.topAnchor="10.0">
+                    AnchorPane.rightAnchor="15.0"
+                    AnchorPane.topAnchor="15.0">
                <font>
-                  <Font name="Noto Mono" size="6.0" />
+                  <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
          </children></AnchorPane>
+
       <VBox fx:id="dmdMenuBox"
             prefHeight="400.0"
             prefWidth="122.0"
