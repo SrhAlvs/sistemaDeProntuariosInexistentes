@@ -127,7 +127,7 @@
                                 alignment="CENTER"
                                 contentDisplay="CENTER"
                                 layoutX="270.0"
-                                layoutY="171.0"
+                                layoutY="176.0"
                                 mnemonicParsing="false"
                                 prefHeight="30.0"
                                 prefWidth="83.0"
