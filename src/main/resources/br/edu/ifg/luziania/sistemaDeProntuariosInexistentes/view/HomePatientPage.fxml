@@ -5,8 +5,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<!--'php' nos id's é Patient Home Page-->
-
 <AnchorPane prefHeight="400.0"
             prefWidth="600.0"
             xmlns="http://javafx.com/javafx/17.0.12"
@@ -14,11 +12,12 @@
             fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.PatientPagesController">
    <children>
       <AnchorPane fx:id="phpPrincipalBox"
-                  layoutX="120.0"
+                  layoutX="122.0"
                   prefHeight="400.0"
-                  prefWidth="480.0"
+                  prefWidth="478.0"
                   style="-fx-background-color: #90EE90;"
                   AnchorPane.bottomAnchor="0.0"
+                  AnchorPane.leftAnchor="122.0"
                   AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0">
          <children>
@@ -45,32 +44,35 @@
                        AnchorPane.leftAnchor="15.0"
                        AnchorPane.rightAnchor="15.0"
                        AnchorPane.topAnchor="60.0">
-              <columns>
-                <TableColumn fx:id="phpDateTableColumn"
-                             prefWidth="75.0"
-                             style="-fx-background-color: #BCA5FF;
+               <columns>
+                  <TableColumn fx:id="phpDateTableColumn"
+                               prefWidth="75.0"
+                               style="-fx-background-color: #BCA5FF;
                                     -fx-border-color: #EAE2FF;"
-                             text="Data"
-                />
-                <TableColumn fx:id="phpTimeTableColumn"
-                             prefWidth="75.0"
-                             style="-fx-background-color: #EAE2FF;
+                               text="Data"
+                  />
+                  <TableColumn fx:id="phpTimeTableColumn"
+                               prefWidth="75.0"
+                               style="-fx-background-color: #EAE2FF;
                                     -fx-border-color: #BCA5FF;"
-                             text="Horário"
-                />
-                <TableColumn fx:id="phpDoctorNameTableColumn"
-                             prefWidth="159.0"
-                             style="-fx-background-color: #BCA5FF;
+                               text="Horário"
+                  />
+                  <TableColumn fx:id="phpDoctorNameTableColumn"
+                               prefWidth="159.0"
+                               style="-fx-background-color: #BCA5FF;
                                     -fx-border-color: #EAE2FF;"
-                             text="Médico"
-                />
-                <TableColumn fx:id="phpResumeTableColumn"
-                             prefWidth="140.0"
-                             style="-fx-background-color: #EAE2FF;
+                               text="Médico"
+                  />
+                  <TableColumn fx:id="phpResumeTableColumn"
+                               prefWidth="140.0"
+                               style="-fx-background-color: #EAE2FF;
                                     -fx-border-color: #BCA5FF;"
-                             text="Resumo"
-                />
-              </columns>
+                               text="Resumo"
+                  />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
             <Button fx:id="phpBackLoginButton"
                     onAction="#handleBackLoginButton"
@@ -88,13 +90,13 @@
                     textAlignment="CENTER"
                     textFill="#90EE90"
                     textOverrun="CENTER_ELLIPSIS"
-                    AnchorPane.rightAnchor="10.0"
-                    AnchorPane.topAnchor="10.0">
+                    AnchorPane.rightAnchor="15.0"
+                    AnchorPane.topAnchor="15.0">
                <font>
-                  <Font name="Noto Mono" size="6.0" />
-               </font>
+                  <Font name="Noto Mono" size="11.0" /> </font>
             </Button>
          </children></AnchorPane>
+
       <VBox fx:id="phpMenuBox"
             prefHeight="400.0"
             prefWidth="122.0"
