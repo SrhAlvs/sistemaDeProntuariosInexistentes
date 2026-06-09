@@ -1,7 +1,1 @@
-[NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Marcar Consulta.
-[NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Resultados.
-[NAVEGAÇÃO] Usuário (médico) navegando para a tela de visualização dos Próprios Dados.
-[NAVEGAÇÃO] Usuário (médico) navegando para a Tela Inicial (Home).
-[NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Login de Paciente.
-[NAVEGAÇÃO] Usuário navegando para a tela de Escolha da Forma de Login.
-[NAVEGAÇÃO] Usuário anônimo escolheu a opção: MÉDICO.
+[NAVEGAÇÃO] Usuário anônimo escolheu a opção: PACIENTE.
