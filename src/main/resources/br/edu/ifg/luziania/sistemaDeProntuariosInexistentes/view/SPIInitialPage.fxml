@@ -5,94 +5,95 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="principalBox"
-            maxHeight="-Infinity"
-            maxWidth="-Infinity"
-            minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="400.0"
-            prefWidth="600.0"
-            style="-fx-background-color: E6FAEC;"
-            xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.SPIInitialController">
-    <Label fx:id="chooseOneLabel"
-           layoutX="181.0"
-           layoutY="30.0"
-           prefHeight="54.0"
-           prefWidth="249.0"
-           text="Choose one"
-           textFill="#043c18"
-           AnchorPane.leftAnchor="177.0"
-           AnchorPane.topAnchor="30.0">
-        <font>
-            <Font name="Fira Code Light" size="40.0" />
-        </font>
-    </Label>
-   <AnchorPane fx:id="buttonsBox"
-               layoutX="26.0"
-               layoutY="100.0"
-               prefHeight="275.0"
-               prefWidth="545.0" />
+<StackPane fx:id="principalBox"
+           prefHeight="400.0"
+           prefWidth="600.0"
+           style="-fx-background-color: E6FAEC;"
+           xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.SPIInitialController">
+    <children>
+        <VBox alignment="CENTER"
+              spacing="20.0">
+            <children>
+                <Label fx:id="chooseOneLabel"
+                       alignment="CENTER"
+                       text="Choose one"
+                       textFill="#043c18">
+                    <font>
+                        <Font name="Noto mono" size="40.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="20.0" />
+                    </VBox.margin>
+               <padding>
+                  <Insets bottom="15.0" top="15.0" />
+               </padding>
+                </Label>
+                <HBox fx:id="buttonsBox"
+                      alignment="CENTER"
+                      spacing="6.0"
+                      VBox.vgrow="ALWAYS">
+                    <children>
+                        <Button fx:id="doctorButton"
+                                alignment="CENTER"
+                                contentDisplay="CENTER"
+                                maxHeight="1.7976931348623157E308"
+                                maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false"
+                                onAction="#handleDoctorNavigation"
+                                style="-fx-border-width: 2;
+                                       -fx-border-radius: 10;
+                                       -fx-border-style: solid;
+                                       -fx-border-color: #DCD0FF;
+                                       -fx-background-color: #18392B;
+                                       -fx-background-radius: 10;
+                                       -fx-background-insets: 1"
+                                text="Doctor"
+                                textAlignment="CENTER"
+                                textFill="LIGHTGREEN"
+                                textOverrun="CENTER_ELLIPSIS"
+                                HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font name="Noto Mono" size="32.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="15.0" />
+                            </padding>
+                        </Button>
 
-        <Button fx:id="doctorButton"
-                onAction="#handleDoctorNavigation"
-                alignment="CENTER"
-                contentDisplay="CENTER"
-                layoutX="200.0"
-                layoutY="100.0"
-                mnemonicParsing="false"
-                prefHeight="270.0"
-                prefWidth="275.0"
-                style="-fx-border-width: 2;
-                       -fx-border-radius: 10;
-                       -fx-border-style: solid;
-                       -fx-border-color: #DCD0FF;
-                       -fx-background-color: #18392B;
-                       -fx-background-radius: 10;
-                       -fx-background-insets: 1"
-                text="Doctor"
-                textAlignment="CENTER"
-                textFill="LIGHTGREEN"
-                textOverrun="CENTER_ELLIPSIS"
-                AnchorPane.bottomAnchor="25.0"
-                AnchorPane.leftAnchor="25.0"
-                AnchorPane.topAnchor="100.0">
-            <font>
-                <Font name="Noto Mono" size="26.0" />
-            </font>
-            <padding>
-                <Insets bottom="15.0" />
-            </padding>
-        </Button>
-        <Button fx:id="patientButton"
-                onAction="#handlePatientNavigation"
-                alignment="CENTER"
-                contentDisplay="CENTER"
-                layoutX="331.0"
-                layoutY="128.0"
-                mnemonicParsing="false"
-                prefHeight="275.0"
-                prefWidth="270.0"
-                style="-fx-border-width:2;
-                       -fx-border-radius: 10;
-                       -fx-border-style: solid;
-                       -fx-border-color: #7200A3;
-                       -fx-background-color: #90ee90;
-                       -fx-background-radius: 10;
-                       -fx-background-insets: 1"
-                text="Patient"
-                textAlignment="CENTER"
-                textFill="#18392b"
-                textOverrun="CENTER_ELLIPSIS"
-                AnchorPane.bottomAnchor="25.0"
-                AnchorPane.rightAnchor="25.0"
-                AnchorPane.topAnchor="100.0">
-            <font>
-                <Font name="Noto Mono" size="26.0" />
-            </font>
-            <padding>
-                <Insets bottom="15.0" />
-            </padding>
-        </Button>
-</AnchorPane>
+                        <Button fx:id="patientButton"
+                                alignment="CENTER"
+                                contentDisplay="CENTER"
+                                maxHeight="1.7976931348623157E308"
+                                maxWidth="1.7976931348623157E308"
+                                mnemonicParsing="false"
+                                onAction="#handlePatientNavigation"
+                                style="-fx-border-width:2;
+                                       -fx-border-radius: 10;
+                                       -fx-border-style: solid;
+                                       -fx-border-color: #7200A3;
+                                       -fx-background-color: #90ee90;
+                                       -fx-background-radius: 10;
+                                       -fx-background-insets: 1"
+                                text="Patient"
+                                textAlignment="CENTER"
+                                textFill="#18392b"
+                                textOverrun="CENTER_ELLIPSIS"
+                                HBox.hgrow="ALWAYS">
+                            <font>
+                                <Font name="Noto Mono" size="32.0" />
+                            </font>
+                            <padding>
+                                <Insets bottom="15.0" />
+                            </padding>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="35.0" left="35.0" right="35.0" />
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</StackPane>
