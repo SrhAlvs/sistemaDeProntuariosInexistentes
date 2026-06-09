@@ -14,11 +14,12 @@
             fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.DoctorPagesController">
    <children>
       <AnchorPane fx:id="dmrPrincipalBox"
-                  layoutX="120.0"
+                  layoutX="122.0"
                   prefHeight="400.0"
-                  prefWidth="480.0"
+                  prefWidth="478.0"
                   style="-fx-background-color: #18392B;"
                   AnchorPane.bottomAnchor="0.0"
+                  AnchorPane.leftAnchor="122.0"
                   AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0">
          <children>
@@ -62,6 +63,9 @@
                                       -fx-border-color: #BCA5FF;"
                                text="Resumo" />
                </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
             </TableView>
             <Button fx:id="dmrBackButton"
                     onAction="#handleBackHomeButton"
@@ -79,13 +83,14 @@
                     textAlignment="CENTER"
                     textFill="#18392b"
                     textOverrun="CENTER_ELLIPSIS"
-                    AnchorPane.rightAnchor="10.0"
-                    AnchorPane.topAnchor="10.0">
+                    AnchorPane.rightAnchor="15.0"
+                    AnchorPane.topAnchor="15.0">
                <font>
-                  <Font name="Noto Mono" size="6.0" />
+                  <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
          </children></AnchorPane>
+
       <VBox fx:id="dmrMenuBox"
             prefHeight="400.0"
             prefWidth="122.0"
