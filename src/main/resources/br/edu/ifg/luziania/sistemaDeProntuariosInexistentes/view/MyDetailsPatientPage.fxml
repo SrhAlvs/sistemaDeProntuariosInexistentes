@@ -14,11 +14,12 @@
             fx:controller="br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller.PatientPagesController">
    <children>
       <AnchorPane fx:id="pmdPrincipalBox"
-                  layoutX="120.0"
+                  layoutX="122.0"
                   prefHeight="400.0"
-                  prefWidth="480.0"
+                  prefWidth="478.0"
                   style="-fx-background-color: #90EE90;"
                   AnchorPane.bottomAnchor="0.0"
+                  AnchorPane.leftAnchor="122.0"
                   AnchorPane.rightAnchor="0.0"
                   AnchorPane.topAnchor="0.0">
          <children>
@@ -35,84 +36,85 @@
                   <Font name="Noto Mono" size="30.0" />
                </font>
             </Label>
+
             <Label fx:id="pmdFullNameLabel"
-                   layoutX="54.0"
+                   layoutX="25.0"
                    layoutY="100.0"
                    text="Nome completo:"
                    textFill="#7200A3"
-                   AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="100.0" >
+                   AnchorPane.leftAnchor="25.0"
+                   AnchorPane.topAnchor="100.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="pmdFullNameTextField"
                        editable="false"
-                       layoutX="159.0"
+                       layoutX="160.0"
                        layoutY="95.0"
                        prefHeight="26.0"
-                       prefWidth="300.0"
                        text="fullname"
-                       style="-fx-background-color: 0;
-                              -fx-text-fill:#7200A3;"
+                       style="-fx-background-color: 0; -fx-text-fill:#7200A3;"
+                       AnchorPane.leftAnchor="160.0"
                        AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="95.0" >
+                       AnchorPane.topAnchor="95.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
+
             <Label fx:id="pmdEmailLabel"
-                   layoutX="54.0"
-                   layoutY="153.0"
+                   layoutX="25.0"
+                   layoutY="200.0"
                    text="Email:"
                    textFill="#7200A3"
-                   AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="200.0" >
+                   AnchorPane.leftAnchor="25.0"
+                   AnchorPane.topAnchor="200.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="pmdEmailTextField"
                        editable="false"
-                       layoutX="159.0"
-                       layoutY="95.0"
+                       layoutX="160.0"
+                       layoutY="195.0"
                        prefHeight="26.0"
-                       prefWidth="300.0"
                        text="email123@dominio.com"
-                       style="-fx-background-color: 0;
-                              -fx-text-fill:#7200A3;"
+                       style="-fx-background-color: 0; -fx-text-fill:#7200A3;"
+                       AnchorPane.leftAnchor="160.0"
                        AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="195.0" >
+                       AnchorPane.topAnchor="195.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
+
             <Label fx:id="pmdCpfLabel"
-                   layoutX="54.0"
-                   layoutY="215.0"
+                   layoutX="25.0"
+                   layoutY="300.0"
                    text="CPF:"
                    textFill="#7200A3"
-                   AnchorPane.rightAnchor="320.0"
-                   AnchorPane.topAnchor="300.0" >
+                   AnchorPane.leftAnchor="25.0"
+                   AnchorPane.topAnchor="300.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </Label>
             <TextField fx:id="pmdCpfTextField"
                        editable="false"
-                       layoutX="159.0"
-                       layoutY="95.0"
+                       layoutX="160.0"
+                       layoutY="295.0"
                        prefHeight="26.0"
-                       prefWidth="300.0"
                        text="123.456.789-01"
-                       style="-fx-background-color: 0;
-                              -fx-text-fill:#7200A3;"
+                       style="-fx-background-color: 0; -fx-text-fill:#7200A3;"
+                       AnchorPane.leftAnchor="160.0"
                        AnchorPane.rightAnchor="25.0"
-                       AnchorPane.topAnchor="295.0" >
+                       AnchorPane.topAnchor="295.0">
                <font>
                   <Font name="Noto Mono" size="13.0" />
                </font>
             </TextField>
+
             <Button fx:id="pmdBackButton"
                     onAction="#handleBackHomeButton"
                     layoutX="436.0"
@@ -129,13 +131,14 @@
                     textAlignment="CENTER"
                     textFill="#90EE90"
                     textOverrun="CENTER_ELLIPSIS"
-                    AnchorPane.rightAnchor="10.0"
-                    AnchorPane.topAnchor="10.0">
+                    AnchorPane.rightAnchor="15.0"
+                    AnchorPane.topAnchor="15.0">
                <font>
-                  <Font name="Noto Mono" size="6.0" />
+                  <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
          </children></AnchorPane>
+
       <VBox fx:id="psapMenuBox"
             prefHeight="400.0"
             prefWidth="122.0"
@@ -220,6 +223,7 @@
                   <Font name="Noto Mono" size="11.0" />
                </font>
             </Button>
-         </children></VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
