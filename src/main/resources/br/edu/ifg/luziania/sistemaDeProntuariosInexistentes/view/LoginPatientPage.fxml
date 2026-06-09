@@ -34,12 +34,13 @@
                         <Label fx:id="plWelcomePatientLabel"
                                alignment="CENTER"
                                contentDisplay="CENTER"
-                               layoutX="30.0"
-                               layoutY="28.0"
+                               layoutX="0.0"
+                               layoutY="25.0"
                                text="Welcome Patient!"
                                textAlignment="CENTER"
                                textFill="lightgreen"
-                               AnchorPane.leftAnchor="15.0"
+                               AnchorPane.leftAnchor="0.0"
+                               AnchorPane.rightAnchor="0.0"
                                AnchorPane.topAnchor="25.0">
                             <font>
                                 <Font name="Fira Code Light" size="35.0"/>
