@@ -3,22 +3,37 @@ package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities;
 import static br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.UserValidator.*;
 
 public class User {
-    private final Integer id;
+    private Integer idUser;
     private String name, email, password, type;
 
-    public User(Integer id,
+    public User(Integer idUser,
                 String name,
                 String email,
                 String password,
                 String type) {
-        this.id = id;
+        this.idUser = idUser;
         setName(name);
         setEmail(email);
         setPassword(password);
         setType(type);
     }
 
-    public Integer getId() { return id; }
+    public User(Integer idUser,
+                String name,
+                String email,
+                String type) {
+        this.idUser = idUser;
+        setName(name);
+        setEmail(email);
+        setType(type);
+    }
+
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    public Integer getIdUser() { return idUser; }
 
     public String getName() { return name; }
     public void setName(String name) {
@@ -31,7 +46,7 @@ public class User {
         validateEmail(email);
         this.email = email; }
 
-    public String setPassword() { return password; }
+    public String getPassword() { return password; }
     public void setPassword(String password) {
         validatePassword(password);
         this.password = password;

@@ -3,7 +3,7 @@ package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities;
 import static br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.UserValidator.validateCpf;
 
 public class Patient extends User {
-    private String cpf; //example: 11122233322
+    private String cpf; //example: 111.222.333-44
 
     public Patient (Integer id,
                    String name,
@@ -11,6 +11,11 @@ public class Patient extends User {
                    String password,
                    String cpf) {
         super(id, name, email, password, "PATIENT");
+        setCpf(cpf);
+    }
+
+    public Patient(String name, String email, String cpf) {
+        super(name, email);
         setCpf(cpf);
     }
 
