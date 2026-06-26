@@ -1,7 +1,7 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO;
 
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.User;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.repository.DataBase;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DataBase;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

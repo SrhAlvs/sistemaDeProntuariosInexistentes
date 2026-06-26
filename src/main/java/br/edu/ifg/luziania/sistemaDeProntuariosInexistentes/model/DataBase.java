@@ -1,4 +1,4 @@
-package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.repository;
+package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model;
 
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
 
