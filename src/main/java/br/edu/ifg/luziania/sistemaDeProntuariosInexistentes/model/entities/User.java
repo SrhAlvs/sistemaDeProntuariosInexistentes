@@ -29,8 +29,8 @@ public class User {
     }
 
     public User(String name, String email) {
-        this.name = name;
-        this.email = email;
+        setName(name);
+        setEmail(email);
     }
 
     public Integer getIdUser() { return idUser; }

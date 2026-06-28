@@ -1,7 +1,7 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO;
 
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.User;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DataBase;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DB.DataBase;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
 
 import java.sql.Connection;
@@ -55,13 +55,13 @@ public class UserDAO implements UserDAOInterface {
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, email);
 
-            ResultSet resultSet = preparedStatement.executeQuery(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             User user = null;
 
             while (resultSet.next()) {
                 user = new User(
-                    resultSet.getInt("idUser"),
+                    resultSet.getInt("id_user"),
                     resultSet.getString("name"),
                     resultSet.getString("email"),
                     resultSet.getString("type")

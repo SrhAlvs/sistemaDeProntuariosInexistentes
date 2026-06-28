@@ -1,6 +1,6 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO;
 
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DataBase;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DB.DataBase;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.User;

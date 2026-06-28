@@ -6,7 +6,7 @@ public class AlertMessenger {
 
     /**
      * Exibe um alerta pop-up na tela do usuário.
-     * @param type O tipo do alerta (Alert.AlertType.ERROR, INFORMATION, WARNING, etc.)
+     * @param type O tipo do alerta (Alert.AlertType.ERROR, INFORMATION, WARNING, NONE, CONFIRMATION, etc.)
      * @param title O título da janela do alerta.
      * @param message A mensagem principal a ser exibida.
      */

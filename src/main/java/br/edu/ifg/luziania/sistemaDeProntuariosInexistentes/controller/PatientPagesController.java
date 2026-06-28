@@ -1,13 +1,23 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.PatientDAO;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Patient;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.AlertMessenger;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.UserValidator;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.ValidationException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.sql.SQLException;
+
 public class PatientPagesController {
+
+    PatientDAO patient = new PatientDAO();
 
     // --------------- AUTENTICAÇÃO CADASTRO ---------------
     @FXML private TextField pcaFullNameTextField;
@@ -18,31 +28,38 @@ public class PatientPagesController {
     // configura botão 'Enter' (recolhe dados, passa pelo Validator e salva)
     @FXML
     private void handleCreateAccount(ActionEvent event) {
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
-//        String fullName = pcaFullNameTextField.getText().trim();
-//        String cpf = pcaCPFTextField.getText().trim();
-//        String email = pcaEmailTextField.getText().trim();
-//        String password = pcaPasswordField.getText();
-//
-//        try {
-//            // disparando a bateria de validações
-//            UserValidator.validateName(fullName);
-//            UserValidator.validateCpf(cpf);
-//            UserValidator.validateEmail(email);
-//            UserValidator.validatePassword(password);
-//
-//            // se chegou aqui, passou em todos os 'testes'
-//            AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta de paciente criada com sucesso!");
-//
-//            // após o cadastro, joga o paciente de volta para a tela de login
-//            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
-//
-//        } catch (ValidationException e) {
-//            // // captura o erro lógico e avisa o usuário
-//            AlertMessenger.show(Alert.AlertType.ERROR, "Erro no Cadastro", e.getMessage());
-//            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
-//            System.err.println("[LOG EXCEÇÃO] Falha ao tentar cadastrar paciente: " + e.getMessage());
-//        }
+
+        String fullName = pcaFullNameTextField.getText();
+        String fullNameTrimmed = fullName.trim();
+        String cpf = pcaCPFTextField.getText().trim();
+        String email = pcaEmailTextField.getText().trim();
+        String password = pcaPasswordField.getText();
+
+        try {
+            // disparando a bateria de validações
+            UserValidator.validateName(fullNameTrimmed);
+            UserValidator.validateCpf(cpf);
+            UserValidator.validateEmail(email);
+            UserValidator.validatePassword(password);
+
+            try {
+                patient.insert(new Patient(fullName, email, password, "PATIENT", cpf));
+            } catch (SQLException e) {
+                LogWriter.write("[ERRO | BANCO DE DADOS] Falha ao inserir usuário (paciente).");
+                throw new ValidationException("Falha ao tentar cadastrar conta de paciente.");
+            }
+
+            // se chegou aqui, passou em todos os 'testes'
+            AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta de paciente criada com sucesso!");
+            LogWriter.write("[CONTA] Conta de paciente criada com sucesso!");
+
+            // após o cadastro, joga o paciente de volta para a tela de login
+            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginPatientPage.fxml");
+
+        } catch (ValidationException e) {
+            AlertMessenger.show(Alert.AlertType.ERROR, "Erro no Cadastro", e.getMessage());
+            LogWriter.write("[CONTA] Falha ao tentar cadastrar conta de paciente.");
+        }
     }
 
     // --------------- AUTENTICAÇÃO LOGIN ---------------

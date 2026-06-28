@@ -4,6 +4,7 @@ import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -19,32 +20,32 @@ public class DoctorPagesController {
     @FXML
     private void handleCreateAccount(ActionEvent event) {
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
-//        String fullName = dcaFullNameTextField.getText().trim();
-//        String crm = dcaCRMTextField.getText().trim();
-//        String email = dcaEmailTextField.getText().trim();
-//        String password = dcaPasswordField.getText();
-//
-//        try {
-//            // disparando a bateria de validações
-//            UserValidator.validateName(fullName);
-//            UserValidator.validateCrm(crm);
-//            UserValidator.validateEmail(email);
-//            UserValidator.validatePassword(password);
-//
-//            // se chegou aqui, passou em todos os 'testes'
-//            AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta médica criada com sucesso!");
-//
-//            /*FALTA SALVAR NO BANCO DE DADOS*/
-//
-//            // após o cadastro, joga o médico de volta para a tela de login
-//            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
-//
-//        } catch (ValidationException e) {
-//            // // captura o erro lógico e avisa o usuário
-//            AlertMessenger.show(Alert.AlertType.ERROR, "Erro no Cadastro", e.getMessage());
-//            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
-//            System.err.println("[LOG EXCEÇÃO] Falha ao tentar cadastrar médico: " + e.getMessage());
-//        }
+        String fullName = dcaFullNameTextField.getText().trim();
+        String crm = dcaCRMTextField.getText().trim();
+        String email = dcaEmailTextField.getText().trim();
+        String password = dcaPasswordField.getText();
+
+        try {
+            // disparando a bateria de validações
+            UserValidator.validateName(fullName);
+            UserValidator.validateCrm(crm);
+            UserValidator.validateEmail(email);
+            UserValidator.validatePassword(password);
+
+            // se chegou aqui, passou em todos os 'testes'
+            AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta médica criada com sucesso!");
+
+            /*FALTA SALVAR NO BANCO DE DADOS*/
+
+            // após o cadastro, joga o médico de volta para a tela de login
+            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
+
+        } catch (ValidationException e) {
+            // // captura o erro lógico e avisa o usuário
+            AlertMessenger.show(Alert.AlertType.ERROR, "Erro no Cadastro", e.getMessage());
+            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
+            System.err.println("[LOG EXCEÇÃO] Falha ao tentar cadastrar médico: " + e.getMessage());
+        }
     }
 
     // --------------- AUTENTICAÇÃO LOGIN ---------------

@@ -1,6 +1,6 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO;
 
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DataBase;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DB.DataBase;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Patient;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.User;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
@@ -22,8 +22,13 @@ public class PatientDAO implements PatientDAOInterface {
     //ResultSet é o resultado da pesquisa do SELECT
 
     @Override
-    public void insert(Patient patient) {
+    public void insert(Patient patient) throws SQLException {
+
         User user = userDAO.insert(patient);
+        if (user == null) {
+            LogWriter.write("[ERRO | INSERT] Falha ao inserir paciente no banco de dados (usuário nulo).");
+            throw new SQLException("Erro ao inserir usuário (paciente).");
+        }
 
         String query = "INSERT INTO patient (cpf, id_user) VALUES (?, ?)";
 

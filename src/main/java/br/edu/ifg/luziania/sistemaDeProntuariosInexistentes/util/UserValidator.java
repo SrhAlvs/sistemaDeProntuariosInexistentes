@@ -38,9 +38,9 @@ public class UserValidator {
     /*
         PASSWORD: (?=.*[A-Z]) garante que há ao menos uma letra maiúscula,
         ([?=.*\\d]) garante que há ao menos um dígito numérico,
-        .{8,} aceita qualquer caractere se no fim tiver 8 dígitos
+        .{8,} aceita qualquer caractere se tiver no mínimo 8 dígitos
     */
-    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[A-Z])(?=.*\\\\d).{8,}$");
+    private static final Pattern PASSWORD_PATTERN = Pattern.compile("^(?=.*[A-Z])(?=.*\\d).{8,}$");
     public static void validatePassword(String password) {
         if (password == null || !PASSWORD_PATTERN.matcher(password).matches()) {
             throw new ValidationException("Falha na validação: SENHA está fora do padrão (8 caracteres contendo letras, números ou caracteres especiais).");

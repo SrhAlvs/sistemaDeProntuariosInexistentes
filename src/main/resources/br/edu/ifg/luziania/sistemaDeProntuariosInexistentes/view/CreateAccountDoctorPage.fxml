@@ -88,7 +88,8 @@
                                 <Font name="Noto Mono" size="13.0" />
                             </font>
                         </PasswordField>
-                        <MenuButton layoutX="47.0"
+                        <MenuButton fx:id="dcaSpecialtyMenuButton"
+                                    layoutX="47.0"
                                     layoutY="135.0"
                                     mnemonicParsing="false"
                                     style="-fx-border-width: 1;

@@ -14,7 +14,20 @@ public class Patient extends User {
         setCpf(cpf);
     }
 
-    public Patient(String name, String email, String cpf) {
+    public Patient(String name,
+                   String email,
+                   String password,
+                   String type,
+                   String cpf) {
+        super(name, email);
+        setPassword(password);
+        setType(type);
+        setCpf(cpf);
+    }
+
+    public Patient(String name,
+                   String email,
+                   String cpf) {
         super(name, email);
         setCpf(cpf);
     }

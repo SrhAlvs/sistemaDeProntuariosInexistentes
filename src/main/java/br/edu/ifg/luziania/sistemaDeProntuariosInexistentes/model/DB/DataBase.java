@@ -1,4 +1,4 @@
-package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model;
+package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DB;
 
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
 
@@ -15,7 +15,9 @@ public class DataBase {
             try {
                 Properties properties = loadProperties();
                 String url = properties.getProperty("dburl");
-                connection = DriverManager.getConnection(url, properties);
+                String user = properties.getProperty("user");
+                String password = properties.getProperty("password");
+                connection = DriverManager.getConnection(url, user, password);
             } catch (SQLException | NullPointerException e) {
                 LogWriter.write("[ERRO | BANCO DE DADOS] Erro ao conectar com o banco de dados.");
                 throw new RuntimeException(e);
