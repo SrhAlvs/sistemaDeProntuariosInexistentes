@@ -1,50 +1,96 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.DoctorDAO;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.AlertMessenger;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.UserValidator;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.ValidationException;
+import com.mysql.cj.log.Log;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
-public class DoctorPagesController {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class DoctorPagesController implements Initializable {
 
     // --------------- AUTENTICAÇÃO CADASTRO ---------------
     @FXML private TextField dcaFullNameTextField;
     @FXML private TextField dcaCRMTextField;
     @FXML private TextField dcaEmailTextField;
     @FXML private PasswordField dcaPasswordField;
+    @FXML private MenuButton dcaSpecialtyMenuButton;
+
+    DoctorDAO doctor = new DoctorDAO();
+    // variável para guardar a especialidade do Médico
+    private DoctorSpecialty selectedSpecialty;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if (dcaSpecialtyMenuButton != null) {
+            synchronizeSpecialties();
+        }
+    }
+    private void synchronizeSpecialties() {
+        // limpa limpa limpa
+        dcaSpecialtyMenuButton.getItems().clear();
+
+        for (DoctorSpecialty specialty : DoctorSpecialty.values()) {
+            // cria o item usando o nome bonito da especialidade
+            MenuItem item = new MenuItem(specialty.getSpecialtyName());
+
+            item.setOnAction(event -> {
+                selectedSpecialty = specialty;
+
+                // muda o texto do botão para o médico ver o que escolheu
+                dcaSpecialtyMenuButton.setText(specialty.getSpecialtyName());
+            });
+
+            // adiciona o item ao MenuButton
+            dcaSpecialtyMenuButton.getItems().add(item);
+        }
+    }
 
     // configura botão 'Enter' (recolhe dados, passa pelo Validator e salva)
     @FXML
     private void handleCreateAccount(ActionEvent event) {
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
-        String fullName = dcaFullNameTextField.getText().trim();
+        String fullName = dcaFullNameTextField.getText();
+        String fullNameTrimmed = fullName.trim();
         String crm = dcaCRMTextField.getText().trim();
         String email = dcaEmailTextField.getText().trim();
         String password = dcaPasswordField.getText();
 
         try {
             // disparando a bateria de validações
-            UserValidator.validateName(fullName);
+            UserValidator.validateName(fullNameTrimmed);
             UserValidator.validateCrm(crm);
             UserValidator.validateEmail(email);
             UserValidator.validatePassword(password);
+            UserValidator.validateSpecialty(selectedSpecialty);
+
+            try {
+                doctor.insert(new Doctor(fullName, email, password, "DOCTOR", crm, selectedSpecialty));
+            } catch (SQLException e) {
+                LogWriter.write("[ERRO | BANCO DE DADOS] Falha ao inserir usuário (médico).");
+                throw new ValidationException("Falha ao tentar cadastrar conta de médico.");
+            }
 
             // se chegou aqui, passou em todos os 'testes'
             AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta médica criada com sucesso!");
-
-            /*FALTA SALVAR NO BANCO DE DADOS*/
+            LogWriter.write("[CONTA] Conta de médico criada com sucesso!");
 
             // após o cadastro, joga o médico de volta para a tela de login
             ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
 
         } catch (ValidationException e) {
-            // // captura o erro lógico e avisa o usuário
             AlertMessenger.show(Alert.AlertType.ERROR, "Erro no Cadastro", e.getMessage());
-            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
-            System.err.println("[LOG EXCEÇÃO] Falha ao tentar cadastrar médico: " + e.getMessage());
+            LogWriter.write("[CONTA] Falha ao tentar cadastrar conta de médico.");
         }
     }
 

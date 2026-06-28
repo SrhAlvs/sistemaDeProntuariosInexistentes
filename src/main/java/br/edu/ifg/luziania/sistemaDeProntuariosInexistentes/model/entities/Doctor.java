@@ -26,6 +26,19 @@ public class Doctor extends User {
         this.specialty = specialty;
     }
 
+    public Doctor(String name,
+                  String email,
+                  String password,
+                  String type,
+                  String crm,
+                  DoctorSpecialty specialty) {
+        super(name, email);
+        setPassword(password);
+        setType(type);
+        setCrm(crm);
+        this.specialty = specialty;
+    }
+
     public String getCrm() { return crm; }
     public void setCrm(String crm) {
         validateCrm(crm);

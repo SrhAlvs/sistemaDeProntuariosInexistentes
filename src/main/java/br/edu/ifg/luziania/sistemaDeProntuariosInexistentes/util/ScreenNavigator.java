@@ -34,10 +34,8 @@ public class ScreenNavigator {
 
         } catch (IOException e) {
             // log de exceções em arquivos caso ocorra falha ao carregar a página
-            System.err.println("[ERRO] Falha crítica ao carregar o arquivo FXML: " + fxmlPath);
-            System.err.println("Descrição da exceção: " + e.getMessage());
-
-            // Aqui futuramente chamaremos o seu LoggerService para salvar no arquivo físico!
+            LogWriter.write("[ERRO] Falha crítica ao carregar o arquivo FXML: " + fxmlPath);
+            LogWriter.write("Descrição da exceção: " + e.getMessage());
         }
     }
 

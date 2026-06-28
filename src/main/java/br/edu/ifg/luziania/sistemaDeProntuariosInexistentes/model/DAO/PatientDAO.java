@@ -59,7 +59,7 @@ public class PatientDAO implements PatientDAOInterface {
             preparedStatement.setInt(1, idUser);
             preparedStatement.setString(2, cpf);
 
-            ResultSet resultSet = preparedStatement.executeQuery(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             Patient patient = null;
 

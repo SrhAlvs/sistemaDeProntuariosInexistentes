@@ -1,4 +1,7 @@
+[NAVEGAÇÃO] Usuário anônimo escolheu a opção: MÉDICO.
+[NAVEGAÇÃO] Usuário navegando para a tela de Cadastro de Médico.
+[CONTA] Falha ao tentar cadastrar conta de médico.
+[CONTA] Falha ao tentar cadastrar conta de médico.
+[CONTA] Conta de médico criada com sucesso!
+[NAVEGAÇÃO] Usuário navegando para a tela de Escolha da Forma de Login.
 [NAVEGAÇÃO] Usuário anônimo escolheu a opção: PACIENTE.
-[NAVEGAÇÃO] Usuário navegando para a tela de Cadastro de Paciente.
-[CONTA] Falha ao tentar cadastrar conta de paciente.
-[CONTA] Conta de paciente criada com sucesso!

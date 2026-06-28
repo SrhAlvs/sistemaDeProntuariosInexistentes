@@ -1,5 +1,6 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util;
 
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.ValidationException;
 
 import java.util.regex.Pattern;
@@ -58,6 +59,12 @@ public class UserValidator {
     public static void validateCrm(String crm) {
         if (crm == null || !CRM_PATTERN.matcher(crm).matches()) {
             throw new ValidationException("Falha na validação: CRM '" + crm + "' está fora do padrão '123456-UF'.");
+        }
+    }
+
+    public static void validateSpecialty(DoctorSpecialty specialty) {
+        if (specialty == null) {
+            throw new ValidationException("Falha na validação: por favor, selecione uma especialidade.");
         }
     }
 

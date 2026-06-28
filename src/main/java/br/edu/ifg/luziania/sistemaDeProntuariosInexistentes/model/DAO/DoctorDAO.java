@@ -23,8 +23,12 @@ public class DoctorDAO implements DoctorDAOInterface {
     //ResultSet é o resultado da pesquisa do SELECT
 
     @Override
-    public void insert(Doctor doctor) {
+    public void insert(Doctor doctor) throws SQLException {
         User user = userDAO.insert(doctor);
+        if (user == null) {
+            LogWriter.write("[ERRO | INSERT] Falha ao inserir médico no banco de dados (usuário nulo).");
+            throw new SQLException("Erro ao inserir usuário (médico).");
+        }
 
         String query = "INSERT INTO doctor (crm, id_user, specialty) VALUES (?, ?, ?)";
 
@@ -56,7 +60,7 @@ public class DoctorDAO implements DoctorDAOInterface {
             preparedStatement.setInt(1, idUser);
             preparedStatement.setString(2, crm);
 
-            ResultSet resultSet = preparedStatement.executeQuery(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             Doctor doctor = null;
 
