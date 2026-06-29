@@ -3,13 +3,8 @@ package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.DoctorDAO;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.User;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.AlertMessenger;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.UserValidator;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.*;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.ValidationException;
-import com.mysql.cj.log.Log;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +16,10 @@ import java.util.ResourceBundle;
 
 public class DoctorPagesController implements Initializable {
 
-    // --------------- AUTENTICAÇÃO CADASTRO ---------------
+    // =========================================================
+    // ----------------- AUTENTICAÇÃO CADASTRO -----------------
+    // =========================================================
+
     @FXML private TextField dcaFullNameTextField;
     @FXML private TextField dcaCRMTextField;
     @FXML private TextField dcaEmailTextField;
@@ -31,32 +29,6 @@ public class DoctorPagesController implements Initializable {
     DoctorDAO doctor = new DoctorDAO();
     // variável para guardar a especialidade do Médico
     private DoctorSpecialty selectedSpecialty;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        if (dcaSpecialtyMenuButton != null) {
-            synchronizeSpecialties();
-        }
-    }
-    private void synchronizeSpecialties() {
-        // limpa limpa limpa
-        dcaSpecialtyMenuButton.getItems().clear();
-
-        for (DoctorSpecialty specialty : DoctorSpecialty.values()) {
-            // cria o item usando o nome bonito da especialidade
-            MenuItem item = new MenuItem(specialty.getSpecialtyName());
-
-            item.setOnAction(event -> {
-                selectedSpecialty = specialty;
-
-                // muda o texto do botão para o médico ver o que escolheu
-                dcaSpecialtyMenuButton.setText(specialty.getSpecialtyName());
-            });
-
-            // adiciona o item ao MenuButton
-            dcaSpecialtyMenuButton.getItems().add(item);
-        }
-    }
 
     // configura botão 'Enter' (recolhe dados, passa pelo Validator e salva)
     @FXML
@@ -95,7 +67,10 @@ public class DoctorPagesController implements Initializable {
         }
     }
 
-    // --------------- AUTENTICAÇÃO LOGIN ---------------
+    // ========================================================
+    // ------------------ AUTENTICAÇÃO LOGIN ------------------
+    // ========================================================
+
     @FXML private TextField dlEmailCRMTextField;
     @FXML private PasswordField dlPasswordField;
 
@@ -120,6 +95,7 @@ public class DoctorPagesController implements Initializable {
                 if (doctor != null) {
                     if (doctor.getPassword().equals(password) && doctor.getEmail().equals(inputLogin) && doctor.getType().equals("DOCTOR")) {
                         LogWriter.write("[LOGIN] Sucesso no login de médico via E-mail.");
+                        Session.loginDoctor(doctor);
                     } else {
                         throw new ValidationException("E-mail ou senha inválidos.");
                     }
@@ -137,6 +113,7 @@ public class DoctorPagesController implements Initializable {
                 if (doctor != null) {
                     if (doctor.getPassword().equals(password) && doctor.getCrm().equals(inputLogin) && doctor.getType().equals("DOCTOR")) {
                         LogWriter.write("[LOGIN] Sucesso no login de médico via CRM.");
+                        Session.loginDoctor(doctor);
                     } else {
                         throw new ValidationException("CRM ou senha inválidos.");
                     }
@@ -153,7 +130,9 @@ public class DoctorPagesController implements Initializable {
         }
     }
 
-    // --------------- NAVEGAÇÃO ---------------
+    // =========================================================
+    // ----------------------- NAVEGAÇÃO -----------------------
+    // =========================================================
 
     // trata o clique no botão 'Voltar', redirecionando para a tela de escolha, 'SPIInitialPage'
     @FXML
@@ -212,4 +191,59 @@ public class DoctorPagesController implements Initializable {
 
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/MyDetailsDoctorPage.fxml");
     }
+
+    // ========================================================
+    // --------------- PREENCHIMENTO AUTOMÁTICO ---------------
+    // ========================================================
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if (dcaSpecialtyMenuButton != null) {
+            synchronizeSpecialties();
+        }
+
+        if (dmdCrmTextField != null) {
+            changeMyDetailsTextField();
+        }
+    }
+
+    // menu de especialidades do 'CreateAccountDoctorPage'
+    private void synchronizeSpecialties() {
+        // limpa limpa limpa
+        dcaSpecialtyMenuButton.getItems().clear();
+
+        for (DoctorSpecialty specialty : DoctorSpecialty.values()) {
+            // cria o item usando o nome bonito da especialidade
+            MenuItem item = new MenuItem(specialty.getSpecialtyName());
+
+            item.setOnAction(event -> {
+                selectedSpecialty = specialty;
+
+                // muda o texto do botão para o médico ver o que escolheu
+                dcaSpecialtyMenuButton.setText(specialty.getSpecialtyName());
+            });
+
+            // adiciona o item ao MenuButton
+            dcaSpecialtyMenuButton.getItems().add(item);
+        }
+    }
+
+    // informações do médico do 'MyDetailsDoctorPage'
+    @FXML private TextField dmdFullNameTextField;
+    @FXML private TextField dmdEmailTextField;
+    @FXML private TextField dmdCrmTextField;
+    @FXML private TextField dmdSpecialtyTextField;
+
+    public void changeMyDetailsTextField() {
+        Doctor doctor = Session.getCurrentDoctor();
+
+        if (doctor != null) {
+            dmdFullNameTextField.setText(doctor.getName());
+            dmdEmailTextField.setText(doctor.getEmail());
+            dmdCrmTextField.setText(doctor.getCrm());
+            dmdSpecialtyTextField.setText(doctor.getSpecialty().getSpecialtyName());
+        }
+
+    }
+
 }

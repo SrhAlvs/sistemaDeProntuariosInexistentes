@@ -1,15 +1,7 @@
 [NAVEGAÇÃO] Usuário anônimo escolheu a opção: PACIENTE.
 [LOGIN] Tentativa de login de paciente via E-mail: maryjane@gmail.com
 [LOGIN] Sucesso no login de paciente via E-mail.
-[NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Login de Paciente.
-[LOGIN] Tentativa de login de paciente via E-mail: ohomiarranha@gmail.com
-[NAVEGAÇÃO] Usuário navegando para a tela de Escolha da Forma de Login.
-[NAVEGAÇÃO] Usuário anônimo escolheu a opção: MÉDICO.
-[LOGIN] Tentativa de login de médico via E-mail: ohomiarranha@gmail.com
-[LOGIN] Sucesso no login de médico via E-mail.
-[NAVEGAÇÃO] Usuário (médico) navegando para a tela de Login de Médico.
-[LOGIN] Tentativa de login de médico via E-mail: maryjane@gmail.com
-[LOGIN] Falha no login do médico: E-mail não cadastrado.
-[LOGIN] Tentativa de login de médico via E-mail: ohomiarranha@gmail.com
-[LOGIN] Sucesso no login de médico via E-mail.
+[USUÁRIO ATIVO] Paciente: Mary Jane
 [NAVEGAÇÃO] Usuário (médico) navegando para a tela de visualização dos Próprios Dados.
+[NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Marcar Consulta.
+[NAVEGAÇÃO] Usuário (médico) navegando para a Tela Inicial (Home).

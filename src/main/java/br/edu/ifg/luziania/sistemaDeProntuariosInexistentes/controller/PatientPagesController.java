@@ -1,25 +1,31 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.PatientDAO;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Patient;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.AlertMessenger;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.UserValidator;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.*;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.ValidationException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class PatientPagesController {
+public class PatientPagesController implements Initializable {
 
     PatientDAO patient = new PatientDAO();
 
-    // --------------- AUTENTICAÇÃO CADASTRO ---------------
+    // =========================================================
+    // ----------------- AUTENTICAÇÃO CADASTRO -----------------
+    // =========================================================
+
     @FXML private TextField pcaFullNameTextField;
     @FXML private TextField pcaCPFTextField;
     @FXML private TextField pcaEmailTextField;
@@ -62,7 +68,10 @@ public class PatientPagesController {
         }
     }
 
-    // --------------- AUTENTICAÇÃO LOGIN ---------------
+    // ========================================================
+    // ------------------ AUTENTICAÇÃO LOGIN ------------------
+    // ========================================================
+
     @FXML private TextField plEmailCPFTextField;
     @FXML private PasswordField plPasswordField;
 
@@ -87,6 +96,7 @@ public class PatientPagesController {
                 if (patient != null) {
                     if (patient.getPassword().equals(password) && patient.getEmail().equals(inputLogin) && patient.getType().equals("PATIENT")) {
                         LogWriter.write("[LOGIN] Sucesso no login de paciente via E-mail.");
+                        Session.loginPatient(patient);
                     } else {
                         throw new ValidationException("E-mail ou senha inválidos.");
                     }
@@ -95,7 +105,7 @@ public class PatientPagesController {
                 }
 
             } else {
-                LogWriter.write("[AUDITORIA] Tentativa de login via CPF: " + inputLogin);
+                LogWriter.write("[LOGIN] Tentativa de login via CPF: " + inputLogin);
 
                 UserValidator.validateCpf(inputLogin);
 
@@ -104,6 +114,7 @@ public class PatientPagesController {
                 if (patient != null) {
                     if (patient.getPassword().equals(password) && patient.getCpf().equals(inputLogin) && patient.getType().equals("PATIENT")) {
                         LogWriter.write("[LOGIN] Sucesso no login de paciente via CPF.");
+                        Session.loginPatient(patient);
                     } else {
                         throw new ValidationException("CPF ou senha inválidos.");
                     }
@@ -121,7 +132,9 @@ public class PatientPagesController {
         }
     }
 
-    // --------------- NAVEGAÇÃO ---------------
+    // =========================================================
+    // ----------------------- NAVEGAÇÃO -----------------------
+    // =========================================================
 
     // trata o clique no botão 'Voltar', redirecionando para a tela de escolha, 'SPIInitialPage'
     @FXML
@@ -189,5 +202,32 @@ public class PatientPagesController {
         LogWriter.write("[NAVEGAÇÃO] Usuário (médico) navegando para a tela de visualização dos Próprios Dados.");
 
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/MyDetailsPatientPage.fxml");
+    }
+
+    // ========================================================
+    // --------------- PREENCHIMENTO AUTOMÁTICO ---------------
+    // ========================================================
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if (pmdCpfTextField != null) {
+            changeMyDetailsTextField();
+        }
+    }
+
+    // informações do médico do 'MyDetailsPatientPage'
+    @FXML private TextField pmdFullNameTextField;
+    @FXML private TextField pmdEmailTextField;
+    @FXML private TextField pmdCpfTextField;
+
+    public void changeMyDetailsTextField() {
+        Patient patient = Session.getCurrentPatient();
+
+        if (patient != null) {
+            pmdFullNameTextField.setText(patient.getName());
+            pmdEmailTextField.setText(patient.getEmail());
+            pmdCpfTextField.setText(patient.getCpf());
+        }
+
     }
 }
