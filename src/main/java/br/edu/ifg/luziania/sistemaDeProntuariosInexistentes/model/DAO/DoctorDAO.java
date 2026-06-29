@@ -53,12 +53,11 @@ public class DoctorDAO implements DoctorDAOInterface {
     }
 
     @Override
-    public Doctor findByCrm(Integer idUser, String crm) {
-        String query = "SELECT * FROM doctor JOIN user ON user.id_user = ? WHERE crm = ?";
+    public Doctor findByCrm(String crm) {
+        String query = "SELECT * FROM doctor JOIN user ON user.id_user = doctor.id_user WHERE crm = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, idUser);
-            preparedStatement.setString(2, crm);
+            preparedStatement.setString(1, crm);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -68,6 +67,8 @@ public class DoctorDAO implements DoctorDAOInterface {
                 doctor = new Doctor(
                         resultSet.getString("name"),
                         resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        "DOCTOR",
                         resultSet.getString("crm"),
                         DoctorSpecialty.valueOf(resultSet.getString("specialty"))
                 );
@@ -75,10 +76,39 @@ public class DoctorDAO implements DoctorDAOInterface {
 
             return doctor;
         } catch (SQLException e) {
-            LogWriter.write("[ERRO | SELECT] Erro ao realizar o select na tabela de Médico (fodeo).");
+            LogWriter.write("[ERRO | SELECT] Erro ao procurar pelo CRM na tabela de Médico (fodeo).");
 
             return null;
         }
     }
 
+    public Doctor findByEmail(String email) {
+
+        String query = "SELECT * FROM user JOIN doctor ON user.id_user = doctor.id_user WHERE email = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, email);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Doctor doctor = null;
+
+            while (resultSet.next()) {
+                doctor = new Doctor(
+                        resultSet.getString("name"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        "DOCTOR",
+                        resultSet.getString("crm"),
+                        DoctorSpecialty.valueOf(resultSet.getString("specialty"))
+                );
+            }
+
+            return doctor;
+        } catch (SQLException e) {
+            LogWriter.write("[ERRO | SELECT] Erro ao procurar pelo Email na tabela de Médico (fodeo).");
+
+            return null;
+        }
+    }
 }

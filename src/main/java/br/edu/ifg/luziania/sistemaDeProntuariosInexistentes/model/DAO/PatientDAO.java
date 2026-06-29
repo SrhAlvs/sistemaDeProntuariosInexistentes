@@ -52,12 +52,11 @@ public class PatientDAO implements PatientDAOInterface {
     }
 
     @Override
-    public Patient findByCpf(Integer idUser, String cpf) {
-        String query = "SELECT * FROM patient JOIN user ON user.id_user = ? WHERE cpf = ?";
+    public Patient findByCpf(String cpf) {
+        String query = "SELECT * FROM patient JOIN user ON user.id_user = patient.id_user WHERE cpf = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, idUser);
-            preparedStatement.setString(2, cpf);
+            preparedStatement.setString(1, cpf);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -67,17 +66,46 @@ public class PatientDAO implements PatientDAOInterface {
                 patient = new Patient(
                         resultSet.getString("name"),
                         resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        "PATIENT",
                         resultSet.getString("cpf")
                 );
             }
 
             return patient;
         } catch (SQLException e) {
-            LogWriter.write("[ERRO | SELECT] Erro ao realizar o select na tabela de Paciente (fodeo).");
+            LogWriter.write("[ERRO | SELECT] Erro ao procurar pelo CPF na tabela de Paciente (fodeo).");
 
             return null;
         }
     }
 
+    @Override
+    public Patient findByEmail(String email) {
+        String query = "SELECT * FROM patient JOIN user ON user.id_user = patient.id_user WHERE email = ?";
 
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, email);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Patient patient = null;
+
+            while (resultSet.next()) {
+                patient = new Patient(
+                        resultSet.getString("name"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        "PATIENT",
+                        resultSet.getString("cpf")
+                );
+            }
+
+            return patient;
+        } catch (SQLException e) {
+            LogWriter.write("[ERRO | SELECT] Erro ao procurar pelo Email na tabela de Paciente (fodeo).");
+
+            return null;
+        }
+    }
 }

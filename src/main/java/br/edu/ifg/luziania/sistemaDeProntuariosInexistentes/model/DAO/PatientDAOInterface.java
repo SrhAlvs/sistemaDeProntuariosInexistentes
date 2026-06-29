@@ -6,5 +6,6 @@ import java.sql.SQLException;
 
 public interface PatientDAOInterface {
     void insert (Patient patient) throws SQLException;
-    Patient findByCpf(Integer idUser, String cpf);
+    Patient findByCpf(String cpf);
+    Patient findByEmail(String email);
 }

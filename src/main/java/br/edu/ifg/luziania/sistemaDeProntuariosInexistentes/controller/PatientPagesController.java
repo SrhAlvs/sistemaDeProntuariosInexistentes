@@ -69,30 +69,56 @@ public class PatientPagesController {
     // configura o botão 'Enter' (realiza a validação e tenta autenticar o paciente)
     @FXML
     private void handleLogin(ActionEvent event) {
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomePatientPage.fxml");
-//        String inputLogin = plEmailCPFTextField.getText().trim();
-//        String password = plPasswordField.getText();
-//
-//        try {
-//            // validação lógica de formatos
-//            UserValidator.validatePassword(password);
-//
-//            // verifica se o usuário tentou logar por e-mail ou por CPF
-//            if (inputLogin.contains("@")) {
-//                UserValidator.validateEmail(inputLogin);
-//                System.out.println("[AUDITORIA] Tentativa de login via E-mail: " + inputLogin);
-//            } else {
-//                UserValidator.validateCpf(inputLogin);
-//                System.out.println("[AUDITORIA] Tentativa de login via CPF: " + inputLogin);
-//            }
-//
-//            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomePatientPage.fxml");
-//        } catch (ValidationException e) {
-//            // captura o erro lógico e avisa o usuário
-//            AlertMessenger.show(Alert.AlertType.ERROR, "Erro de Autenticação", e.getMessage());
-//            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
-//            System.err.println("[LOG EXCEÇÃO] Falha no login do paciente: " + e.getMessage());
-//        }
+        String inputLogin = plEmailCPFTextField.getText().trim();
+        String password = plPasswordField.getText();
+
+        try {
+            // validação lógica de formatos
+            UserValidator.validatePassword(password);
+
+            // verifica se o usuário tentou logar por e-mail ou por CPF
+            if (inputLogin.contains("@")) {
+                LogWriter.write("[LOGIN] Tentativa de login de paciente via E-mail: " + inputLogin);
+
+                UserValidator.validateEmail(inputLogin);
+
+                Patient patient = this.patient.findByEmail(inputLogin);
+
+                if (patient != null) {
+                    if (patient.getPassword().equals(password) && patient.getEmail().equals(inputLogin) && patient.getType().equals("PATIENT")) {
+                        LogWriter.write("[LOGIN] Sucesso no login de paciente via E-mail.");
+                    } else {
+                        throw new ValidationException("E-mail ou senha inválidos.");
+                    }
+                } else {
+                    throw new ValidationException("E-mail não cadastrado.");
+                }
+
+            } else {
+                LogWriter.write("[AUDITORIA] Tentativa de login via CPF: " + inputLogin);
+
+                UserValidator.validateCpf(inputLogin);
+
+                Patient patient = this.patient.findByCpf(inputLogin);
+
+                if (patient != null) {
+                    if (patient.getPassword().equals(password) && patient.getCpf().equals(inputLogin) && patient.getType().equals("PATIENT")) {
+                        LogWriter.write("[LOGIN] Sucesso no login de paciente via CPF.");
+                    } else {
+                        throw new ValidationException("CPF ou senha inválidos.");
+                    }
+                } else {
+                    throw new ValidationException("CPF não cadastrado.");
+                }
+            }
+
+            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomePatientPage.fxml");
+        } catch (ValidationException e) {
+            // captura o erro lógico e avisa o usuário
+            AlertMessenger.show(Alert.AlertType.ERROR, "Erro de Autenticação", e.getMessage());
+            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
+            System.err.println("[LOG EXCEÇÃO] Falha no login do paciente: " + e.getMessage());
+        }
     }
 
     // --------------- NAVEGAÇÃO ---------------

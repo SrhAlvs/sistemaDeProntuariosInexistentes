@@ -1,5 +1,7 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities;
 
+import java.util.Objects;
+
 import static br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.UserValidator.*;
 
 public class User {
@@ -54,5 +56,4 @@ public class User {
 
     public String getType() { return type; }
     public void setType(String type) { this.type = (type == null) ? "--não informado--" : type; }
-
 }

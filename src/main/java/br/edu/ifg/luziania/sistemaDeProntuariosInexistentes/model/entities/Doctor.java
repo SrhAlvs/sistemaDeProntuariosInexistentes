@@ -10,8 +10,7 @@ public class Doctor extends User {
                    String name,
                    String email,
                    String password,
-                   String crm,
-                   DoctorSpecialty specialty) {
+                   String crm) {
         super(id, name, email, password, "DOCTOR");
         setCrm(crm);
         this.specialty = specialty;

@@ -3,6 +3,7 @@ package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.DoctorDAO;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.User;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.AlertMessenger;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.ScreenNavigator;
@@ -101,31 +102,55 @@ public class DoctorPagesController implements Initializable {
     //configura o botão 'Enter' (passa pelo Validator e tenta autenticar o médico)
     @FXML
     private void handleLogin(ActionEvent event) {
-        ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomeDoctorPage.fxml");
-//        String inputLogin = dlEmailCRMTextField.getText().trim();
-//        String password = dlPasswordField.getText();
-//
-//        try {
-//            // validação lógica de formatos
-//            UserValidator.validatePassword(password);
-//
-//            // verifica se o usuário tentou logar por e-mail ou por CRM
-//            if (inputLogin.contains("@")) {
-//                UserValidator.validateEmail(inputLogin);
-//                System.out.println("[AUDITORIA] Tentativa de login via E-mail: " + inputLogin);
-//            } else {
-//                UserValidator.validateCrm(inputLogin);
-//                System.out.println("[AUDITORIA] Tentativa de login via CRM: " + inputLogin);
-//            }
-//
-//            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomeDoctorPage.fxml");
-//        } catch (ValidationException e) {
-//            // captura o erro lógico e avisa o usuário
-//            AlertMessenger.show(Alert.AlertType.ERROR, "Erro de Autenticação", e.getMessage());
-//            // Aqui chamaremos o LoggerService.logException(...) para gravar no arquivo txt
-//            System.err.println("[LOG EXCEÇÃO] Falha no login do médico: " + e.getMessage());
-//
-//        }
+        String inputLogin = dlEmailCRMTextField.getText().trim();
+        String password = dlPasswordField.getText();
+
+        try {
+            // validação lógica de formatos
+            UserValidator.validatePassword(password);
+
+            // verifica se o usuário tentou logar por e-mail ou por CRM
+            if (inputLogin.contains("@")) {
+                LogWriter.write("[LOGIN] Tentativa de login de médico via E-mail: " + inputLogin);
+
+                UserValidator.validateEmail(inputLogin);
+
+                Doctor doctor = this.doctor.findByEmail(inputLogin);
+
+                if (doctor != null) {
+                    if (doctor.getPassword().equals(password) && doctor.getEmail().equals(inputLogin) && doctor.getType().equals("DOCTOR")) {
+                        LogWriter.write("[LOGIN] Sucesso no login de médico via E-mail.");
+                    } else {
+                        throw new ValidationException("E-mail ou senha inválidos.");
+                    }
+                } else {
+                    throw new ValidationException("E-mail não cadastrado.");
+                }
+
+            } else {
+                LogWriter.write("[LOGIN] Tentativa de login de médico via CRM: " + inputLogin);
+
+                UserValidator.validateCrm(inputLogin);
+
+                Doctor doctor = this.doctor.findByCrm(inputLogin);
+
+                if (doctor != null) {
+                    if (doctor.getPassword().equals(password) && doctor.getCrm().equals(inputLogin) && doctor.getType().equals("DOCTOR")) {
+                        LogWriter.write("[LOGIN] Sucesso no login de médico via CRM.");
+                    } else {
+                        throw new ValidationException("CRM ou senha inválidos.");
+                    }
+                } else {
+                    throw new ValidationException("CRM não cadastrado.");
+                }
+            }
+
+            ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomeDoctorPage.fxml");
+        } catch (ValidationException e) {
+            AlertMessenger.show(Alert.AlertType.ERROR, "Erro de Autenticação", e.getMessage());
+            LogWriter.write("[LOGIN] Falha no login do médico: " + e.getMessage());
+
+        }
     }
 
     // --------------- NAVEGAÇÃO ---------------
