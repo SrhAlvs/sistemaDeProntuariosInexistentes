@@ -1,2 +1,9 @@
 [NAVEGAÇÃO] Usuário anônimo escolheu a opção: PACIENTE.
+[LOGIN] Tentativa de login de paciente via E-mail: maryjane@gmail.com
+[LOGIN] Sucesso no login de paciente via E-mail.
+[USUÁRIO ATIVO] Paciente: Mary Jane
+[NAVEGAÇÃO] Usuário (médico) navegando para a tela de visualização dos Próprios Dados.
+[NAVEGAÇÃO] Usuário (médico) navegando para a Tela Inicial (Home).
+[NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Login de Paciente.
 [NAVEGAÇÃO] Usuário navegando para a tela de Escolha da Forma de Login.
+[LOG OUT] Sem usuários ativos.

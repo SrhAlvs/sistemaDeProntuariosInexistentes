@@ -138,6 +138,7 @@ public class DoctorPagesController implements Initializable {
     @FXML
     private void handleBackToChoiceButton(ActionEvent event) {
         LogWriter.write("[NAVEGAÇÃO] Usuário navegando para a tela de Escolha da Forma de Login.");
+        Session.logout();
 
         ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/SPIInitialPage.fxml");
     }
