@@ -182,7 +182,6 @@
             <Label fx:id="dmdDoctorNameLabel"
                    layoutX="15.0"
                    layoutY="15.0"
-                   text="Fulano de Tal"
                    textFill="#0b8335">
                <font>
                   <Font name="Noto Mono" size="13.0" />

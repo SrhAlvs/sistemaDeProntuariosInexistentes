@@ -9,10 +9,7 @@ import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.Vali
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -213,6 +210,36 @@ public class PatientPagesController implements Initializable {
         if (pmdCpfTextField != null) {
             changeMyDetailsTextField();
         }
+
+        if(phpPatientNameLabel != null) {
+            writeLoggedPatientName(phpPatientNameLabel);
+        }
+
+        if(psaPatientNameLabel != null) {
+            writeLoggedPatientName(psaPatientNameLabel);
+        }
+
+        if(prPatientNameLabel != null) {
+            writeLoggedPatientName(prPatientNameLabel);
+        }
+
+        if(psapPatientNameLabel != null) {
+            writeLoggedPatientName(psapPatientNameLabel);
+        }
+    }
+
+    // nome do paciente no menu da VBox das telas para paciente logado
+    @FXML private Label phpPatientNameLabel;
+    @FXML private Label psaPatientNameLabel;
+    @FXML private Label prPatientNameLabel;
+    @FXML private Label psapPatientNameLabel;
+
+    public void writeLoggedPatientName(Label label) {
+        Patient patient = Session.getCurrentPatient();
+
+        if (patient != null){
+            label.setText(patient.getName());
+        }
     }
 
     // informações do médico do 'MyDetailsPatientPage'
@@ -228,6 +255,5 @@ public class PatientPagesController implements Initializable {
             pmdEmailTextField.setText(patient.getEmail());
             pmdCpfTextField.setText(patient.getCpf());
         }
-
     }
 }

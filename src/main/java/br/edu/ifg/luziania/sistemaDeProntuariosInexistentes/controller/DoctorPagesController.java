@@ -205,6 +205,18 @@ public class DoctorPagesController implements Initializable {
         if (dmdCrmTextField != null) {
             changeMyDetailsTextField();
         }
+
+        if(dhpDoctorNameLabel != null) {
+            writeLoggedDoctorName(dhpDoctorNameLabel);
+        }
+
+        if(dmrDoctorNameLabel != null) {
+            writeLoggedDoctorName(dmrDoctorNameLabel);
+        }
+
+        if(dmdDoctorNameLabel != null) {
+            writeLoggedDoctorName(dmdDoctorNameLabel);
+        }
     }
 
     // menu de especialidades do 'CreateAccountDoctorPage'
@@ -225,6 +237,19 @@ public class DoctorPagesController implements Initializable {
 
             // adiciona o item ao MenuButton
             dcaSpecialtyMenuButton.getItems().add(item);
+        }
+    }
+
+    // nome do médico no menu da VBox das telas para médico logado
+    @FXML private Label dhpDoctorNameLabel;
+    @FXML private Label dmrDoctorNameLabel;
+    @FXML private Label dmdDoctorNameLabel;
+
+    public void writeLoggedDoctorName(Label label) {
+        Doctor doctor = Session.getCurrentDoctor();
+
+        if (doctor != null) {
+            label.setText(doctor.getName());
         }
     }
 

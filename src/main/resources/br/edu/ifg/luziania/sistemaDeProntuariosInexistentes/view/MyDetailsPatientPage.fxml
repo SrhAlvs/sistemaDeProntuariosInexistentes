@@ -158,7 +158,6 @@
             <Label fx:id="psapPatientNameLabel"
                    layoutX="15.0"
                    layoutY="15.0"
-                   text="Fulano de Tal"
                    textFill="#BDEABD">
                <font>
                   <Font name="Noto Mono" size="13.0" />
