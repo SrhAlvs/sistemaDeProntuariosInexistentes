@@ -1,6 +1,7 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util;
 
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.MedicalRecordDAO;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Patient;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -14,10 +15,12 @@ import java.io.IOException;
 
 public class MedicalRecordHandler {
     private Patient patient;
+    private Doctor doctor;
     private MedicalRecordDAO medicalRecord = new MedicalRecordDAO();
 
-    public MedicalRecordHandler(Patient patient) {
+    public MedicalRecordHandler(Patient patient, Doctor doctor) {
         this.patient = patient;
+        this.doctor = doctor;
     }
 
     public String getPath() {
@@ -25,6 +28,8 @@ public class MedicalRecordHandler {
                 + patient.getName()
                 + "_"
                 + patient.getCpf()
+                + "_"
+                + doctor.getSpecialty()
                 + ".pdf";
     }
 

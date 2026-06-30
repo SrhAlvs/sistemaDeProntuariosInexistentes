@@ -51,21 +51,24 @@
                                resizable="false"
                                prefWidth="105.0"
                                style="-fx-background-color: #BCA5FF;
-                                      -fx-border-color: #EAE2FF;"
+                                      -fx-border-color: #EAE2FF;
+                                      -fx-alignment: CENTER;"
                                text="Data"
                   />
-                  <TableColumn fx:id="prResultColumn"
+                  <TableColumn fx:id="prResultTableColumn"
                                resizable="false"
                                prefWidth="268.0"
                                style="-fx-background-color: #EAE2FF;
-                                      -fx-border-color: #BCA5FF;"
-                               text="Exame"
+                                      -fx-border-color: #BCA5FF;
+                                      -fx-alignment: CENTER;"
+                               text="Especialidade"
                   />
                   <TableColumn fx:id="prArchiveTableColumn"
                                resizable="false"
                                prefWidth="76.0"
                                style="-fx-background-color: #BCA5FF;
-                                      -fx-border-color: #EAE2FF;"
+                                      -fx-border-color: #EAE2FF;
+                                      -fx-alignment: CENTER;"
                                text="Arquivo"
                   />
                </columns>

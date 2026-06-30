@@ -245,7 +245,7 @@ public class DoctorPagesController implements Initializable {
         }
 
         if(dhpDateTableColumn != null) {
-            changeMyAgendaTable();
+            changeMyAgendaDTable();
         }
     }
 
@@ -311,38 +311,31 @@ public class DoctorPagesController implements Initializable {
     @FXML private TableColumn<Appointment, String> dhpPatientNameTableColumn;
     @FXML private TableColumn<Agenda, Void> dhpMedicalRecordsTableColumn;
 
-    public void changeMyAgendaTable() {
-        System.out.println("CHEGOU 1");
+    public void changeMyAgendaDTable() {
 
         dhpDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         dhpTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
         dhpPatientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientName"));
 
-        System.out.println("CHEGOU 2");
 
         ArrayList<Appointment> appointments = this.appointment.findAppointmentByCRM(Session.getCurrentDoctor().getCrm());
         ArrayList<Patient> patients = this.doctor.findAllPatientsByDoctor(Session.getCurrentDoctor());
         ArrayList<MedicalRecord> medicalRecords = new ArrayList<>();
 
-        System.out.println("CHEGOU 2,5");
 
         for (Appointment appointment : appointments) {
-            System.out.println("CHEGOU 2,6");
             medicalRecords.add(
                     new MedicalRecord(
                             appointment.getIdAppointment(),
                             this.medicalRecord.findByIdAppointment(appointment.getIdAppointment()).getPath()
                     )
             );
-            System.out.println("CHEGOU 2,7");
         }
 
-        System.out.println("CHEGOU 3");
 
         ObservableList<Agenda> rows =
                 FXCollections.observableArrayList();
 
-        System.out.println("CHEGOU 4");
 
         for (int i = 0; i < appointments.size(); i++) {
 
@@ -359,7 +352,6 @@ public class DoctorPagesController implements Initializable {
             );
         }
 
-        System.out.println("CHEGOU 5");
 
         dhpAgendaTable.setItems(rows);
 
@@ -374,7 +366,7 @@ public class DoctorPagesController implements Initializable {
                             getTableView().getItems().get(getIndex());
 
                     MedicalRecordHandler generator =
-                            new MedicalRecordHandler(agenda.getPatient());
+                            new MedicalRecordHandler(agenda.getPatient(), Session.getCurrentDoctor());
 
                     String path = generator.getPath();
                     File pdf = new File(path);
@@ -432,7 +424,7 @@ public class DoctorPagesController implements Initializable {
                             getTableView().getItems().get(getIndex());
 
                     MedicalRecordHandler generator =
-                            new MedicalRecordHandler(patient);
+                            new MedicalRecordHandler(patient, Session.getCurrentDoctor());
 
                     String path = generator.getPath();
                     File pdf = new File(path);

@@ -2,13 +2,13 @@ package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.AppointmentDAO;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.DoctorDAO;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.MedicalRecordDAO;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.PatientDAO;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Appointment;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Patient;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.*;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.*;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.ValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.awt.*;
 import java.io.File;
@@ -24,6 +25,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -32,6 +34,7 @@ public class PatientPagesController implements Initializable {
     PatientDAO patient = new PatientDAO();
     AppointmentDAO appointment = new AppointmentDAO();
     DoctorDAO doctor = new DoctorDAO();
+    MedicalRecordDAO medicalRecord = new MedicalRecordDAO();
 
     // =========================================================
     // ----------------- AUTENTICAÇÃO CADASTRO -----------------
@@ -251,6 +254,14 @@ public class PatientPagesController implements Initializable {
         if (psaSpecialtyMenuButton != null) {
             synchronizeAppointmentSpecialty();
         }
+
+        if (phpDateTableColumn != null) {
+            changeMyAgendaPTable();
+        }
+
+        if(prDateTableColumn != null) {
+            changeMyResultsTable();
+        }
     }
 
     // nome do paciente no menu da VBox das telas para paciente logado
@@ -454,4 +465,177 @@ public class PatientPagesController implements Initializable {
 
     }
 
+    // =========================================================
+    // ------------------------ TABELAS ------------------------
+    // =========================================================
+
+    //preenche a tabela de agenda da página 'HomePatientPage'
+    @FXML private TableView<Agenda> phpAgendaTable;
+    @FXML private TableColumn<Appointment, Date> phpDateTableColumn;
+    @FXML private TableColumn<Appointment, String> phpTimeTableColumn;
+    @FXML private TableColumn<Appointment, String> phpDoctorNameTableColumn;
+    @FXML private TableColumn<Agenda, Void> phpMedicalRecordsTableColumn;
+
+    public void changeMyAgendaPTable() {
+        phpDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        phpTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+        phpDoctorNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("doctorName"));
+
+        ArrayList<Appointment> appointments = this.appointment.findAppointmentByCPF(Session.getCurrentPatient().getCpf());
+        ArrayList<Doctor> doctors = this.patient.findAllDoctorsByPatient(Session.getCurrentPatient());
+        ArrayList<MedicalRecord> medicalRecords = new ArrayList<>();
+
+        for (Appointment appointment : appointments) {
+            medicalRecords.add(new MedicalRecord(
+                    appointment.getIdAppointment(),
+                    this.medicalRecord.findByIdAppointment(appointment.getIdAppointment()).getPath()
+            ));
+        }
+
+        ObservableList<Agenda> rows =
+                FXCollections.observableArrayList();
+
+
+        for (int i = 0; i < appointments.size(); i++) {
+
+            Appointment appointment = appointments.get(i);
+            Doctor doctor = doctors.get(i);
+
+            rows.add(
+                    new Agenda(
+                            appointment.getAppointmentDate(),
+                            appointment.getAppointmentTime(),
+                            doctor,
+                            doctor.getName()
+                    )
+            );
+        }
+
+
+        phpAgendaTable.setItems(rows);
+
+        phpMedicalRecordsTableColumn.setCellFactory(param -> new TableCell<>() {
+
+            private final Button button = new Button("Abrir");
+
+            {
+                button.setOnAction(event -> {
+
+                    Agenda agenda =
+                            getTableView().getItems().get(getIndex());
+
+                    MedicalRecordHandler generator =
+                            new MedicalRecordHandler(Session.getCurrentPatient(), agenda.getDoctor());
+
+                    String path = generator.getPath();
+                    File pdf = new File(path);
+
+                    if (!pdf.exists()) {
+                        AlertMessenger.show(Alert.AlertType.ERROR, "Prontuário não encontrado", "Prontuário ainda não cadastrado.");
+                        LogWriter.write("[ERRO | PRONTUÁRIOS] Usuário paciente tentou abrir um prontuário ainda não cadastrado.");
+                    } else {
+                        generator.OpenPDF(path);
+                    }
+
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(button);
+                }
+            }
+        });
+
+    }
+
+
+    @FXML private TableView<Agenda> prResultsTable;
+    @FXML private TableColumn<Agenda, Date> prDateTableColumn;
+    @FXML private TableColumn<Agenda, String> prResultTableColumn;
+    @FXML private TableColumn<Agenda, Void> prArchiveTableColumn;
+
+    public void changeMyResultsTable() {
+        prDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        prResultTableColumn.setCellValueFactory(new PropertyValueFactory<>("doctorSpecialty"));
+
+        ArrayList<Appointment> appointments = this.appointment.findAppointmentByCPF(Session.getCurrentPatient().getCpf());
+        ArrayList<Doctor> doctors = this.patient.findAllDoctorsByPatient(Session.getCurrentPatient());
+        ArrayList<MedicalRecord> medicalRecords = new ArrayList<>();
+
+        for (Appointment appointment : appointments) {
+            medicalRecords.add(new MedicalRecord(
+                    appointment.getIdAppointment(),
+                    this.medicalRecord.findByIdAppointment(appointment.getIdAppointment()).getPath()
+            ));
+        }
+
+        ObservableList<Agenda> rows =
+                FXCollections.observableArrayList();
+
+
+        for (int i = 0; i < appointments.size(); i++) {
+
+            Appointment appointment = appointments.get(i);
+            Doctor doctor = doctors.get(i);
+
+            rows.add(
+                    new Agenda(
+                            appointment.getAppointmentDate(),
+                            appointment.getAppointmentTime(),
+                            doctor,
+                            doctor.getName()
+                    )
+            );
+        }
+
+
+        prResultsTable.setItems(rows);
+
+        prArchiveTableColumn.setCellFactory(param -> new TableCell<>() {
+
+            private final Button button = new Button("Abrir");
+
+            {
+                button.setOnAction(event -> {
+
+                    Agenda agenda =
+                            getTableView().getItems().get(getIndex());
+
+                    MedicalRecordHandler generator =
+                            new MedicalRecordHandler(Session.getCurrentPatient(), agenda.getDoctor());
+
+                    String path = generator.getPath();
+                    File pdf = new File(path);
+
+                    if (!pdf.exists()) {
+                        AlertMessenger.show(Alert.AlertType.ERROR, "Prontuário não encontrado", "Prontuário ainda não cadastrado.");
+                        LogWriter.write("[ERRO | PRONTUÁRIOS] Usuário paciente tentou abrir um prontuário ainda não cadastrado.");
+                    } else {
+                        generator.OpenPDF(path);
+                    }
+
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(button);
+                }
+            }
+        });
+
+    }
 }

@@ -10,4 +10,5 @@ public interface AppointmentDAOInterface {
     void insert(Appointment appointment);
     ArrayList<Appointment> findAppointment(String crm, LocalDate appointmentDate);
     ArrayList<Appointment> findAppointmentByCRM(String crm);
+    ArrayList<Appointment> findAppointmentByCPF(String cpf);
 }

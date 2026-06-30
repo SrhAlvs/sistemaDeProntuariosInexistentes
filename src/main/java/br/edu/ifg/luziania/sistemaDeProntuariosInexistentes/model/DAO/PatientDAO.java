@@ -1,6 +1,8 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO;
 
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DB.DataBase;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Patient;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.User;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
@@ -9,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class PatientDAO implements PatientDAOInterface {
     private Connection connection = null;
@@ -106,6 +109,56 @@ public class PatientDAO implements PatientDAOInterface {
             LogWriter.write("[ERRO | SELECT] Erro ao procurar pelo Email na tabela de Paciente (fodeo).");
 
             return null;
+        }
+    }
+
+    @Override
+    public ArrayList<Doctor> findAllDoctorsByPatient(Patient patient) {
+
+        String query = """
+            SELECT DISTINCT
+                u.name,
+                u.email,
+                d.specialty,
+                d.crm
+            FROM doctor d
+            JOIN user u
+                ON d.id_user = u.id_user
+            JOIN appointment a
+                ON a.crm = d.crm
+            WHERE a.cpf = ?
+            """;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, patient.getCpf());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            ArrayList<Doctor> doctors = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                doctors.add(
+                        new Doctor(
+                                resultSet.getString("name"),
+                                resultSet.getString("email"),
+                                resultSet.getString("crm"),
+                                DoctorSpecialty.valueOf(resultSet.getString("specialty"))
+                        )
+                );
+
+            }
+
+            return doctors;
+
+        } catch (SQLException e) {
+
+            LogWriter.write(
+                    "[ERRO | SELECT] Erro ao selecionar todos os médicos de um paciente por CPF."
+            );
+
+            return new ArrayList<>();
         }
     }
 }

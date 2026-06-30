@@ -114,21 +114,46 @@ public class AppointmentDAO implements AppointmentDAOInterface{
                 );
             }
 
-//            DateTimeFormatter formatter =
-//                    DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-//
-//            appointment.sort(
-//                    Comparator.comparing(a ->
-//                            LocalDateTime.parse(
-//                                    a.getAppointmentDate() + " " + a.getAppointmentTime(),
-//                                    formatter
-//                            )
-//                    )
-//            );
+            return appointment;
+        } catch (SQLException e) {
+            LogWriter.write("[ERRO | SELECT] Erro ao procurar pelo CRM na tabela de Consultas (fodeo).");
+
+            return null;
+        }
+
+    }
+
+    @Override
+    public ArrayList<Appointment> findAppointmentByCPF(String cpf) {
+
+        String query = """
+            SELECT *
+            FROM appointment
+            WHERE cpf = ?
+            """;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, cpf);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            ArrayList<Appointment> appointment = new ArrayList<>();
+
+            while (resultSet.next()) {
+                appointment.add(
+                        new Appointment(
+                                resultSet.getInt("id_appointment"),
+                                resultSet.getString("crm"),
+                                resultSet.getString("cpf"),
+                                resultSet.getDate("date").toLocalDate(),
+                                resultSet.getString("time")
+                        )
+                );
+            }
 
             return appointment;
         } catch (SQLException e) {
-            LogWriter.write("[ERRO | SELECT] Erro ao procurar pela data na tabela de Consultas (fodeo).");
+            LogWriter.write("[ERRO | SELECT] Erro ao procurar pelo CPF na tabela de Consultas (fodeo).");
 
             return null;
         }
