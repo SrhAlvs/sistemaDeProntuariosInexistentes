@@ -120,6 +120,7 @@
                             </font>
                         </Hyperlink>
                         <Button fx:id="dcaCreateButton"
+                                defaultButton="true"
                                 onAction="#handleCreateAccount"
                                 alignment="CENTER"
                                 contentDisplay="CENTER"

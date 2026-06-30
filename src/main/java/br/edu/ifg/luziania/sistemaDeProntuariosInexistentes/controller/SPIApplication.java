@@ -15,7 +15,7 @@ public class SPIApplication extends Application {
 
         Scene scene = new Scene(loader.load());
 
-        stage.setTitle("Sistema de Prontuários Inexistentes - Página Inicial");
+        stage.setTitle("Sistema de Prontuários Inexistentes (SPI)");
         stage.setScene(scene);
         stage.show();
     }

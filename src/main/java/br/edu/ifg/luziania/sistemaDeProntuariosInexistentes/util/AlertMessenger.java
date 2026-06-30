@@ -1,6 +1,10 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util;
 
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextInputDialog;
+
+import java.util.Optional;
 
 public class AlertMessenger {
 
@@ -20,5 +24,28 @@ public class AlertMessenger {
 
         // bloqueia a interação com a tela de trás até que o usuário feche o alerta
         alert.showAndWait();
+    }
+
+    public static boolean confirm(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+
+        Optional<ButtonType> resposta = alert.showAndWait();
+
+        return resposta.isPresent() && resposta.get() == ButtonType.OK;
+    }
+
+    public static String inputMessenger(String title, String message) { /**/
+        TextInputDialog dialog = new TextInputDialog();
+
+        dialog.setTitle(title);
+        dialog.setHeaderText(null);
+        dialog.setContentText(message);
+
+        Optional<String> result = dialog.showAndWait();
+
+        return result.orElse(null);
     }
 }

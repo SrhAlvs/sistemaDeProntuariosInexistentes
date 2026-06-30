@@ -3,15 +3,25 @@ package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.DoctorDAO;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Patient;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.*;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.ValidationException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DoctorPagesController implements Initializable {
@@ -56,14 +66,14 @@ public class DoctorPagesController implements Initializable {
 
             // se chegou aqui, passou em todos os 'testes'
             AlertMessenger.show(Alert.AlertType.INFORMATION, "Sucesso", "Conta médica criada com sucesso!");
-            LogWriter.write("[CONTA] Conta de médico criada com sucesso!");
+            LogWriter.write("[SUCESSO | CONTA] Conta de médico criada com sucesso!");
 
             // após o cadastro, joga o médico de volta para a tela de login
             ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/LoginDoctorPage.fxml");
 
         } catch (ValidationException e) {
             AlertMessenger.show(Alert.AlertType.ERROR, "Erro no Cadastro", e.getMessage());
-            LogWriter.write("[CONTA] Falha ao tentar cadastrar conta de médico.");
+            LogWriter.write("[ERRO | CONTA] Falha ao tentar cadastrar conta de médico.");
         }
     }
 
@@ -86,7 +96,7 @@ public class DoctorPagesController implements Initializable {
 
             // verifica se o usuário tentou logar por e-mail ou por CRM
             if (inputLogin.contains("@")) {
-                LogWriter.write("[LOGIN] Tentativa de login de médico via E-mail: " + inputLogin);
+                LogWriter.write("[INFORMAÇÃO | LOGIN] Tentativa de login de médico via E-mail: " + inputLogin);
 
                 UserValidator.validateEmail(inputLogin);
 
@@ -94,17 +104,19 @@ public class DoctorPagesController implements Initializable {
 
                 if (doctor != null) {
                     if (doctor.getPassword().equals(password) && doctor.getEmail().equals(inputLogin) && doctor.getType().equals("DOCTOR")) {
-                        LogWriter.write("[LOGIN] Sucesso no login de médico via E-mail.");
+                        LogWriter.write("[SUCESSO | LOGIN] Sucesso no login de médico via E-mail.");
                         Session.loginDoctor(doctor);
                     } else {
+                        LogWriter.write("[ERRO | LOGIN] Falha no login de médico. E-mail ou senha inválidos.");
                         throw new ValidationException("E-mail ou senha inválidos.");
                     }
                 } else {
+                    LogWriter.write("[ERRO | LOGIN] Falha no login de médico. E-mail não cadastrado.");
                     throw new ValidationException("E-mail não cadastrado.");
                 }
 
             } else {
-                LogWriter.write("[LOGIN] Tentativa de login de médico via CRM: " + inputLogin);
+                LogWriter.write("[INFORMAÇÃO | LOGIN] Tentativa de login de médico via CRM: " + inputLogin);
 
                 UserValidator.validateCrm(inputLogin);
 
@@ -112,12 +124,14 @@ public class DoctorPagesController implements Initializable {
 
                 if (doctor != null) {
                     if (doctor.getPassword().equals(password) && doctor.getCrm().equals(inputLogin) && doctor.getType().equals("DOCTOR")) {
-                        LogWriter.write("[LOGIN] Sucesso no login de médico via CRM.");
+                        LogWriter.write("[SUCESSO | LOGIN] Sucesso no login de médico via CRM.");
                         Session.loginDoctor(doctor);
                     } else {
+                        LogWriter.write("[ERRO | LOGIN] Falha no login de médico. CRM ou senha inválidos.");
                         throw new ValidationException("CRM ou senha inválidos.");
                     }
                 } else {
+                    LogWriter.write("[ERRO | LOGIN] Falha no login de médico. CRM não cadastrado.");
                     throw new ValidationException("CRM não cadastrado.");
                 }
             }
@@ -125,7 +139,7 @@ public class DoctorPagesController implements Initializable {
             ScreenNavigator.changeScene(event, "/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/view/HomeDoctorPage.fxml");
         } catch (ValidationException e) {
             AlertMessenger.show(Alert.AlertType.ERROR, "Erro de Autenticação", e.getMessage());
-            LogWriter.write("[LOGIN] Falha no login do médico: " + e.getMessage());
+            LogWriter.write("[ERRO | LOGIN] Falha no login do médico: " + e.getMessage());
 
         }
     }
@@ -218,6 +232,10 @@ public class DoctorPagesController implements Initializable {
         if(dmdDoctorNameLabel != null) {
             writeLoggedDoctorName(dmdDoctorNameLabel);
         }
+
+        if(dmrCPFTableColumn != null) {
+            changeMyMedicalRecordsTable();
+        }
     }
 
     // menu de especialidades do 'CreateAccountDoctorPage'
@@ -254,6 +272,66 @@ public class DoctorPagesController implements Initializable {
         }
     }
 
+    // preenche tabela de consultas (agenda) da página 'HomeDoctorPage'
+    @FXML private TableView<Patient> dmrMedicalRecordsTable;
+    @FXML private TableColumn<Patient, String> dmrCPFTableColumn;
+    @FXML private TableColumn<Patient, String> dmrPatientNameTableColumn;
+    @FXML private TableColumn<Patient, Void> dmrResumeTableColumn;
+
+    public void changeMyMedicalRecordsTable() {
+        ArrayList<Patient> patients = this.doctor.findAllPatientsByDoctor(Session.getCurrentDoctor());
+
+        dmrCPFTableColumn.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        dmrPatientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        ObservableList<Patient> observablePatients = FXCollections.observableArrayList();
+        observablePatients.addAll(patients);
+
+        dmrMedicalRecordsTable.setItems(observablePatients);
+
+        dmrResumeTableColumn.setCellFactory(param -> new TableCell<>() {
+
+            private final Button button = new Button("Abrir");
+
+            {
+                button.setOnAction(event -> {
+
+                    Patient patient =
+                            getTableView().getItems().get(getIndex());
+
+                    MedicalRecordHandler generator =
+                            new MedicalRecordHandler(patient);
+
+                    String path = generator.getPath();
+                    File pdf = new File(path);
+
+                    if (!pdf.exists()) {
+                        String patientExamType = AlertMessenger.inputMessenger("Insira as informações do paciente", "Tipo do exame: ");
+                        String patientResult = AlertMessenger.inputMessenger("Insira as informações do paciente", "Resultado do exame: ");
+
+                        generator.GeneratePDF(patientExamType, patientResult);
+                        generator.OpenPDF(path);
+                    } else {
+                        generator.OpenPDF(path);
+                    }
+
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(button);
+                }
+            }
+        });
+    }
+
     // informações do médico do 'MyDetailsDoctorPage'
     @FXML private TextField dmdFullNameTextField;
     @FXML private TextField dmdEmailTextField;
@@ -269,7 +347,6 @@ public class DoctorPagesController implements Initializable {
             dmdCrmTextField.setText(doctor.getCrm());
             dmdSpecialtyTextField.setText(doctor.getSpecialty().getSpecialtyName());
         }
-
     }
 
 }

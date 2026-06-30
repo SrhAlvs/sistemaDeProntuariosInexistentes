@@ -48,18 +48,21 @@
                        AnchorPane.topAnchor="60.0">
                <columns>
                   <TableColumn fx:id="prDateTableColumn"
-                               prefWidth="75.0"
+                               resizable="false"
+                               prefWidth="105.0"
                                style="-fx-background-color: #BCA5FF;
                                       -fx-border-color: #EAE2FF;"
                                text="Data"
                   />
                   <TableColumn fx:id="prResultColumn"
-                               prefWidth="298.0"
+                               resizable="false"
+                               prefWidth="268.0"
                                style="-fx-background-color: #EAE2FF;
                                       -fx-border-color: #BCA5FF;"
                                text="Exame"
                   />
                   <TableColumn fx:id="prArchiveTableColumn"
+                               resizable="false"
                                prefWidth="76.0"
                                style="-fx-background-color: #BCA5FF;
                                       -fx-border-color: #EAE2FF;"

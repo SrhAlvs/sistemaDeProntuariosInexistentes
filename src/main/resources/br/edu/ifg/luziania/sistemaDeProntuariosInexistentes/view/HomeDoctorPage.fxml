@@ -48,25 +48,30 @@
                        AnchorPane.topAnchor="60.0">
                <columns>
                   <TableColumn fx:id="dhpDateTableColumn"
-                               prefWidth="75.0"
+                               resizable="false"
+                               prefWidth="90.0"
                                style="-fx-background-color: #BCA5FF;
                                     -fx-border-color: #EAE2FF;"
                                text="Data" />
                   <TableColumn fx:id="dhpTimeTableColumn"
-                               prefWidth="75.0"
+                               resizable="false"
+                               prefWidth="62"
                                style="-fx-background-color: #EAE2FF;
                                     -fx-border-color: #BCA5FF;"
                                text="Horário" />
                   <TableColumn fx:id="dhpPatientNameTableColumn"
-                               prefWidth="240.0"
+                               resizable="false"
+                               prefWidth="209.0"
                                style="-fx-background-color: #BCA5FF;
                                     -fx-border-color: #EAE2FF;"
                                text="Paciente" />
-                  <TableColumn fx:id="dhpResumeTableColumn"
-                               prefWidth="59.0"
+                  <TableColumn fx:id="dhpMedicalRecordsTableColumn"
+                               resizable="false"
+                               maxWidth="85.0"
+                               prefWidth="85.0"
                                style="-fx-background-color: #EAE2FF;
                                     -fx-border-color: #BCA5FF;"
-                               text="Resumo" />
+                               text="Prontuários" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -86,6 +86,7 @@
                             </font>
                         </Hyperlink>
                         <Button fx:id="plEnterButton"
+                                defaultButton="true"
                                 onAction="#handleLogin"
                                 alignment="CENTER"
                                 contentDisplay="CENTER"

@@ -1,15 +1,11 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO;
 
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DB.DataBase;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.User;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.*;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.LogWriter;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class DoctorDAO implements DoctorDAOInterface {
     private Connection connection = null;
@@ -82,6 +78,7 @@ public class DoctorDAO implements DoctorDAOInterface {
         }
     }
 
+    @Override
     public Doctor findByEmail(String email) {
 
         String query = "SELECT * FROM user JOIN doctor ON user.id_user = doctor.id_user WHERE email = ?";
@@ -109,6 +106,81 @@ public class DoctorDAO implements DoctorDAOInterface {
             LogWriter.write("[ERRO | SELECT] Erro ao procurar pelo Email na tabela de Médico (fodeo).");
 
             return null;
+        }
+    }
+
+    @Override
+    public Doctor findBySpecialty(DoctorSpecialty specialty) {
+        String query = "SELECT * FROM doctor JOIN user ON user.id_user = doctor.id_user WHERE specialty = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, specialty.name());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Doctor doctor = null;
+
+            while (resultSet.next()) {
+                doctor = new Doctor(
+                        resultSet.getString("name"),
+                        resultSet.getString("email"),
+                        resultSet.getString("crm"),
+                        DoctorSpecialty.valueOf(resultSet.getString("specialty"))
+                );
+            }
+
+            return doctor;
+        } catch (SQLException e) {
+            LogWriter.write("[ERRO | SELECT] Erro ao procurar pela especialidade na tabela de Médico (fodeo).");
+
+            return null;
+        }
+    }
+
+    public ArrayList<Patient> findAllPatientsByDoctor(Doctor doctor) {
+
+        String query = """
+            SELECT DISTINCT
+                u.name,
+                u.email,
+                p.cpf
+            FROM patient p
+            JOIN user u
+                ON p.id_user = u.id_user
+            JOIN appointment a
+                ON a.cpf = p.cpf
+            WHERE a.crm = ?
+            """;
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setString(1, doctor.getCrm());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            ArrayList<Patient> patients = new ArrayList<>();
+
+            while (resultSet.next()) {
+
+                patients.add(
+                        new Patient(
+                                resultSet.getString("name"),
+                                resultSet.getString("email"),
+                                resultSet.getString("cpf")
+                        )
+                );
+
+            }
+
+            return patients;
+
+        } catch (SQLException e) {
+
+            LogWriter.write(
+                    "[ERRO | SELECT] Erro ao selecionar todos os pacientes de um médico por CRM."
+            );
+
+            return new ArrayList<>();
         }
     }
 }

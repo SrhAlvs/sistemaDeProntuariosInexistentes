@@ -48,28 +48,33 @@
                        AnchorPane.topAnchor="60.0">
                <columns>
                   <TableColumn fx:id="phpDateTableColumn"
-                               prefWidth="75.0"
+                               resizable="false"
+                               prefWidth="90.0"
                                style="-fx-background-color: #BCA5FF;
                                     -fx-border-color: #EAE2FF;"
                                text="Data"
                   />
                   <TableColumn fx:id="phpTimeTableColumn"
-                               prefWidth="75.0"
+                               resizable="false"
+                               prefWidth="62"
                                style="-fx-background-color: #EAE2FF;
                                     -fx-border-color: #BCA5FF;"
                                text="Horário"
                   />
                   <TableColumn fx:id="phpDoctorNameTableColumn"
-                               prefWidth="159.0"
+                               resizable="false"
+                               prefWidth="209.0"
                                style="-fx-background-color: #BCA5FF;
                                     -fx-border-color: #EAE2FF;"
                                text="Médico"
                   />
-                  <TableColumn fx:id="phpResumeTableColumn"
-                               prefWidth="140.0"
+                  <TableColumn fx:id="phpMedicalRecordsTableColumn"
+                               resizable="false"
+                               maxWidth="85.0"
+                               prefWidth="85.0"
                                style="-fx-background-color: #EAE2FF;
                                     -fx-border-color: #BCA5FF;"
-                               text="Resumo"
+                               text="Prontuários"
                   />
                </columns>
                <columnResizePolicy>

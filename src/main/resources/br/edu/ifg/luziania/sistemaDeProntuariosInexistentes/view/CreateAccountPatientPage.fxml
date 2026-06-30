@@ -101,6 +101,7 @@
                         </font>
                     </Hyperlink>
                     <Button fx:id="pcaCreateButton"
+                            defaultButton="true"
                             onAction="#handleCreateAccount"
                             alignment="CENTER"
                             contentDisplay="CENTER"

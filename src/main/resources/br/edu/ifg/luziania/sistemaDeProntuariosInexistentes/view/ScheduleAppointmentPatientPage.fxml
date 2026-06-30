@@ -51,14 +51,9 @@
                <font>
                   <Font name="Noto Mono" size="11.0" />
                </font>
-               <items>
-                  <MenuItem mnemonicParsing="false"
-                            text="Cardiologia" />
-                  <MenuItem mnemonicParsing="false"
-                            text="Clínica Geral" />
-               </items>
             </MenuButton>
-            <DatePicker fx:id="psaScheduleDatePicker" layoutX="17.0"
+            <DatePicker fx:id="psaScheduleDatePicker"
+                        layoutX="17.0"
                         layoutY="136.0"
                         promptText="Data da sua consulta"
                         style="-fx-background-color: #7200a3;
@@ -68,7 +63,9 @@
                         AnchorPane.leftAnchor="25.0"
                         AnchorPane.topAnchor="130.0"
             />
-            <Button fx:id="psaLoadSchedulesButton" layoutX="366.0"
+            <Button fx:id="psaLoadSchedulesButton"
+                    onAction="#activateButtons"
+                    layoutX="366.0"
                     layoutY="174.0"
                     mnemonicParsing="false"
                     style="-fx-background-color: #7200a3;
@@ -93,13 +90,374 @@
                         AnchorPane.bottomAnchor="25.0"
                         AnchorPane.leftAnchor="25.0"
                         AnchorPane.rightAnchor="25.0"
-                        AnchorPane.topAnchor="215.0"
-            />
+                        AnchorPane.topAnchor="215.0">
+               <children>
+                  <Button fx:id="psa0900Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="14.0"
+                          layoutY="14.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="09:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="15.0"
+                          AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa0930Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="100.0"
+                          layoutY="15.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="09:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="100.0"
+                          AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1000Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="185.0"
+                          layoutY="15.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="10:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="185.0"
+                          AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1030Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="265.0"
+                          layoutY="15.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="10:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="270.0"
+                          AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1100Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="314.0"
+                          layoutY="15.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="11:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="355.0"
+                          AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1130Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="15.0"
+                          layoutY="54.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="11:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="15.0"
+                          AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1200Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="100.0"
+                          layoutY="54.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="12:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="100.0"
+                          AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1230Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="185.0"
+                          layoutY="54.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="12:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="185.0"
+                          AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1300Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="270.0"
+                          layoutY="54.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="13:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="270.0"
+                          AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1330Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="355.0"
+                          layoutY="54.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="13:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="355.0"
+                          AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1400Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="15.0"
+                          layoutY="81.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="14:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="15.0"
+                          AnchorPane.topAnchor="85.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1430Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="100.0"
+                          layoutY="81.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="14:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="100.0"
+                          AnchorPane.topAnchor="85.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1500Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="185.0"
+                          layoutY="81.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="15:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="185.0"
+                          AnchorPane.topAnchor="85.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1530Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="270.0"
+                          layoutY="81.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="15:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="270.0"
+                          AnchorPane.topAnchor="85.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1600Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="355.0"
+                          layoutY="81.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="16:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="355.0"
+                          AnchorPane.topAnchor="85.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1630Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="15.0"
+                          layoutY="121.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="16:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="15.0"
+                          AnchorPane.topAnchor="120.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1700Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="100.0"
+                          layoutY="121.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="17:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="100.0"
+                          AnchorPane.topAnchor="120.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1730Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="185.0"
+                          layoutY="121.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="17:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="185.0"
+                          AnchorPane.topAnchor="120.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1800Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="270.0"
+                          layoutY="121.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="18:00"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="270.0"
+                          AnchorPane.topAnchor="120.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="psa1830Button"
+                          onAction="#scheduleAppointmentReal"
+                          disable="true"
+                          layoutX="355.0"
+                          layoutY="121.0"
+                          mnemonicParsing="false"
+                          style="-fx-background-color: #7200a3;
+                                 -fx-border-color: #4E006F;
+                                 -fx-border-style: solid;
+                                 -fx-border-width: 0.5;"
+                          text="18:30"
+                          textFill="LIGHTGREEN"
+                          AnchorPane.leftAnchor="355.0"
+                          AnchorPane.topAnchor="120.0">
+                     <font>
+                        <Font name="Noto Mono" size="13.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
             <Button fx:id="psaBackButton"
-                    onAction="#handleBackHomeButton"
                     layoutX="436.0"
                     layoutY="373.0"
                     mnemonicParsing="false"
+                    onAction="#handleBackHomeButton"
                     style="-fx-border-width:2;
                            -fx-border-radius: 10;
                            -fx-border-style: solid;
@@ -134,8 +492,7 @@
                   <Font name="Noto Mono" size="15.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0"
-                          top="5.0" />
+                  <Insets left="5.0" top="5.0" />
                </VBox.margin>
             </Label>
             <Label fx:id="psaPatientNameLabel"
@@ -146,13 +503,12 @@
                   <Font name="Noto Mono" size="13.0" />
                </font>
                <VBox.margin>
-                  <Insets left="5.0"
-                          top="2.0" />
+                  <Insets left="5.0" top="2.0" />
                </VBox.margin>
             </Label>
             <Button fx:id="psaBackHomeButton"
-                    onAction="#handleBackHomeButton"
                     mnemonicParsing="false"
+                    onAction="#handleBackHomeButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
@@ -169,10 +525,10 @@
                </font>
             </Button>
             <Button fx:id="psaResultsButton"
-                    onAction="#handleResultsButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
+                    onAction="#handleResultsButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;
@@ -186,10 +542,10 @@
                </font>
             </Button>
             <Button fx:id="psaMyDetailsButton"
-                    onAction="#handleMyDetailsButton"
                     layoutX="10.0"
                     layoutY="62.0"
                     mnemonicParsing="false"
+                    onAction="#handleMyDetailsButton"
                     prefHeight="26.0"
                     prefWidth="124.0"
                     style="-fx-background-color: 0;

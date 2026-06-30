@@ -1,25 +1,29 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities;
 
-import java.sql.Time;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Appointment {
     private Integer id_appointment;
-    private Doctor doctor;
-    private Date appointmentDate;
-    private Time appointmentTime;
+    private String crm;
+    private String cpf;
+    private LocalDate appointmentDate;
+    private String appointmentTime;
 
-    public Appointment(Doctor doctor,
-                       Date appointmentDate,
-                       Time appointmentTime) {
-        this.doctor = doctor;
+    public Appointment(String crm,
+                       String cpf,
+                       LocalDate appointmentDate,
+                       String appointmentTime) {
+        this.crm = crm;
+        this.cpf = cpf;
         this.appointmentDate = appointmentDate;
         this.appointmentTime = appointmentTime;
     }
 
-    public Doctor getDoctor() { return doctor; }
+    public String getCrm() { return crm; }
 
-    public Date getAppointmentDate() { return appointmentDate; }
+    public String getCpf() { return cpf; }
 
-    public Time getAppointmentTime() { return appointmentTime; }
+    public LocalDate getAppointmentDate() { return appointmentDate; }
+
+    public String getAppointmentTime() { return appointmentTime; }
 }
