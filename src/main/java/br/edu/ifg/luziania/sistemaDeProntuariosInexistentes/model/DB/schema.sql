@@ -33,7 +33,17 @@ CREATE TABLE appointment (
     CONSTRAINT FK_appointment_cpf FOREIGN KEY (cpf) REFERENCES patient(cpf)
 );
 
-DROP DATABASE SistemaDeProntuariosInexistentes;
+CREATE TABLE medical_record (
+    id_medical_record INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    id_appointment INT UNSIGNED,
+    path VARCHAR(255),
+    CONSTRAINT FK_medical_record_id_appointment FOREIGN KEY (id_appointment) REFERENCES appointment (id_appointment)
+);
+
+INSERT INTO medical_record (id_appointment, path) VALUES (1, 'src/main/java/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/medicalRecords/Lucas Almeida_111.111.111-11.pdf');
+INSERT INTO medical_record (id_appointment, path) VALUES (8, 'src/main/java/br/edu/ifg/luziania/sistemaDeProntuariosInexistentes/medicalRecords/Rafael Santos_333.333.333-33.pdf');
+select * from medical_record;
+
 
 USE SistemaDeProntuariosInexistentes;
 
@@ -137,3 +147,5 @@ INSERT INTO appointment (crm, cpf, date, time) VALUES
                                                    ('000021-DF', '444.444.444-44', '2026-07-04', '17:30'),
 
                                                    ('000024-DF', '555.555.555-55', '2026-07-05', '18:00');
+
+DROP DATABASE SistemaDeProntuariosInexistentes;

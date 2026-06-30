@@ -51,26 +51,30 @@
                                resizable="false"
                                prefWidth="90.0"
                                style="-fx-background-color: #BCA5FF;
-                                    -fx-border-color: #EAE2FF;"
+                                      -fx-border-color: #EAE2FF;
+                                      -fx-alignment: CENTER;"
                                text="Data" />
                   <TableColumn fx:id="dhpTimeTableColumn"
                                resizable="false"
                                prefWidth="62"
                                style="-fx-background-color: #EAE2FF;
-                                    -fx-border-color: #BCA5FF;"
+                                      -fx-border-color: #BCA5FF;
+                                      -fx-alignment: CENTER;"
                                text="Horário" />
                   <TableColumn fx:id="dhpPatientNameTableColumn"
                                resizable="false"
                                prefWidth="209.0"
                                style="-fx-background-color: #BCA5FF;
-                                    -fx-border-color: #EAE2FF;"
+                                      -fx-border-color: #EAE2FF;
+                                      -fx-alignment: CENTER;"
                                text="Paciente" />
                   <TableColumn fx:id="dhpMedicalRecordsTableColumn"
                                resizable="false"
                                maxWidth="85.0"
                                prefWidth="85.0"
                                style="-fx-background-color: #EAE2FF;
-                                    -fx-border-color: #BCA5FF;"
+                                      -fx-border-color: #BCA5FF;
+                                      -fx-alignment: CENTER;"
                                text="Prontuários" />
                </columns>
                <columnResizePolicy>

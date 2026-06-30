@@ -19,9 +19,23 @@ public class Appointment {
         this.appointmentTime = appointmentTime;
     }
 
+    public Appointment(Integer id_appointment,
+                       String crm,
+                       String cpf,
+                       LocalDate appointmentDate,
+                       String appointmentTime) {
+        this.id_appointment = id_appointment;
+        this.crm = crm;
+        this.cpf = cpf;
+        this.appointmentDate = appointmentDate;
+        this.appointmentTime = appointmentTime;
+    }
+
     public String getCrm() { return crm; }
 
     public String getCpf() { return cpf; }
+
+    public Integer getIdAppointment() { return id_appointment; }
 
     public LocalDate getAppointmentDate() { return appointmentDate; }
 

@@ -1,11 +1,13 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.controller;
 
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.AppointmentDAO;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.DoctorDAO;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Doctor;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.DoctorSpecialty;
-import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Patient;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.MedicalRecordDAO;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO.PatientDAO;
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.*;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.*;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.util.exceptions.ValidationException;
+import com.sun.javafx.scene.shape.ArcHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +24,7 @@ import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class DoctorPagesController implements Initializable {
@@ -37,6 +40,10 @@ public class DoctorPagesController implements Initializable {
     @FXML private MenuButton dcaSpecialtyMenuButton;
 
     DoctorDAO doctor = new DoctorDAO();
+    PatientDAO patient = new PatientDAO();
+    MedicalRecordDAO medicalRecord = new MedicalRecordDAO();
+    AppointmentDAO appointment = new AppointmentDAO();
+
     // variável para guardar a especialidade do Médico
     private DoctorSpecialty selectedSpecialty;
 
@@ -236,6 +243,10 @@ public class DoctorPagesController implements Initializable {
         if(dmrCPFTableColumn != null) {
             changeMyMedicalRecordsTable();
         }
+
+        if(dhpDateTableColumn != null) {
+            changeMyAgendaTable();
+        }
     }
 
     // menu de especialidades do 'CreateAccountDoctorPage'
@@ -259,6 +270,23 @@ public class DoctorPagesController implements Initializable {
         }
     }
 
+    // informações do médico do 'MyDetailsDoctorPage'
+    @FXML private TextField dmdFullNameTextField;
+    @FXML private TextField dmdEmailTextField;
+    @FXML private TextField dmdCrmTextField;
+    @FXML private TextField dmdSpecialtyTextField;
+
+    public void changeMyDetailsTextField() {
+        Doctor doctor = Session.getCurrentDoctor();
+
+        if (doctor != null) {
+            dmdFullNameTextField.setText(doctor.getName());
+            dmdEmailTextField.setText(doctor.getEmail());
+            dmdCrmTextField.setText(doctor.getCrm());
+            dmdSpecialtyTextField.setText(doctor.getSpecialty().getSpecialtyName());
+        }
+    }
+
     // nome do médico no menu da VBox das telas para médico logado
     @FXML private Label dhpDoctorNameLabel;
     @FXML private Label dmrDoctorNameLabel;
@@ -272,7 +300,111 @@ public class DoctorPagesController implements Initializable {
         }
     }
 
-    // preenche tabela de consultas (agenda) da página 'HomeDoctorPage'
+    // =========================================================
+    // ------------------------ TABELAS ------------------------
+    // =========================================================
+
+    //preenche a tabela de agenda da página 'HomeDoctorPage'
+    @FXML private TableView<Agenda> dhpAgendaTable;
+    @FXML private TableColumn<Appointment, Date> dhpDateTableColumn;
+    @FXML private TableColumn<Appointment, String> dhpTimeTableColumn;
+    @FXML private TableColumn<Appointment, String> dhpPatientNameTableColumn;
+    @FXML private TableColumn<Agenda, Void> dhpMedicalRecordsTableColumn;
+
+    public void changeMyAgendaTable() {
+        System.out.println("CHEGOU 1");
+
+        dhpDateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        dhpTimeTableColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
+        dhpPatientNameTableColumn.setCellValueFactory(new PropertyValueFactory<>("patientName"));
+
+        System.out.println("CHEGOU 2");
+
+        ArrayList<Appointment> appointments = this.appointment.findAppointmentByCRM(Session.getCurrentDoctor().getCrm());
+        ArrayList<Patient> patients = this.doctor.findAllPatientsByDoctor(Session.getCurrentDoctor());
+        ArrayList<MedicalRecord> medicalRecords = new ArrayList<>();
+
+        System.out.println("CHEGOU 2,5");
+
+        for (Appointment appointment : appointments) {
+            System.out.println("CHEGOU 2,6");
+            medicalRecords.add(
+                    new MedicalRecord(
+                            appointment.getIdAppointment(),
+                            this.medicalRecord.findByIdAppointment(appointment.getIdAppointment()).getPath()
+                    )
+            );
+            System.out.println("CHEGOU 2,7");
+        }
+
+        System.out.println("CHEGOU 3");
+
+        ObservableList<Agenda> rows =
+                FXCollections.observableArrayList();
+
+        System.out.println("CHEGOU 4");
+
+        for (int i = 0; i < appointments.size(); i++) {
+
+            Appointment appointment = appointments.get(i);
+            Patient patient = patients.get(i);
+
+            rows.add(
+                    new Agenda(
+                            appointment.getAppointmentDate(),
+                            appointment.getAppointmentTime(),
+                            patient.getName(),
+                            patient
+                    )
+            );
+        }
+
+        System.out.println("CHEGOU 5");
+
+        dhpAgendaTable.setItems(rows);
+
+        dhpMedicalRecordsTableColumn.setCellFactory(param -> new TableCell<>() {
+
+            private final Button button = new Button("Abrir");
+
+            {
+                button.setOnAction(event -> {
+
+                    Agenda agenda =
+                            getTableView().getItems().get(getIndex());
+
+                    MedicalRecordHandler generator =
+                            new MedicalRecordHandler(agenda.getPatient());
+
+                    String path = generator.getPath();
+                    File pdf = new File(path);
+
+                    if (!pdf.exists()) {
+                        AlertMessenger.show(Alert.AlertType.ERROR, "Prontuário não encontrado", "Por favor, preencha o prontuário na aba 'Prontuários' antes de tentar acessá-lo.");
+                        LogWriter.write("[ERRO | PRONTUÁRIOS] Usuário médico tentou acessar um prontuário antes de preenchê-lo.");
+                    } else {
+                        generator.OpenPDF(path);
+                    }
+
+                });
+            }
+
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+
+                super.updateItem(item, empty);
+
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(button);
+                }
+            }
+        });
+
+    }
+
+    // preenche e possibilita criação de prontuários da tabela de prontuários da página 'MedicalRecordsDoctorPage'
     @FXML private TableView<Patient> dmrMedicalRecordsTable;
     @FXML private TableColumn<Patient, String> dmrCPFTableColumn;
     @FXML private TableColumn<Patient, String> dmrPatientNameTableColumn;
@@ -330,23 +462,6 @@ public class DoctorPagesController implements Initializable {
                 }
             }
         });
-    }
-
-    // informações do médico do 'MyDetailsDoctorPage'
-    @FXML private TextField dmdFullNameTextField;
-    @FXML private TextField dmdEmailTextField;
-    @FXML private TextField dmdCrmTextField;
-    @FXML private TextField dmdSpecialtyTextField;
-
-    public void changeMyDetailsTextField() {
-        Doctor doctor = Session.getCurrentDoctor();
-
-        if (doctor != null) {
-            dmdFullNameTextField.setText(doctor.getName());
-            dmdEmailTextField.setText(doctor.getEmail());
-            dmdCrmTextField.setText(doctor.getCrm());
-            dmdSpecialtyTextField.setText(doctor.getSpecialty().getSpecialtyName());
-        }
     }
 
 }

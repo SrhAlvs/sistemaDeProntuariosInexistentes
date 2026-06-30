@@ -1,5 +1,6 @@
 package br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.DAO;
 
+import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Appointment;
 import br.edu.ifg.luziania.sistemaDeProntuariosInexistentes.model.entities.Patient;
 
 import java.sql.SQLException;

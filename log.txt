@@ -1,5 +1,22 @@
-[30/06/2026 13:04:30] [NAVEGAÇÃO] Usuário anônimo escolheu a opção: MÉDICO.
-[30/06/2026 13:04:45] [INFORMAÇÃO | LOGIN] Tentativa de login de médico via E-mail: maria.oliveira@hospital.com
-[30/06/2026 13:04:45] [SUCESSO | LOGIN] Sucesso no login de médico via E-mail.
-[30/06/2026 13:04:45] [USUÁRIO ATIVO] Doutor: Maria Oliveira
-[30/06/2026 13:04:48] [NAVEGAÇÃO] Usuário (médico) navegando para a tela de Prontuários.
+[30/06/2026 16:33:34] [NAVEGAÇÃO] Usuário anônimo escolheu a opção: MÉDICO.
+[30/06/2026 16:33:43] [INFORMAÇÃO | LOGIN] Tentativa de login de médico via E-mail: maria.oliveira@hospital.com
+[30/06/2026 16:33:43] [SUCESSO | LOGIN] Sucesso no login de médico via E-mail.
+[30/06/2026 16:33:43] [USUÁRIO ATIVO] Doutor: Maria Oliveira
+[30/06/2026 16:33:54] [ERRO | PRONTUÁRIOS] Usuário médico tentou acessar um prontuário antes de preenchê-lo.
+[30/06/2026 16:34:57] [NAVEGAÇÃO] Usuário (médico) navegando para a tela de Prontuários.
+[30/06/2026 16:34:58] [NAVEGAÇÃO] Usuário (médico) navegando para a Tela Inicial (Home).
+[30/06/2026 16:35:04] [NAVEGAÇÃO] Usuário (médico) navegando para a tela de Prontuários.
+[30/06/2026 16:35:20] [NAVEGAÇÃO] Usuário (médico) navegando para a Tela Inicial (Home).
+[30/06/2026 16:35:44] [NAVEGAÇÃO] Usuário (médico) navegando para a tela de Login de Médico.
+[30/06/2026 16:35:46] [NAVEGAÇÃO] Usuário navegando para a tela de Escolha da Forma de Login.
+[30/06/2026 16:35:46] [LOG OUT] Sem usuários ativos.
+[30/06/2026 16:36:45] [NAVEGAÇÃO] Usuário anônimo escolheu a opção: PACIENTE.
+[30/06/2026 16:37:03] [INFORMAÇÃO | LOGIN] Tentativa de login de paciente via E-mail: rafael@gmail.com
+[30/06/2026 16:37:03] [SUCESSO | LOGIN] Sucesso no login de paciente via E-mail.
+[30/06/2026 16:37:03] [USUÁRIO ATIVO] Paciente: Rafael Santos
+[30/06/2026 16:37:08] [NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Resultados.
+[30/06/2026 16:37:20] [NAVEGAÇÃO] Usuário (médico) navegando para a Tela Inicial (Home).
+[30/06/2026 16:37:24] [NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Resultados.
+[30/06/2026 16:37:26] [NAVEGAÇÃO] Usuário (médico) navegando para a Tela Inicial (Home).
+[30/06/2026 16:37:59] [NAVEGAÇÃO] Usuário (paciente) navegando para a tela de Resultados.
+[30/06/2026 16:39:05] [NAVEGAÇÃO] Usuário (médico) navegando para a Tela Inicial (Home).
